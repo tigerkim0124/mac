@@ -1,0 +1,155 @@
+import React from 'react';
+import { 
+  Package, 
+  ArrowRight, 
+  CheckCircle2, 
+  ShieldCheck, 
+  Sparkles, 
+  ChevronRight, 
+  ExternalLink,
+  Flame,
+  Droplets,
+  Wind,
+  HeartHandshake,
+  Clock
+} from 'lucide-react';
+import { PRODUCTS } from '../data/companyData';
+import { Language, MainCategoryKey } from '../types';
+import { AnimatedCounter } from './AnimatedCounter';
+import { BioAnimatedBackground } from './BioAnimatedBackground';
+
+interface ProductSectionProps {
+  lang: Language;
+  onOpenProduct: (productId: string) => void;
+  onOpenLivestockGuide: () => void;
+}
+
+export const ProductSection: React.FC<ProductSectionProps> = ({
+  lang,
+  onOpenProduct,
+  onOpenLivestockGuide,
+}) => {
+  return (
+    <section className="relative py-16 sm:py-24 bg-slate-50/70 border-b border-slate-200 overflow-hidden">
+      {/* Biotechnology Animated Dynamic Canvas & Ambient Halo Background */}
+      <BioAnimatedBackground />
+
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-4 mb-12">
+          <div className="space-y-3.5 max-w-3xl">
+            <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-emerald-100/90 text-emerald-950 border border-emerald-300 shadow-2xs">
+              <Package className="w-4 h-4 text-emerald-700" />
+              <span>{lang === 'ko' ? '그로피드(Growfeed®) 핵심 제품군' : 'Key Product Portfolio'}</span>
+            </div>
+            <h2 className="tracking-tight leading-snug break-keep">
+              {lang === 'ko' ? (
+                <div className="space-y-1.5">
+                  <span className="text-sm sm:text-base md:text-lg text-emerald-700 font-bold block tracking-normal">
+                    과학으로 검증하고
+                  </span>
+                  <span className="text-lg sm:text-xl md:text-2xl text-slate-700 font-extrabold block leading-snug">
+                    농가를 생각하고 자연을 생각하는 마음을 담아 완성된
+                  </span>
+                  <span className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-950 block pt-0.5">
+                    프리미엄 친환경 기능성 사료첨가제
+                  </span>
+                </div>
+              ) : (
+                <div className="space-y-1.5">
+                  <span className="text-sm sm:text-base md:text-lg text-emerald-700 font-bold block tracking-normal">
+                    Scientifically Proven &amp; Verified
+                  </span>
+                  <span className="text-lg sm:text-xl md:text-2xl text-slate-700 font-extrabold block leading-snug">
+                    Crafted with Dedication to Farmers and Nature
+                  </span>
+                  <span className="text-2xl sm:text-3xl md:text-4xl font-black text-slate-950 block pt-0.5">
+                    Premium Eco-Friendly Bio-Feed Additives
+                  </span>
+                </div>
+              )}
+            </h2>
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed max-w-2xl pt-1">
+              {lang === 'ko'
+                ? '저메탄 톡신바인더부터 도축혈액 순환자원 단백질, 메탄저감 사료까지 축산업의 가치를 극대화합니다.'
+                : 'From anti-mold toxin binders to circular bio-protein and enteric methane reducers.'}
+            </p>
+          </div>
+        </div>
+
+        {/* 3 Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {PRODUCTS.map((prod) => {
+            return (
+              <div
+                key={prod.id}
+                className="bg-white rounded-2xl border border-slate-300 shadow-xs hover:shadow-xl hover:border-emerald-400 transition-all flex flex-col justify-between overflow-hidden group"
+              >
+                {/* Product Image Header */}
+                {prod.isComingSoon || !prod.imageUrl ? (
+                  <div className={`relative w-full h-[288px] overflow-hidden ${prod.colorScheme.bgBadge} bg-gradient-to-b from-teal-50/80 via-slate-50 to-teal-50/80 flex flex-col items-center justify-center p-6 border-b border-slate-200/80 text-center space-y-3`}>
+                    <div className="w-14 h-14 rounded-2xl bg-teal-100 text-teal-800 flex items-center justify-center shadow-xs">
+                      <Clock className="w-7 h-7" />
+                    </div>
+                    <div className="space-y-1">
+                      <span className="text-lg font-black text-teal-950 tracking-tight block">
+                        {lang === 'ko' ? '출시 준비 中' : 'Coming Soon'}
+                      </span>
+                      <span className="text-xs text-slate-500 font-medium block">
+                        {lang === 'ko' ? '공식 검증 및 승인 진행 중' : 'Official Certification in Progress'}
+                      </span>
+                    </div>
+                    <span className={`absolute bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap text-center max-w-[90%] truncate px-2.5 py-1 rounded-md text-xs font-bold ${prod.colorScheme.bgBadge} ${prod.colorScheme.textBadge} border ${prod.colorScheme.border} shadow-sm backdrop-blur-xs`}>
+                      {lang === 'ko' ? prod.badge : (prod.badgeEn || prod.badge)}
+                    </span>
+                  </div>
+                ) : (
+                  <div className={`relative w-full h-[288px] overflow-hidden ${prod.colorScheme.bgBadge} bg-gradient-to-b from-slate-100/90 via-white/80 to-slate-100/90 flex items-center justify-center p-3 border-b border-slate-200/80`}>
+                    <img
+                      src={prod.imageUrl}
+                      alt={lang === 'ko' ? prod.name : prod.engName}
+                      referrerPolicy="no-referrer"
+                      className="w-[288px] h-[288px] max-w-full max-h-full object-contain drop-shadow-md group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <span className={`absolute bottom-2.5 left-1/2 -translate-x-1/2 whitespace-nowrap text-center max-w-[90%] truncate px-2.5 py-1 rounded-md text-xs font-bold ${prod.colorScheme.bgBadge} ${prod.colorScheme.textBadge} border ${prod.colorScheme.border} shadow-sm backdrop-blur-xs`}>
+                      {lang === 'ko' ? prod.badge : (prod.badgeEn || prod.badge)}
+                    </span>
+                  </div>
+                )}
+
+                {/* Card Main Body */}
+                <div className="p-5 sm:p-6 space-y-4 flex-1 flex flex-col justify-between">
+                  <div className="space-y-3">
+                    <div className="space-y-1.5">
+                      <h3 className="text-[22px] sm:text-2xl font-black text-slate-900 group-hover:text-emerald-700 transition-colors leading-tight">
+                        {lang === 'ko' ? prod.name : prod.engName}
+                      </h3>
+                      <div className="text-[13.5px] sm:text-sm font-bold text-slate-500 truncate tracking-wide">
+                        {prod.engName}
+                      </div>
+                    </div>
+
+                    <p className="text-sm text-slate-700 leading-relaxed line-clamp-3">
+                      {lang === 'ko' ? prod.summaryKo : prod.summaryEn}
+                    </p>
+                  </div>
+                </div>
+
+                {/* Bottom Action Button */}
+                <div className="p-4 bg-slate-50 border-t border-slate-200">
+                  <button
+                    onClick={() => onOpenProduct(prod.id)}
+                    className="w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-white bg-slate-900 group-hover:bg-emerald-600 shadow-xs flex items-center justify-center space-x-1.5 transition-all cursor-pointer"
+                  >
+                    <span>{lang === 'ko' ? '상세 스펙 & 시험성적' : 'View Full Details'}</span>
+                    <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
