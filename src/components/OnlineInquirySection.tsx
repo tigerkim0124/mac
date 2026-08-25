@@ -293,8 +293,8 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
                       >
-                        <option value={lang === 'ko' ? "축종별 맞춤 컨설팅" : "Livestock Tailored Consulting"}>
-                          {lang === 'ko' ? "1. 축종별 맞춤 컨설팅" : "1. Livestock Tailored Consulting"}
+                        <option value={lang === 'ko' ? "Growfeed® 축종별 맞춤 컨설팅" : "Growfeed® Livestock Tailored Consulting"}>
+                          {lang === 'ko' ? "1. Growfeed® 축종별 맞춤 컨설팅" : "1. Growfeed® Livestock Tailored Consulting"}
                         </option>
                         <option value={lang === 'ko' ? "견적 문의" : "Price Quote Inquiry"}>
                           {lang === 'ko' ? "2. 견적 문의" : "2. Price Quote Inquiry"}

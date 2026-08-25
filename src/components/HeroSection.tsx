@@ -85,7 +85,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
   return (
     <section className="relative overflow-hidden bg-slate-950 text-white pt-12 pb-20 sm:pt-16 sm:pb-24 border-b border-slate-800 min-h-[620px] flex items-center">
       
-      {/* 5 Dissolve Background Slides with 95% Opacity & Vivid Visibility */}
+      {/* 5 Dissolve Background Slides with Full 100% Opacity & Vivid Clear Visibility */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
         {HERO_BG_SLIDES.map((slide, idx) => {
           const isActive = idx === currentSlide;
@@ -93,7 +93,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
             <div
               key={slide.name}
               className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                isActive ? 'opacity-95' : 'opacity-0'
+                isActive ? 'opacity-100' : 'opacity-0'
               }`}
             >
               <img
@@ -107,7 +107,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     target.src = `https://drive.google.com/uc?export=view&id=${slide.driveId}`;
                   }
                 }}
-                className={`w-full h-full object-cover transform transition-transform duration-[6000ms] ease-out ${slide.filterClass || ''} ${
+                className={`w-full h-full object-cover brightness-105 contrast-105 transform transition-transform duration-[6000ms] ease-out ${slide.filterClass || ''} ${
                   isActive ? 'scale-105' : 'scale-100'
                 }`}
               />
@@ -115,9 +115,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           );
         })}
 
-        {/* Lightweight Semi-Transparent Scrim for Maximum Background Image Visibility */}
-        <div className="absolute inset-0 bg-linear-to-r from-slate-950/80 via-slate-950/45 to-slate-950/30"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-slate-950/50"></div>
+        {/* Lightweight Semi-Transparent Scrim (15% clearer and brighter image visibility) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/30 to-slate-950/15"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-slate-950/35"></div>
         
         {/* Subtle Decorative Bio Glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none"></div>
@@ -171,25 +171,25 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
               )}
             </p>
 
-            {/* 2 Trust Proof Badges */}
-            <div className="grid grid-cols-2 gap-3 pt-5 border-t border-slate-800/80 text-left">
-              <div className="bg-slate-900/90 p-3 sm:p-3.5 rounded-xl border border-slate-700/80 flex items-center space-x-2.5 sm:space-x-3 backdrop-blur-xs">
-                <div className="p-2 rounded-lg bg-amber-500/20 text-amber-400 shrink-0">
-                  <Award className="w-5 h-5" />
+            {/* 2 Trust Proof Badges - Compact Refined Layout */}
+            <div className="flex flex-wrap items-center justify-center lg:justify-start gap-2.5 sm:gap-3 pt-4 border-t border-slate-800/60">
+              <div className="inline-flex items-center space-x-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-slate-900/70 border border-slate-700/60 backdrop-blur-sm shadow-xs hover:border-amber-500/50 transition-colors">
+                <div className="p-1 rounded-lg bg-amber-500/20 text-amber-400 shrink-0">
+                  <Award className="w-4 h-4" />
                 </div>
-                <div className="truncate">
-                  <span className="text-xs text-slate-300 font-medium block">{lang === 'ko' ? '대한민국' : 'Gov. of Korea'}</span>
-                  <span className="text-sm font-bold text-white truncate block">{lang === 'ko' ? '은탑산업훈장 수훈' : 'Tower of Merit'}</span>
+                <div className="text-left leading-tight flex items-center space-x-1.5">
+                  <span className="text-[11px] text-slate-400 font-medium">{lang === 'ko' ? '대한민국' : 'Gov.'}</span>
+                  <span className="text-xs sm:text-sm font-bold text-white">{lang === 'ko' ? '은탑산업훈장 수훈' : 'Tower of Merit'}</span>
                 </div>
               </div>
 
-              <div className="bg-slate-900/90 p-3 sm:p-3.5 rounded-xl border border-slate-700/80 flex items-center space-x-2.5 sm:space-x-3 backdrop-blur-xs">
-                <div className="p-2 rounded-lg bg-sky-500/20 text-sky-400 shrink-0">
-                  <ShieldCheck className="w-5 h-5" />
+              <div className="inline-flex items-center space-x-2 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-slate-900/70 border border-slate-700/60 backdrop-blur-sm shadow-xs hover:border-sky-500/50 transition-colors">
+                <div className="p-1 rounded-lg bg-sky-500/20 text-sky-400 shrink-0">
+                  <ShieldCheck className="w-4 h-4" />
                 </div>
-                <div className="truncate">
-                  <span className="text-xs text-slate-300 font-medium block">{lang === 'ko' ? '글로벌 IP' : 'Global IP'}</span>
-                  <span className="text-sm font-bold text-white truncate block">{lang === 'ko' ? '세계 52개국 특허' : '52 Patents'}</span>
+                <div className="text-left leading-tight flex items-center space-x-1.5">
+                  <span className="text-[11px] text-slate-400 font-medium">{lang === 'ko' ? '글로벌 IP' : 'Global IP'}</span>
+                  <span className="text-xs sm:text-sm font-bold text-white">{lang === 'ko' ? '세계 52개국 특허' : '52 Patents'}</span>
                 </div>
               </div>
             </div>
@@ -197,13 +197,13 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
           {/* Right Visual Card (5 cols) */}
           <div className="lg:col-span-5">
-            <div className="bg-gradient-to-br from-slate-900/95 via-slate-850/95 to-slate-900/95 rounded-3xl border border-slate-700 shadow-2xl overflow-hidden relative backdrop-blur-sm">
+            <div className="bg-slate-950/35 hover:bg-slate-950/45 rounded-3xl border border-white/15 shadow-2xl overflow-hidden relative backdrop-blur-xs transition-all">
               <div className="p-6 sm:p-7 space-y-5">
                 {/* Highlight Metrics */}
                 <div className="grid grid-cols-2 gap-3.5 text-left">
-                  <div className="p-3.5 rounded-2xl bg-slate-800/90 border border-slate-700">
-                    <div className="text-xs text-slate-300 font-semibold">{lang === 'ko' ? '누적 수출량' : 'Export Volume'}</div>
-                    <div className="text-2xl sm:text-3xl font-black text-emerald-400 mt-1">
+                  <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-white/10 backdrop-blur-xs">
+                    <div className="text-xs text-slate-200 font-semibold">{lang === 'ko' ? '누적 수출량' : 'Export Volume'}</div>
+                    <div className="text-2xl sm:text-3xl font-black text-emerald-400 mt-1 drop-shadow-sm">
                       <AnimatedCounter
                         end={4850}
                         suffix={lang === 'ko' ? ' 톤+' : ' tons+'}
@@ -211,9 +211,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     </div>
                   </div>
 
-                  <div className="p-3.5 rounded-2xl bg-slate-800/90 border border-slate-700">
-                    <div className="text-xs text-slate-300 font-semibold">{lang === 'ko' ? '메탄 저감율' : 'Methane Cut'}</div>
-                    <div className="text-2xl sm:text-3xl font-black text-teal-400 mt-1">
+                  <div className="p-3.5 rounded-2xl bg-slate-900/40 border border-white/10 backdrop-blur-xs">
+                    <div className="text-xs text-slate-200 font-semibold">{lang === 'ko' ? '메탄 저감율' : 'Methane Cut'}</div>
+                    <div className="text-2xl sm:text-3xl font-black text-teal-300 mt-1 drop-shadow-sm">
                       <AnimatedCounter
                         prefix={lang === 'ko' ? '최대 ' : 'Up to '}
                         end={61.5}
@@ -226,44 +226,44 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 
                 {/* 3 Major Lines Quick Preview */}
                 <div className="space-y-2 pt-1 text-left">
-                  <span className="text-slate-300 font-bold text-xs sm:text-sm block">
+                  <span className="text-slate-200 font-bold text-xs sm:text-sm block drop-shadow-2xs">
                     {lang === 'ko' ? '그로피드(Growfeed®) 3대 핵심 라인업' : '3 Major Product Lines'}
                   </span>
 
                   <div 
                     onClick={() => onOpenCategory('products', 'etox')}
-                    className="p-2.5 rounded-xl bg-slate-800/70 hover:bg-slate-800 border border-slate-700/80 flex items-center justify-between cursor-pointer transition-colors group"
+                    className="p-2.5 rounded-xl bg-slate-900/40 hover:bg-slate-900/60 border border-white/10 hover:border-emerald-400/50 flex items-center justify-between cursor-pointer transition-all group backdrop-blur-xs"
                   >
                     <div className="flex items-center space-x-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-xs"></span>
                       <span className="font-bold text-sm text-white group-hover:text-emerald-300">Growfeed® E-TOX</span>
                       <span className="text-xs text-slate-300 font-medium">({lang === 'ko' ? '독소 87~94% 흡착' : 'Toxin Binder'})</span>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all" />
+                    <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-400 group-hover:translate-x-0.5 transition-all" />
                   </div>
 
                   <div 
                     onClick={() => onOpenCategory('products', 'protein')}
-                    className="p-2.5 rounded-xl bg-slate-800/70 hover:bg-slate-800 border border-slate-700/80 flex items-center justify-between cursor-pointer transition-colors group"
+                    className="p-2.5 rounded-xl bg-slate-900/40 hover:bg-slate-900/60 border border-white/10 hover:border-sky-400/50 flex items-center justify-between cursor-pointer transition-all group backdrop-blur-xs"
                   >
                     <div className="flex items-center space-x-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-sky-400 shadow-xs"></span>
                       <span className="font-bold text-sm text-white group-hover:text-sky-300">Growfeed® Protein</span>
                       <span className="text-xs text-slate-300 font-medium">({lang === 'ko' ? '도축혈액 순환자원' : 'Recycled Protein'})</span>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-sky-400 group-hover:translate-x-0.5 transition-all" />
+                    <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-sky-400 group-hover:translate-x-0.5 transition-all" />
                   </div>
 
                   <div 
                     onClick={() => onOpenCategory('products', 'dcm')}
-                    className="p-2.5 rounded-xl bg-slate-800/70 hover:bg-slate-800 border border-slate-700/80 flex items-center justify-between cursor-pointer transition-colors group"
+                    className="p-2.5 rounded-xl bg-slate-900/40 hover:bg-slate-900/60 border border-white/10 hover:border-teal-400/50 flex items-center justify-between cursor-pointer transition-all group backdrop-blur-xs"
                   >
                     <div className="flex items-center space-x-2.5">
-                      <span className="w-2.5 h-2.5 rounded-full bg-teal-400"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-teal-400 shadow-xs"></span>
                       <span className="font-bold text-sm text-white group-hover:text-teal-300">Growfeed® DCM</span>
                       <span className="text-xs text-slate-300 font-medium">({lang === 'ko' ? '메탄저감·온실가스' : 'Methane Reduction'})</span>
                     </div>
-                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover:text-teal-400 group-hover:translate-x-0.5 transition-all" />
+                    <ArrowRight className="w-4 h-4 text-slate-300 group-hover:text-teal-400 group-hover:translate-x-0.5 transition-all" />
                   </div>
                 </div>
               </div>

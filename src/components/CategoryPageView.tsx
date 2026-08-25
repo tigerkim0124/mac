@@ -543,17 +543,151 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
         )}
 
         {/* ========================================================================= */}
-        {/* 2. PRODUCTS (전체 제품 및 축종별 가이드 순차 나열) */}
+        {/* 2. PRODUCTS (축종별 맞춤 컨설팅 1순위 + 전체 제품 순차 나열) */}
         {/* ========================================================================= */}
         {categoryKey === 'products' && (
           <div className="space-y-12">
-            {/* All Products Stacked */}
+            {/* 1. Livestock Application Guide (1순위) */}
+            <section id="livestock-guide" className="scroll-mt-32 space-y-6">
+              <div className="flex items-center space-x-3 pb-3 border-b-2 border-emerald-600">
+                <BookOpen className="w-7 h-7 text-emerald-600" />
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+                  {lang === 'ko' ? '1. Growfeed® 축종별 맞춤 컨설팅' : '1. Growfeed® Livestock Tailored Consulting'}
+                </h2>
+              </div>
+
+              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-300 shadow-sm space-y-6">
+                <div className="py-5 px-6 rounded-2xl bg-slate-50 border border-slate-200/90 text-center space-y-2">
+                  <p className="text-xs sm:text-sm text-slate-500 font-medium tracking-tight">
+                    {lang === 'ko' 
+                      ? '소(한우/젖소) · 양돈(모돈/자돈) · 양계(산란계/육계) · 어류/새우 · 반려동물' 
+                      : 'Cattle · Swine · Poultry · Aquaculture · Companion Animals'}
+                  </p>
+                  <p className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
+                    {lang === 'ko' ? (
+                      <>
+                        전 축종 사육 환경에 맞춘{' '}
+                        <span className="text-emerald-700 font-black decoration-emerald-300 underline underline-offset-4 decoration-2">
+                          최적의 그로피드 맞춤 솔루션
+                        </span>
+                        을 제공합니다.
+                      </>
+                    ) : (
+                      <>
+                        Tailored for all livestock environments with{' '}
+                        <span className="text-emerald-700 font-black decoration-emerald-300 underline underline-offset-4 decoration-2">
+                          Optimal Growfeed Solutions
+                        </span>.
+                      </>
+                    )}
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                  {/* Card 1: Cattle / Ruminants */}
+                  <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300">
+                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-200">
+                      <img
+                        src="https://lh3.googleusercontent.com/d/1_rjC1lbuxqETQ4KSv_80Fsovau1cHAXX"
+                        alt={lang === 'ko' ? '소 · 젖소 (반추동물)' : 'Beef & Dairy Cattle (Ruminants)'}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                        style={{ objectPosition: 'center 65%' }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
+                      <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between">
+                        <span className="font-bold text-white text-base drop-shadow-sm">
+                          {lang === 'ko' ? '소 · 젖소 (반추동물)' : 'Beef & Dairy Cattle (Ruminants)'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 2: Swine */}
+                  <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300">
+                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-200">
+                      <img
+                        src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=800&auto=format&fit=crop"
+                        alt={lang === 'ko' ? '양돈 (모돈 / 자돈 / 비육돈)' : 'Swine'}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
+                      <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between">
+                        <span className="font-bold text-white text-base drop-shadow-sm">
+                          {lang === 'ko' ? '양돈 (모돈 / 자돈 / 비육돈)' : 'Swine (Sows, Piglets & Fattening)'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 3: Poultry */}
+                  <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300">
+                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-200">
+                      <img
+                        src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=800&auto=format&fit=crop"
+                        alt={lang === 'ko' ? '양계 (산란계 / 육계 / 오리)' : 'Poultry'}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
+                      <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between">
+                        <span className="font-bold text-white text-base drop-shadow-sm">
+                          {lang === 'ko' ? '양계 (산란계 / 육계 / 오리)' : 'Poultry (Layers, Broilers & Ducks)'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Card 4: Aqua & Pet */}
+                  <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300">
+                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-200">
+                      <img
+                        src="https://lh3.googleusercontent.com/d/1f49HmxDVyZa-vNW9HlUhKxhZs428AYgL"
+                        alt={lang === 'ko' ? '반려동물 & 양어 · 새우' : 'Companion Animals & Aquaculture'}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
+                      <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between">
+                        <span className="font-bold text-white text-base drop-shadow-sm">
+                          {lang === 'ko' ? '반려동물 & 양어 · 새우' : 'Companion Animals & Aquaculture'}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Consulting Inquiry CTA Button */}
+                <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-emerald-50/80 border border-emerald-200">
+                  <div className="text-center sm:text-left space-y-0.5">
+                    <h4 className="font-bold text-emerald-950 text-base">
+                      {lang === 'ko' ? '농가 및 사료회사 맞춤 솔루션 컨설팅' : 'Farm & Feed Mill Tailored Consulting'}
+                    </h4>
+                    <p className="text-xs sm:text-sm text-emerald-800 font-normal">
+                      {lang === 'ko' 
+                        ? '사육 환경과 사료 배합에 맞춘 1:1 맞춤형 급여 설계 및 시험 적용을 안내해 드립니다.' 
+                        : 'We provide 1:1 customized feeding design and trial application suited for your environment.'}
+                    </p>
+                  </div>
+                  <button
+                    onClick={() => onOpenInquiry(lang === 'ko' ? '축종별 맞춤 컨설팅' : 'Livestock Tailored Consulting')}
+                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2 shrink-0 cursor-pointer"
+                  >
+                    <span>{lang === 'ko' ? '컨설팅 문의하기' : 'Request Consulting'}</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </section>
+
+            {/* All Products Stacked (2순위부터 나열) */}
             {PRODUCTS.map((prod, index) => (
               <section key={prod.id} id={prod.id} className="scroll-mt-32 space-y-6">
                 <div className="flex items-center space-x-3 pb-3 border-b-2 border-emerald-600">
                   <Layers className="w-7 h-7 text-emerald-600" />
                   <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-                    {index + 1}. {lang === 'ko' ? prod.name : prod.engName}
+                    {index + 2}. {lang === 'ko' ? prod.name : prod.engName}
                   </h2>
                 </div>
 
@@ -729,120 +863,6 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                 </div>
               </section>
             ))}
-
-            {/* Livestock Application Guide */}
-            <section id="livestock-guide" className="scroll-mt-32 space-y-6">
-              <div className="flex items-center space-x-3 pb-3 border-b-2 border-emerald-600">
-                <BookOpen className="w-7 h-7 text-emerald-600" />
-                <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-                  {lang === 'ko' ? '4. 축종별 맞춤 컨설팅' : '4. Livestock Tailored Consulting'}
-                </h2>
-              </div>
-
-              <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-300 shadow-sm space-y-6">
-                <p className="text-sm sm:text-base text-slate-700 font-normal leading-relaxed">
-                  {lang === 'ko' 
-                    ? '소(한우/젖소), 양돈(모돈/자돈), 양계(산란계/육계), 어류/새우, 반려동물까지 전 축종에 맞춰 최적의 그로피드 컨설팅을 제공합니다.'
-                    : 'We provide optimal Growfeed consulting tailored for all livestock species including cattle, swine, poultry, aquaculture, and companion animals.'}
-                </p>
-
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-                  {/* Card 1: Cattle / Ruminants */}
-                  <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-200">
-                      <img
-                        src="https://lh3.googleusercontent.com/d/1_rjC1lbuxqETQ4KSv_80Fsovau1cHAXX"
-                        alt={lang === 'ko' ? '소 · 젖소 (반추동물)' : 'Beef & Dairy Cattle (Ruminants)'}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                        style={{ objectPosition: 'center 65%' }}
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
-                      <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between">
-                        <span className="font-bold text-white text-base drop-shadow-sm">
-                          {lang === 'ko' ? '소 · 젖소 (반추동물)' : 'Beef & Dairy Cattle (Ruminants)'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 2: Swine */}
-                  <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-200">
-                      <img
-                        src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=800&auto=format&fit=crop"
-                        alt={lang === 'ko' ? '양돈 (모돈 / 자돈 / 비육돈)' : 'Swine'}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
-                      <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between">
-                        <span className="font-bold text-white text-base drop-shadow-sm">
-                          {lang === 'ko' ? '양돈 (모돈 / 자돈 / 비육돈)' : 'Swine (Sows, Piglets & Fattening)'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 3: Poultry */}
-                  <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-200">
-                      <img
-                        src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=800&auto=format&fit=crop"
-                        alt={lang === 'ko' ? '양계 (산란계 / 육계 / 오리)' : 'Poultry'}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
-                      <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between">
-                        <span className="font-bold text-white text-base drop-shadow-sm">
-                          {lang === 'ko' ? '양계 (산란계 / 육계 / 오리)' : 'Poultry (Layers, Broilers & Ducks)'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Card 4: Aqua & Pet */}
-                  <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300">
-                    <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-200">
-                      <img
-                        src="https://lh3.googleusercontent.com/d/1f49HmxDVyZa-vNW9HlUhKxhZs428AYgL"
-                        alt={lang === 'ko' ? '반려동물 & 양어 · 새우' : 'Companion Animals & Aquaculture'}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
-                      />
-                      <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
-                      <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between">
-                        <span className="font-bold text-white text-base drop-shadow-sm">
-                          {lang === 'ko' ? '반려동물 & 양어 · 새우' : 'Companion Animals & Aquaculture'}
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Consulting Inquiry CTA Button */}
-                <div className="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 p-5 rounded-2xl bg-emerald-50/80 border border-emerald-200">
-                  <div className="text-center sm:text-left space-y-0.5">
-                    <h4 className="font-bold text-emerald-950 text-base">
-                      {lang === 'ko' ? '농가 및 사료회사 맞춤 솔루션 컨설팅' : 'Farm & Feed Mill Tailored Consulting'}
-                    </h4>
-                    <p className="text-xs sm:text-sm text-emerald-800 font-normal">
-                      {lang === 'ko' 
-                        ? '사육 환경과 사료 배합에 맞춘 1:1 맞춤형 급여 설계 및 시험 적용을 안내해 드립니다.' 
-                        : 'We provide 1:1 customized feeding design and trial application suited for your environment.'}
-                    </p>
-                  </div>
-                  <button
-                    onClick={() => onOpenInquiry(lang === 'ko' ? '축종별 맞춤 컨설팅' : 'Livestock Tailored Consulting')}
-                    className="w-full sm:w-auto px-6 py-3 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-bold text-sm shadow-md hover:shadow-lg transition-all flex items-center justify-center space-x-2 shrink-0 cursor-pointer"
-                  >
-                    <span>{lang === 'ko' ? '컨설팅 문의하기' : 'Request Consulting'}</span>
-                    <ArrowRight className="w-4 h-4" />
-                  </button>
-                </div>
-              </div>
-            </section>
           </div>
         )}
 

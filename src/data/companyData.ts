@@ -88,6 +88,13 @@ export const GNB_CATEGORIES: MainCategory[] = [
     shortDescEn: 'Premium eco-friendly livestock feed additives for methane reduction and health',
     subCategories: [
       {
+        id: 'livestock-guide',
+        titleKo: 'Growfeed® 축종별 맞춤 컨설팅',
+        titleEn: 'Growfeed® Livestock Tailored Consulting',
+        descKo: '소(육우/젖소), 양돈(모돈/자돈), 양계(산란계/육계), 반려동물 & 양어·새우 맞춤 급여법',
+        descEn: 'Tailored feeding dosage and application manuals for cattle, swine, poultry, pets, and aquaculture'
+      },
+      {
         id: 'etox',
         titleKo: 'Growfeed® E-TOX',
         titleEn: 'Growfeed® E-TOX',
@@ -107,13 +114,6 @@ export const GNB_CATEGORIES: MainCategory[] = [
         titleEn: 'Growfeed® DCM',
         descKo: '메탄저감·기후위기 대응 사료 (반추위 메탄 61.5% 저감, 화학물질 無, 실온 1년)',
         descEn: 'De-Carbon & Methane reduction additive, reducing rumen methane up to 61.5%'
-      },
-      {
-        id: 'livestock-guide',
-        titleKo: '축종별 맞춤 컨설팅',
-        titleEn: 'Livestock Tailored Consulting',
-        descKo: '소(육우/젖소), 양돈(모돈/자돈), 양계(산란계/육계), 반려동물 & 양어·새우 맞춤 급여법',
-        descEn: 'Tailored feeding dosage and application manuals for cattle, swine, poultry, pets, and aquaculture'
       }
     ]
   },

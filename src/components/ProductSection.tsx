@@ -11,7 +11,8 @@ import {
   Droplets,
   Wind,
   HeartHandshake,
-  Clock
+  Clock,
+  BookOpen
 } from 'lucide-react';
 import { PRODUCTS } from '../data/companyData';
 import { Language, MainCategoryKey } from '../types';
@@ -148,6 +149,112 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
               </div>
             );
           })}
+        </div>
+
+        {/* Growfeed® Livestock Tailored Consulting Banner Card - Clean White Theme */}
+        <div className="mt-8 bg-white rounded-2xl sm:rounded-3xl border border-slate-300 shadow-md p-5 sm:p-6 space-y-4">
+          {/* Header Bar */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-3.5 border-b border-slate-200">
+            <div className="flex items-center space-x-2.5">
+              <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0">
+                <BookOpen className="w-4 h-4 text-emerald-700" />
+              </div>
+              <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                {lang === 'ko' ? 'Growfeed® 축종별 맞춤 컨설팅' : 'Growfeed® Livestock Tailored Consulting'}
+              </h3>
+            </div>
+            <p className="text-xs sm:text-sm text-slate-700 font-semibold">
+              {lang === 'ko' ? (
+                <>
+                  전 축종 사육 환경에 맞춘{' '}
+                  <span className="text-emerald-700 font-bold">최적의 그로피드 맞춤 솔루션</span>
+                  을 제공합니다.
+                </>
+              ) : (
+                <>
+                  Providing{' '}
+                  <span className="text-emerald-700 font-bold">optimal Growfeed tailored solutions</span>{' '}
+                  for all livestock environments.
+                </>
+              )}
+            </p>
+          </div>
+
+          {/* 4 Compact Species Photo Cards */}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
+            {/* Card 1: Cattle */}
+            <div className="rounded-xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs">
+              <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-slate-200">
+                <img
+                  src="https://lh3.googleusercontent.com/d/1_rjC1lbuxqETQ4KSv_80Fsovau1cHAXX"
+                  alt={lang === 'ko' ? '소 · 젖소 (반추동물)' : 'Beef & Dairy Cattle'}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                  style={{ objectPosition: 'center 65%' }}
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
+                <div className="absolute bottom-2.5 left-3 right-3">
+                  <span className="font-bold text-white text-xs sm:text-sm drop-shadow-sm line-clamp-1">
+                    {lang === 'ko' ? '소 · 젖소 (반추동물)' : 'Beef & Dairy Cattle'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 2: Swine */}
+            <div className="rounded-xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs">
+              <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-slate-200">
+                <img
+                  src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?q=80&w=800&auto=format&fit=crop"
+                  alt={lang === 'ko' ? '양돈 (모돈 / 자돈 / 비육돈)' : 'Swine'}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
+                <div className="absolute bottom-2.5 left-3 right-3">
+                  <span className="font-bold text-white text-xs sm:text-sm drop-shadow-sm line-clamp-1">
+                    {lang === 'ko' ? '양돈 (모돈/자돈/비육돈)' : 'Swine'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 3: Poultry */}
+            <div className="rounded-xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs">
+              <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-slate-200">
+                <img
+                  src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?q=80&w=800&auto=format&fit=crop"
+                  alt={lang === 'ko' ? '양계 (산란계 / 육계 / 오리)' : 'Poultry'}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
+                <div className="absolute bottom-2.5 left-3 right-3">
+                  <span className="font-bold text-white text-xs sm:text-sm drop-shadow-sm line-clamp-1">
+                    {lang === 'ko' ? '양계 (산란계/육계/오리)' : 'Poultry'}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Card 4: Aqua & Pet */}
+            <div className="rounded-xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs">
+              <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-slate-200">
+                <img
+                  src="https://lh3.googleusercontent.com/d/1f49HmxDVyZa-vNW9HlUhKxhZs428AYgL"
+                  alt={lang === 'ko' ? '반려동물 & 양어 · 새우' : 'Companion & Aquaculture'}
+                  referrerPolicy="no-referrer"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
+                <div className="absolute bottom-2.5 left-3 right-3">
+                  <span className="font-bold text-white text-xs sm:text-sm drop-shadow-sm line-clamp-1">
+                    {lang === 'ko' ? '반려동물 & 양어·새우' : 'Companion & Aqua'}
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </section>
