@@ -40,7 +40,8 @@ import {
   Clock,
   Navigation,
   Copy,
-  Check
+  Check,
+  ShieldCheck
 } from 'lucide-react';
 import { 
   GNB_CATEGORIES, 
@@ -363,9 +364,11 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                               return text;
                             })()}
                           </h4>
-                          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
-                            {lang === 'ko' ? fac.descKo : fac.descEn}
-                          </p>
+                          {(lang === 'ko' ? fac.descKo : fac.descEn) && (
+                            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-normal">
+                              {lang === 'ko' ? fac.descKo : fac.descEn}
+                            </p>
+                          )}
                           {(fac.noticeKo || fac.noticeEn) && (
                             <p className="text-[11px] sm:text-xs text-slate-500 font-medium bg-slate-100/90 border border-slate-200/80 rounded-md px-2.5 py-1.5 leading-relaxed">
                               {lang === 'ko' ? fac.noticeKo : fac.noticeEn}
@@ -373,10 +376,12 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                           )}
                         </div>
 
-                        <div className="pt-2.5 border-t border-slate-200 flex items-center text-xs sm:text-sm font-bold text-emerald-800 bg-emerald-50/60 -mx-5 -mb-5 px-5 py-2.5">
-                          <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-2 shrink-0"></span>
-                          <span>{lang === 'ko' ? fac.specKo : fac.specEn}</span>
-                        </div>
+                        {(lang === 'ko' ? fac.specKo : fac.specEn) && (
+                          <div className="pt-2.5 border-t border-slate-200 flex items-center text-xs sm:text-sm font-bold text-emerald-800 bg-emerald-50/60 -mx-5 -mb-5 px-5 py-2.5">
+                            <span className="inline-block w-2 h-2 rounded-full bg-emerald-500 mr-2 shrink-0"></span>
+                            <span>{lang === 'ko' ? fac.specKo : fac.specEn}</span>
+                          </div>
+                        )}
                       </div>
                     </div>
                   ))}
@@ -560,8 +565,8 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                 <div className="py-5 px-6 rounded-2xl bg-slate-50 border border-slate-200/90 text-center space-y-2">
                   <p className="text-xs sm:text-sm text-slate-500 font-medium tracking-tight">
                     {lang === 'ko' 
-                      ? '소(한우/젖소) · 양돈(모돈/자돈) · 양계(산란계/육계) · 어류/새우 · 반려동물' 
-                      : 'Cattle · Swine · Poultry · Aquaculture · Companion Animals'}
+                      ? '소(한우/젖소) · 양돈(모돈/자돈) · 양계(산란계/육계) · 양어/새우 (수산양식)' 
+                      : 'Cattle · Swine · Poultry · Aquaculture (Fish & Shrimp)'}
                   </p>
                   <p className="text-base sm:text-lg font-bold text-slate-900 leading-snug">
                     {lang === 'ko' ? (
@@ -639,19 +644,19 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                     </div>
                   </div>
 
-                  {/* Card 4: Aqua & Pet */}
+                  {/* Card 4: Aqua & Fish */}
                   <div className="rounded-2xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs hover:shadow-md transition-shadow duration-300">
                     <div className="relative h-44 sm:h-48 w-full overflow-hidden bg-slate-200">
                       <img
-                        src="https://lh3.googleusercontent.com/d/1f49HmxDVyZa-vNW9HlUhKxhZs428AYgL"
-                        alt={lang === 'ko' ? '반려동물 & 양어 · 새우' : 'Companion Animals & Aquaculture'}
+                        src="https://lh3.googleusercontent.com/d/1jKgwQhKVR20zQiOKX_uEcwPMngouP_rV"
+                        alt={lang === 'ko' ? '양어 · 새우 (수산양식)' : 'Aquaculture (Fish & Shrimp)'}
                         referrerPolicy="no-referrer"
                         className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
                       <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between">
                         <span className="font-bold text-white text-base drop-shadow-sm">
-                          {lang === 'ko' ? '반려동물 & 양어 · 새우' : 'Companion Animals & Aquaculture'}
+                          {lang === 'ko' ? '양어 · 새우 (수산양식)' : 'Aquaculture (Fish & Shrimp)'}
                         </span>
                       </div>
                     </div>
@@ -750,6 +755,12 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                               <span>{lang === 'ko' ? '특허 등록 원천기술' : 'Patented Technology'}</span>
                             </span>
                           )}
+                          {(prod.extraBadgeKo || prod.extraBadgeEn) && (
+                            <span className="text-xs sm:text-sm font-bold text-indigo-900 bg-indigo-50 px-3 py-1.5 rounded-xl border border-indigo-200 flex items-center space-x-1.5 shadow-2xs">
+                              <Award className="w-3.5 h-3.5 text-indigo-700" />
+                              <span>{lang === 'ko' ? prod.extraBadgeKo : prod.extraBadgeEn}</span>
+                            </span>
+                          )}
                         </div>
 
                         {/* Title and Subtitle */}
@@ -842,24 +853,24 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                     </div>
                   </div>
 
-                  {/* Test Results */}
-                  <div className="space-y-3.5 pt-2">
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
-                      <Microscope className="w-4.5 h-4.5 text-emerald-600 mr-2" />
-                      {lang === 'ko' ? '공인 시험 및 실증 성적 지표' : 'Empirical Laboratory & Field Results'}
-                    </h4>
-                    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-                      {(lang === 'ko' ? prod.testResultsKo : (prod.testResultsEn || prod.testResultsKo)).map((res, i) => (
-                        <div key={i} className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center">
-                          <span className="text-xs sm:text-sm text-slate-600 font-medium block truncate">{res.metric}</span>
-                          <span className="text-xl sm:text-2xl font-black text-emerald-700 my-1 block">
-                            <AnimatedCounter end={res.value} />
-                          </span>
-                          <span className="text-xs text-slate-500 block font-normal line-clamp-1">{res.note}</span>
-                        </div>
-                      ))}
+                    {/* Test Results */}
+                    <div className="space-y-3.5 pt-2">
+                      <h4 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
+                        <Microscope className="w-4.5 h-4.5 text-emerald-600 mr-2" />
+                        {lang === 'ko' ? '공인 시험 및 실증 성적 지표' : 'Empirical Laboratory & Field Results'}
+                      </h4>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                        {(lang === 'ko' ? prod.testResultsKo : (prod.testResultsEn || prod.testResultsKo)).map((res, i) => (
+                          <div key={i} className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center flex flex-col justify-between">
+                            <span className="text-xs sm:text-sm text-slate-600 font-medium block truncate">{res.metric}</span>
+                            <div className="text-lg sm:text-xl font-black text-emerald-700 my-1.5 leading-snug">
+                              {res.value}
+                            </div>
+                            <span className="text-xs text-slate-500 block font-normal leading-relaxed whitespace-pre-line">{res.note}</span>
+                          </div>
+                        ))}
+                      </div>
                     </div>
-                  </div>
                 </div>
               </section>
             ))}
@@ -937,8 +948,8 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                             {lang === 'ko' ? '김은중 교수 연구팀' : 'Prof. Eun-Joong Kim Team'}
                           </strong>{' '}
                           {lang === 'ko'
-                            ? '— 반추위 메탄 61.5% 저감 1·2차 in-vitro 시험 및 사양성적 검증'
-                            : '— 61.5% rumen methane reduction in-vitro & feeding performance validation'}
+                            ? '— 반추위 메탄 61.5% 저감 2014.10 1차, 2025.7 2차 in-vitro 시험 및 사양성적 검증'
+                            : '— 61.5% rumen methane reduction (1st Oct 2014, 2nd Jul 2025 in-vitro) & feeding performance validation'}
                         </p>
                       </div>
                     </div>
@@ -1161,10 +1172,10 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                             {lang === 'ko' ? '원적외선 방사 기본 메커니즘' : 'Base FIR Radiation Mechanism'}
                           </span>
                           <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-0.5 rounded border border-emerald-200">
-                            {lang === 'ko' ? '한국표준과학연구원(KRISS) 공인 인증' : 'KRISS Certified'}
+                            {lang === 'ko' ? '한국표준과학연구원(KRISS) 방사율 측정' : 'KRISS Measured'}
                           </span>
                         </div>
-                        <div className="flex items-center justify-center p-2 bg-slate-50/60 rounded-lg min-h-[220px]">
+                        <div className="flex items-center justify-center p-2 bg-slate-50/60 rounded-lg min-h-[285px]">
                           <img
                             src="https://lh3.googleusercontent.com/d/1JNeNWGUuumr_HjQBjyUzJQVfS4Ajowvt"
                             alt={lang === 'ko' ? '맥섬석 원적외선 기본 방사 원리' : 'Macsumsuk FIR Principle'}
@@ -1173,7 +1184,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                               const target = e.currentTarget;
                               target.src = 'https://drive.google.com/uc?export=view&id=1JNeNWGUuumr_HjQBjyUzJQVfS4Ajowvt';
                             }}
-                            className="max-h-[220px] w-auto max-w-full object-contain"
+                            className="max-h-[285px] w-auto max-w-full object-contain"
                           />
                         </div>
                       </div>
@@ -1195,7 +1206,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                           </span>
                         </div>
                         
-                        <div className="flex items-center justify-center p-2 bg-emerald-50/30 rounded-lg min-h-[220px] border border-emerald-100">
+                        <div className="flex items-center justify-center p-2 bg-emerald-50/30 rounded-lg min-h-[285px] border border-emerald-100">
                           <img
                             src="https://lh3.googleusercontent.com/d/1IT3pFwzvePTXL2_xFQujw3wHgjUHA8Ct"
                             alt={lang === 'ko' ? '과립형 규산염제 (무항생제 천연 미네랄)' : 'Granular Silicate Agent'}
@@ -1204,7 +1215,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                               const target = e.currentTarget;
                               target.src = 'https://drive.google.com/uc?export=view&id=1IT3pFwzvePTXL2_xFQujw3wHgjUHA8Ct';
                             }}
-                            className="max-h-[220px] w-auto max-w-full object-contain"
+                            className="max-h-[285px] w-auto max-w-full object-contain"
                           />
                         </div>
                         <p className="text-xs text-slate-700 font-medium leading-relaxed">
@@ -1276,7 +1287,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                         <AnimatedCounter end={90} suffix={lang === 'ko' ? '% 이상' : '%+'} />
                       </span>
                       <span className="text-xs text-teal-800 font-semibold block mb-3">
-                        {lang === 'ko' ? 'KRISS 한국표준과학연구원 공인' : 'KRISS National Certified'}
+                        {lang === 'ko' ? 'KRISS 한국표준과학연구원 측정' : 'KRISS Measured'}
                       </span>
                     </div>
 
@@ -1306,7 +1317,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
 
                     <div className="bg-white/90 p-4 rounded-xl border border-sky-200 space-y-2 flex flex-col justify-center">
                       <div className="flex items-center justify-center text-xs font-bold text-sky-950">
-                        <span>{lang === 'ko' ? '국내 단일 최대 맥섬석 광산 보유' : 'Largest Single Macsumsuk Deposit'}</span>
+                        <span>{lang === 'ko' ? '최대 맥섬석 광산 보유' : 'Largest Macsumsuk Deposit'}</span>
                       </div>
                       <div className="text-[11px] font-bold text-sky-800 pt-2 border-t border-sky-100 flex items-center justify-center">
                         <span>{lang === 'ko' ? '원료 채굴부터 가공까지 일원화' : 'Fully Integrated Supply Chain'}</span>
@@ -1333,7 +1344,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       {lang === 'ko' ? '천연 미네랄 기반 점토광물 메탄가스 저감용 사료첨가제' : 'Natural Mineral Methane Reduction Feed Additive'}
                     </span>
                     <span className="text-emerald-700 font-bold text-xs sm:text-sm block">
-                      {lang === 'ko' ? '특허등록 제10-2369867호' : 'Patent Reg. No. 10-2369867'}
+                      {lang === 'ko' ? '특허등록 제10-23698**호' : 'Patent Reg. No. 10-23698**'}
                     </span>
                   </div>
                   <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
@@ -1540,7 +1551,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                               <circle cx="0" cy="0" r="13" fill="#ffffff" fillOpacity="0.25" />
                               <text x="0" y="4" textAnchor="middle" fill="#ffffff" fontSize="11" fontWeight="bold" fontFamily="sans-serif">04</text>
                               <text x="0" y="20" textAnchor="middle" fill="#ffffff" fontSize="9.5" fontWeight="900" fontFamily="sans-serif">
-                                {lang === 'ko' ? '메탄저감' : 'METHANE'}
+                                {lang === 'ko' ? '항곰팡이제' : 'TOXIN BINDER'}
                               </text>
                             </g>
                           </g>
@@ -1630,7 +1641,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                             </h4>
                           </div>
                           <span className="self-start sm:self-auto px-2.5 py-1 rounded-lg bg-amber-100 text-amber-800 text-[11px] font-black shrink-0 border border-amber-200">
-                            {lang === 'ko' ? '180~250℃ 멸균' : '180-250°C'}
+                            {lang === 'ko' ? '180~350℃ 멸균' : '180-350°C'}
                           </span>
                         </div>
                       </motion.div>
@@ -1657,24 +1668,24 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                         </div>
                       </motion.div>
 
-                      {/* Card 04 - Deep Teal (메탄저감) */}
+                      {/* Card 04 - Deep Teal (항곰팡이제) */}
                       <motion.div
                         whileHover={{ x: 4 }}
                         className="flex items-stretch rounded-2xl bg-white border-2 border-teal-500 shadow-xs hover:shadow-md transition-all overflow-hidden"
                       >
                         <div className="w-16 sm:w-20 bg-gradient-to-br from-teal-500 to-teal-600 text-white flex flex-col items-center justify-center p-2 shrink-0 border-r-2 border-teal-600 shadow-inner">
                           <span className="text-xl sm:text-2xl font-black tracking-tight">04</span>
-                          <TrendingDown className="w-4 h-4 mt-0.5 text-teal-100" />
+                          <ShieldCheck className="w-4 h-4 mt-0.5 text-teal-100" />
                         </div>
                         <div className="p-3 sm:p-3.5 flex-1 flex flex-col sm:flex-row sm:items-center justify-between gap-2 bg-gradient-to-r from-teal-50/50 to-white">
                           <div className="flex items-center space-x-2">
-                            <span className="text-[10px] font-black text-teal-700 uppercase tracking-wider">METHANE CUT</span>
+                            <span className="text-[10px] font-black text-teal-700 uppercase tracking-wider">TOXIN BINDER</span>
                             <h4 className="text-sm font-black text-slate-900">
-                              {lang === 'ko' ? '반추위 장내발효 메탄 저감' : 'Enteric Methane Reduction'}
+                              {lang === 'ko' ? '항곰팡이제(톡신바인더 기능)' : 'Anti-Mold (Toxin Binder)'}
                             </h4>
                           </div>
                           <span className="self-start sm:self-auto px-2.5 py-1 rounded-lg bg-teal-100 text-teal-800 text-[11px] font-black shrink-0 border border-teal-200">
-                            {lang === 'ko' ? '메탄 -61.5%' : 'CH4 -61.5%'}
+                            {lang === 'ko' ? '독소 87~94% 흡착' : 'Toxin Binding'}
                           </span>
                         </div>
                       </motion.div>
@@ -1750,7 +1761,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                         {lang === 'ko' ? '메탄 최대 61.5% 저감' : 'Max -61.5% Methane'}
                       </span>
                       <span className="bg-slate-900/85 backdrop-blur-xs text-white text-xs font-bold px-2.5 py-1 rounded-full border border-slate-700">
-                        {lang === 'ko' ? '특허등록 제10-2369867호' : 'Patent No. 10-2369867'}
+                        {lang === 'ko' ? '특허등록 제10-23698**호' : 'Patent No. 10-23698**'}
                       </span>
                     </div>
 
@@ -1777,7 +1788,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       </div>
                       <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                         {lang === 'ko'
-                          ? '맥섬석 천연 규산염 원료의 다공질 벌집 구조와 수소 흡착 특성을 통해 반추동물(한우, 젖소) 장내발효 메탄을 최대 61.5% 저감시켜 국가 온실가스 감축목표(NDC)에 직접 기여합니다.'
+                          ? '맥섬석 천연 미네랄 원료의 다공질 벌집 구조와 수소 흡착 특성을 통해 반추동물(한우, 젖소) 장내발효 메탄을 최대 61.5% 저감시켜 국가 온실가스 감축목표(NDC)에 직접 기여합니다.'
                           : 'Cuts ruminant enteric methane by up to 61.5% through natural porous mineral mechanics, directly supporting national NDC greenhouse gas reduction targets.'}
                       </p>
                     </div>
@@ -1853,8 +1864,8 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       </div>
                       <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                         {lang === 'ko'
-                          ? '도축장에서 발생하는 가축 혈액을 전라인 밀폐 연결공법으로 전량 수거하고 180~250℃ 5~7초 순간멸균하여 조단백 30%+ 고영양 바이오 사료로 전환, 수질오염을 원천 방지합니다.'
-                          : 'Recovers 100% of slaughter blood via sealed in-line systems and instant flash sterilization (180-250°C, 5-7s) to produce 30%+ crude protein feed, eliminating water pollution.'}
+                          ? '도축장에서 발생하는 가축 혈액을 전라인 밀폐 연결공법으로 전량 수거하고 180~350℃ 5~7초 순간멸균하여 조단백 30%+ 고영양 바이오 사료로 전환, 수질오염을 원천 방지합니다.'
+                          : 'Recovers 100% of slaughter blood via sealed in-line systems and instant flash sterilization (180-350°C, 5-7s) to produce 30%+ crude protein feed, eliminating water pollution.'}
                       </p>
                     </div>
 
@@ -1929,8 +1940,8 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       </div>
                       <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
                         {lang === 'ko'
-                          ? '사료요구율(FCR) 개선, 가축 출하일령 2~4일 단축 및 경상북도 혈액가공품 농가지원사업(50% 지원)을 통해 축산 농가의 실질 경영 수익성을 높입니다.'
-                          : 'Maximizes real farm profits by optimizing FCR (1.69), shortening fattening cycles by 2-4 days, and providing 50% subsidized supply through provincial farm programs.'}
+                          ? '사료요구율(FCR) 개선, 가축 출하일령 2~4일 단축 및 경상북도 혈액가공품 농가지원사업(50% 지원)을 통해 축산 농가의 실질 경영 수익성을 높이며, 전국 산란계·육계 60여 농가에서 지속적으로 사용하고 있습니다.'
+                          : 'Maximizes real farm profits by optimizing FCR (1.69), shortening fattening cycles by 2-4 days, and providing 50% subsidized supply through provincial farm programs (Continuously used by over 60 layer & broiler farms nationwide).'}
                       </p>
                     </div>
 
@@ -1985,8 +1996,8 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                     <span className="text-xs text-slate-500 font-medium">{lang === 'ko' ? 'Growfeed E-TOX 단일 품목' : 'Growfeed® E-TOX single item'}</span>
                   </div>
                   <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 text-center">
-                    <span className="text-slate-600 font-semibold text-xs sm:text-sm block">{lang === 'ko' ? '2026년 출항 확정' : '2026 Confirmed Shipment'}</span>
-                    <span className="text-2xl sm:text-3xl font-black text-emerald-700 my-1 block">{lang === 'ko' ? '480 톤' : '480 Tons'}</span>
+                    <span className="text-slate-600 font-semibold text-xs sm:text-sm block">{lang === 'ko' ? '2026년 8월까지 실적' : 'Performance through Aug 2026'}</span>
+                    <span className="text-2xl sm:text-3xl font-black text-emerald-700 my-1 block">{lang === 'ko' ? '640톤' : '640 Tons'}</span>
                     <span className="text-xs text-slate-500 font-medium">{lang === 'ko' ? '필리핀 L/C 발주 양산 중' : 'Philippines L/C in active production'}</span>
                   </div>
                   <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 text-center">
@@ -2196,6 +2207,13 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                           src={photo.imageUrl}
                           alt={lang === 'ko' ? photo.titleKo : photo.titleEn}
                           referrerPolicy="no-referrer"
+                          onError={(e) => {
+                            const target = e.currentTarget;
+                            if (photo.imageUrl.includes('googleusercontent.com/d/')) {
+                              const id = photo.imageUrl.split('/d/')[1];
+                              if (id) target.src = `https://drive.google.com/uc?export=view&id=${id}`;
+                            }
+                          }}
                           className="w-full h-full object-cover"
                         />
                       </div>
@@ -2367,20 +2385,30 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                         {lang === 'ko' ? '맥섬석GM㈜' : 'Macsumsuk GM Co., Ltd.'}
                       </span>
                     </div>
-                    <p className="text-sm sm:text-base text-slate-800 font-medium flex items-center space-x-1.5">
+                    <div className="text-sm sm:text-base text-slate-800 font-medium flex items-center space-x-1.5">
                       <MapPin className="w-4 h-4 text-emerald-600 shrink-0" />
-                      <span>{lang === 'ko' ? '경상북도 영천시 대창면 한제길 44' : '44, Hanje-gil, Daechang-myeon, Yeongcheon-si, Gyeongsangbuk-do, Korea'}</span>
-                    </p>
+                      <div className="flex flex-wrap items-center gap-1.5">
+                        <span className="text-xs font-bold px-1.5 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                          {lang === 'ko' ? '도로명 주소' : 'Road Address'}
+                        </span>
+                        <span className="font-semibold text-slate-900">
+                          {lang === 'ko' ? '경상북도 영천시 대창면 한제길 44' : '44, Hanje-gil, Daechang-myeon, Yeongcheon-si, Gyeongsangbuk-do, Korea'}
+                        </span>
+                      </div>
+                    </div>
                   </div>
 
                   <div className="flex flex-wrap items-center gap-2">
-                    <button
-                      onClick={() => handleCopyAddress('경상북도 영천시 대창면 한제길 44')}
-                      className="px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 transition-colors flex items-center space-x-1.5 cursor-pointer shadow-2xs"
+                    <a
+                      href="https://map.naver.com/p/search/경상북도 영천시 대창면 한제길 44"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#03C75A] hover:bg-[#02b350] transition-colors flex items-center space-x-1.5 shadow-xs cursor-pointer"
                     >
-                      {copiedAddress ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-slate-500" />}
-                      <span>{copiedAddress ? (lang === 'ko' ? '주소 복사됨!' : 'Copied!') : (lang === 'ko' ? '주소 복사' : 'Copy Address')}</span>
-                    </button>
+                      <Navigation className="w-4 h-4 text-white" />
+                      <span>{lang === 'ko' ? '네이버지도 길찾기' : 'Naver Map'}</span>
+                      <ExternalLink className="w-3.5 h-3.5" />
+                    </a>
 
                     <a
                       href="https://map.kakao.com/link/search/경상북도 영천시 대창면 한제길 44"
@@ -2389,47 +2417,55 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-slate-950 bg-[#FEE500] hover:bg-[#FADA0A] transition-colors flex items-center space-x-1.5 shadow-2xs cursor-pointer"
                     >
                       <Navigation className="w-4 h-4 text-slate-900" />
-                      <span>{lang === 'ko' ? '카카오맵 길찾기' : 'Kakao Map'}</span>
+                      <span>{lang === 'ko' ? '카카오맵' : 'Kakao Map'}</span>
                       <ExternalLink className="w-3.5 h-3.5" />
                     </a>
 
-                    <a
-                      href="https://map.naver.com/p/search/경상북도 영천시 대창면 한제길 44"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-bold text-white bg-[#03C75A] hover:bg-[#02b350] transition-colors flex items-center space-x-1.5 shadow-2xs cursor-pointer"
+                    <button
+                      onClick={() => handleCopyAddress('경상북도 영천시 대창면 한제길 44')}
+                      className="px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-700 bg-white border border-slate-300 hover:bg-slate-50 transition-colors flex items-center space-x-1.5 cursor-pointer shadow-2xs"
                     >
-                      <span>{lang === 'ko' ? '네이버지도' : 'Naver Map'}</span>
-                      <ExternalLink className="w-3.5 h-3.5" />
-                    </a>
+                      {copiedAddress ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4 text-slate-500" />}
+                      <span>{copiedAddress ? (lang === 'ko' ? '주소 복사됨!' : 'Copied!') : (lang === 'ko' ? '주소 복사' : 'Copy Address')}</span>
+                    </button>
                   </div>
                 </div>
 
-                {/* Interactive Map Visual Card */}
-                <div className="relative rounded-2xl overflow-hidden border border-slate-300 shadow-xs bg-slate-900">
+                {/* Interactive Map Visual Card - Naver Map as Main */}
+                <div className="relative rounded-2xl overflow-hidden border border-slate-300 shadow-sm bg-slate-900">
                   <div className="w-full h-80 sm:h-96 relative flex items-center justify-center overflow-hidden bg-slate-950">
                     <div className="absolute inset-0 bg-[radial-gradient(#334155_1px,transparent_1px)] [background-size:16px_16px] opacity-40"></div>
                     <div className="absolute inset-0 bg-gradient-to-tr from-slate-950 via-slate-900 to-emerald-950/40"></div>
 
                     {/* Central Map Pin & Info Card */}
                     <div className="relative z-10 p-6 sm:p-8 max-w-lg mx-4 text-center bg-slate-900/90 backdrop-blur-md rounded-2xl border border-slate-700 shadow-2xl space-y-4">
-                      <div className="w-14 h-14 rounded-2xl bg-amber-400 text-slate-950 flex items-center justify-center mx-auto shadow-lg ring-4 ring-amber-400/20">
+                      <div className="w-14 h-14 rounded-2xl bg-[#03C75A] text-white flex items-center justify-center mx-auto shadow-lg ring-4 ring-[#03C75A]/25">
                         <MapPin className="w-8 h-8" />
                       </div>
 
                       <div className="space-y-1.5">
-                        <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-emerald-500/20 border border-emerald-500/30 text-emerald-300 text-xs font-bold">
-                          <span>{lang === 'ko' ? '카카오맵 공식 등록 사업장' : 'Registered Location on Kakao Map'}</span>
+                        <div className="inline-flex items-center space-x-1.5 px-3 py-1 rounded-full bg-[#03C75A]/20 border border-[#03C75A]/40 text-emerald-300 text-xs font-bold">
+                          <span>{lang === 'ko' ? '네이버지도 공식 등록 사업장' : 'Registered Location on Naver Map'}</span>
                         </div>
                         <h3 className="text-xl sm:text-2xl font-black text-white">
                           {lang === 'ko' ? '맥섬석GM(주) 본사 · 제조공장' : 'Macsumsuk GM Headquarters & Plant'}
                         </h3>
                         <p className="text-sm text-slate-300 font-medium">
-                          {lang === 'ko' ? '경상북도 영천시 대창면 한제길 44' : '44, Hanje-gil, Daechang-myeon, Yeongcheon-si, Gyeongbuk, Korea'}
+                          {lang === 'ko' ? '[도로명] 경상북도 영천시 대창면 한제길 44' : '44, Hanje-gil, Daechang-myeon, Yeongcheon-si, Gyeongbuk, Korea'}
                         </p>
                       </div>
 
                       <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
+                        <a
+                          href="https://map.naver.com/p/search/경상북도 영천시 대창면 한제길 44"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-[#03C75A] hover:bg-[#02b350] transition-all flex items-center justify-center space-x-2 shadow-md cursor-pointer"
+                        >
+                          <Navigation className="w-4 h-4 text-white" />
+                          <span>{lang === 'ko' ? '네이버지도로 길찾기' : 'Open in Naver Map'}</span>
+                          <ExternalLink className="w-4 h-4" />
+                        </a>
                         <a
                           href="https://map.kakao.com/link/search/경상북도 영천시 대창면 한제길 44"
                           target="_blank"
@@ -2437,17 +2473,8 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                           className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-sm text-slate-950 bg-[#FEE500] hover:bg-[#FADA0A] transition-all flex items-center justify-center space-x-2 shadow-md cursor-pointer"
                         >
                           <Navigation className="w-4 h-4 text-slate-950" />
-                          <span>{lang === 'ko' ? '카카오맵으로 길찾기' : 'Open in Kakao Map'}</span>
+                          <span>{lang === 'ko' ? '카카오맵 길찾기' : 'Kakao Map'}</span>
                           <ExternalLink className="w-4 h-4" />
-                        </a>
-                        <a
-                          href="https://map.kakao.com/link/to/맥섬석GM,35.8824,128.8415"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="w-full sm:w-auto px-5 py-2.5 rounded-xl font-bold text-sm text-white bg-slate-800 hover:bg-slate-700 border border-slate-600 transition-all flex items-center justify-center space-x-2 cursor-pointer"
-                        >
-                          <MapPin className="w-4 h-4 text-emerald-400" />
-                          <span>{lang === 'ko' ? '내비게이션 실행' : 'Launch Navigation'}</span>
                         </a>
                       </div>
                     </div>

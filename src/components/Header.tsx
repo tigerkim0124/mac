@@ -53,7 +53,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center space-x-4 sm:space-x-6 text-[11px] sm:text-xs">
             <span className="inline-flex items-center text-emerald-400 font-medium">
               <Sparkles className="w-3.5 h-3.5 mr-1 text-emerald-400 shrink-0" />
-              {lang === 'ko' ? '저메탄 · 고신뢰 축산바이오 전문기업' : 'Eco-friendly Low Methane Livestock Bio Solutions'}
+              {lang === 'ko' ? '저메탄 · ESG 환경과 사람 · 축산 BIO' : 'Low Methane · ESG Environment, People & Livestock BIO'}
             </span>
           </div>
 

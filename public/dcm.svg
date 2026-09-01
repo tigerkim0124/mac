@@ -1,0 +1,226 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 750" width="100%" height="100%">
+  <defs>
+    <!-- Soft Studio Shadow -->
+    <radialGradient id="bottleShadow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+      <stop offset="0%" stop-color="#0f172a" stop-opacity="0.25"/>
+      <stop offset="60%" stop-color="#334155" stop-opacity="0.08"/>
+      <stop offset="100%" stop-color="#64748b" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glass Gradients -->
+    <linearGradient id="glassBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.6"/>
+      <stop offset="8%" stop-color="#cbd5e1" stop-opacity="0.3"/>
+      <stop offset="25%" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="75%" stop-color="#ffffff" stop-opacity="0.1"/>
+      <stop offset="92%" stop-color="#94a3b8" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0.5"/>
+    </linearGradient>
+
+    <linearGradient id="glassSpecular" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.85"/>
+      <stop offset="15%" stop-color="#ffffff" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Cap Gradients -->
+    <linearGradient id="capGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e2e8f0" stop-opacity="0.9"/>
+      <stop offset="15%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="50%" stop-color="#cbd5e1" stop-opacity="0.75"/>
+      <stop offset="85%" stop-color="#ffffff" stop-opacity="0.95"/>
+      <stop offset="100%" stop-color="#94a3b8" stop-opacity="0.85"/>
+    </linearGradient>
+
+    <!-- Granule Fill Pattern / Texture -->
+    <linearGradient id="granuleBase" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#dfcfb8"/>
+      <stop offset="20%" stop-color="#d4c2a5"/>
+      <stop offset="80%" stop-color="#caa988"/>
+      <stop offset="100%" stop-color="#bda07f"/>
+    </linearGradient>
+
+    <pattern id="granuleDots" width="14" height="14" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="3" r="1.2" fill="#9c7a56" opacity="0.4"/>
+      <circle cx="8" cy="2" r="1.6" fill="#f5ede3" opacity="0.6"/>
+      <circle cx="12" cy="7" r="1.3" fill="#846543" opacity="0.35"/>
+      <circle cx="5" cy="9" r="1.8" fill="#e8dacb" opacity="0.5"/>
+      <circle cx="10" cy="12" r="1.1" fill="#755635" opacity="0.45"/>
+      <circle cx="1" cy="13" r="1.4" fill="#faeedd" opacity="0.7"/>
+    </pattern>
+
+    <!-- Label Gradient -->
+    <linearGradient id="labelGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#99c922"/>
+      <stop offset="18%" stop-color="#b2db2a"/>
+      <stop offset="60%" stop-color="#a6d425"/>
+      <stop offset="78%" stop-color="#f8fafc"/>
+      <stop offset="100%" stop-color="#e2e8f0"/>
+    </linearGradient>
+
+    <!-- Red DCM Badge Gradient -->
+    <linearGradient id="dcmBadgeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e6391a"/>
+      <stop offset="100%" stop-color="#c5280d"/>
+    </linearGradient>
+
+    <!-- Drop Shadow Filter for Badge -->
+    <filter id="badgeShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2" flood-color="#000000" flood-opacity="0.25"/>
+    </filter>
+  </defs>
+
+  <!-- Ground Contact Shadow -->
+  <ellipse cx="300" cy="690" rx="145" ry="24" fill="url(#bottleShadow)"/>
+
+  <!-- BOTTLE SHAPE CLIP & BASE -->
+  <g id="bottle">
+    <!-- Bottle Outer Contour Path (Vintage Milk / Laboratory Reagent Bottle) -->
+    <!-- Neck: x=205 to 395 at top, tapering in to x=225 to 375, then flaring out smoothly to body x=165 to 435 at bottom -->
+    
+    <!-- 1. Mineral Granule Content (Inside Lower Half) -->
+    <g id="granules">
+      <!-- Granules Top Meniscus curve -->
+      <path d="M 183 380 Q 300 372 417 380 L 417 650 Q 415 675 390 680 L 210 680 Q 185 675 183 650 Z" fill="url(#granuleBase)"/>
+      <path d="M 183 380 Q 300 372 417 380 L 417 650 Q 415 675 390 680 L 210 680 Q 185 675 183 650 Z" fill="url(#granuleDots)"/>
+      
+      <!-- Top Surface of Granules in Bottle -->
+      <ellipse cx="300" cy="380" rx="116" ry="16" fill="#ecdcc7" opacity="0.9"/>
+      <ellipse cx="300" cy="380" rx="116" ry="16" fill="url(#granuleDots)"/>
+      <ellipse cx="300" cy="381" rx="100" ry="12" fill="#d2bc9e" opacity="0.5"/>
+    </g>
+
+    <!-- 2. PRODUCT WRAPAROUND LABEL -->
+    <g id="productLabel">
+      <!-- Label Base Background with cylindrical curvature -->
+      <path d="M 166 450 Q 300 462 434 450 L 434 655 Q 300 670 166 655 Z" fill="url(#labelGrad)"/>
+
+      <!-- Left Vertical Pink/Magenta Ribbon (www.growfeed.com) -->
+      <path d="M 166 450 Q 192 453 198 452 L 198 657 Q 175 656 166 655 Z" fill="#cf175b"/>
+      <text transform="translate(186, 615) rotate(-90)" fill="#ffffff" font-family="'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" letter-spacing="1.5">
+        www.growfeed.com
+      </text>
+
+      <!-- Growfeed Tree Emblem (Navy Round badge with Golden tree) -->
+      <g transform="translate(222, 545)">
+        <circle cx="0" cy="0" r="23" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+        <!-- Stylized Golden Tree -->
+        <path d="M -12 8 Q -3 2 0 -10 Q 3 2 12 8 Q 6 4 0 6 Q -6 4 -12 8 Z" fill="#eab308"/>
+        <circle cx="-6" cy="-4" r="3.5" fill="#facc15"/>
+        <circle cx="6" cy="-4" r="3.5" fill="#facc15"/>
+        <circle cx="0" cy="-11" r="4.2" fill="#fde047"/>
+        <circle cx="-10" cy="3" r="2.8" fill="#eab308"/>
+        <circle cx="10" cy="3" r="2.8" fill="#eab308"/>
+      </g>
+
+      <!-- RED DCM BADGE (Key Feature) -->
+      <g transform="translate(295, 498)">
+        <rect x="-42" y="-18" width="84" height="36" rx="8" ry="8" fill="url(#dcmBadgeGrad)" filter="url(#badgeShadow)" stroke="#b91c1c" stroke-width="0.8"/>
+        <text x="0" y="7" fill="#ffffff" font-family="'Arial Black', Impact, sans-serif" font-size="22" font-weight="900" text-anchor="middle" letter-spacing="1">
+          DCM
+        </text>
+      </g>
+
+      <!-- Brand Typography "그로피드 Growfeed" -->
+      <!-- Korean Name -->
+      <text x="272" y="555" fill="#1e293b" font-family="'Pretendard', 'Noto Sans KR', sans-serif" font-size="15" font-weight="900" letter-spacing="-0.5">
+        그로피드
+      </text>
+      <!-- English Name -->
+      <text x="210" y="598" fill="#0f172a" font-family="'Segoe UI', 'Arial', sans-serif" font-size="28" font-weight="900" letter-spacing="-0.5">
+        Growfeed
+      </text>
+
+      <!-- Right Area: MACOSSUM Logo & Info -->
+      <g transform="translate(390, 520)">
+        <!-- Blue Mountain Triple Peaks -->
+        <path d="M -22 6 L -16 -4 L -10 6 Z" fill="#0284c7"/>
+        <path d="M -13 6 L -5 -8 L 3 6 Z" fill="#0369a1"/>
+        <path d="M -2 6 L 6 -3 L 14 6 Z" fill="#0ea5e9"/>
+        <text x="-25" y="18" fill="#334155" font-family="sans-serif" font-size="7.5" font-weight="800" letter-spacing="0.5">
+          MACOSSUM
+        </text>
+      </g>
+
+      <!-- Tel / Fax info lines on right -->
+      <g transform="translate(362, 575)">
+        <text x="0" y="0" fill="#334155" font-family="monospace, sans-serif" font-size="8.5" font-weight="700">
+          Tel: 054-336-8100
+        </text>
+        <text x="0" y="13" fill="#334155" font-family="monospace, sans-serif" font-size="8.5" font-weight="700">
+          Fax: 054-336-8104
+        </text>
+      </g>
+    </g>
+
+    <!-- 3. GLASS BOTTLE OVERLAY & REFLECTIONS -->
+    <!-- Glass Bottle Body Wall Shape -->
+    <path d="
+      M 205 160 
+      L 395 160 
+      L 395 190 
+      Q 380 205 370 240 
+      L 358 290 
+      Q 435 345 435 430 
+      L 435 650 
+      Q 435 680 395 685 
+      L 205 685 
+      Q 165 680 165 650 
+      L 165 430 
+      Q 165 345 242 290 
+      L 230 240 
+      Q 220 205 205 190 
+      Z" 
+      fill="url(#glassBody)" 
+      stroke="#94a3b8" 
+      stroke-width="1.5"
+    />
+
+    <!-- Thick Glass Bottom Base -->
+    <path d="M 172 655 Q 300 668 428 655 L 425 675 Q 300 686 175 675 Z" fill="#ffffff" opacity="0.6"/>
+    <path d="M 180 670 Q 300 680 420 670" stroke="#cbd5e1" stroke-width="2" fill="none"/>
+
+    <!-- Left High-contrast Specular Reflection Curve -->
+    <path d="
+      M 215 195 
+      Q 228 235 238 285 
+      Q 175 345 175 420 
+      L 175 640 
+      Q 175 660 185 665 
+      L 182 640 
+      L 182 425 
+      Q 182 355 245 295 
+      L 235 245 
+      Q 222 205 212 195 
+      Z" 
+      fill="url(#glassSpecular)"
+    />
+
+    <!-- Right Subtle Specular Reflection -->
+    <path d="
+      M 385 195 
+      Q 372 235 362 285 
+      Q 425 345 425 420 
+      L 425 640 
+      L 422 640 
+      L 422 425 
+      Q 422 355 355 295 
+      Z" 
+      fill="#ffffff" 
+      opacity="0.4"
+    />
+
+    <!-- 4. TRANSPARENT PLASTIC CAP & FLANGE -->
+    <!-- Lower Cap Flange Ring -->
+    <ellipse cx="300" cy="188" rx="100" ry="14" fill="url(#capGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+    <ellipse cx="300" cy="187" rx="96" ry="12" fill="#f8fafc" opacity="0.6"/>
+
+    <!-- Cap Neck Column -->
+    <path d="M 205 130 L 395 130 L 395 186 L 205 186 Z" fill="url(#capGrad)" stroke="#94a3b8" stroke-width="1"/>
+    
+    <!-- Top Cap Bevel -->
+    <ellipse cx="300" cy="130" rx="95" ry="14" fill="url(#capGrad)" stroke="#94a3b8" stroke-width="1.2"/>
+    <ellipse cx="300" cy="128" rx="88" ry="11" fill="#ffffff" opacity="0.85"/>
+    <ellipse cx="300" cy="127" rx="75" ry="8" fill="#f1f5f9" opacity="0.9"/>
+  </g>
+</svg>

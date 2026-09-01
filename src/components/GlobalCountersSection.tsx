@@ -94,14 +94,14 @@ export const GlobalCountersSection: React.FC<GlobalCountersProps> = ({
               </span>
               <span className="text-xs sm:text-sm text-slate-200 font-semibold">
                 {lang === 'ko'
-                  ? '필리핀 Bio star JNG Megatrade · 말레이시아 · 베트남 · 태국 CBP그룹'
-                  : 'Philippines Bio star JNG Megatrade · Malaysia · Vietnam · Thailand CBP Group'}
+                  ? '필리핀 Bio star JNG Megatrade · 말레이시아 · 방글라데시 · 태국 CBP그룹'
+                  : 'Philippines Bio star JNG Megatrade · Malaysia · Bangladesh · Thailand CBP Group'}
               </span>
             </div>
             <h3 className="text-lg sm:text-xl font-black text-white">
               {lang === 'ko'
-                ? '2026년 상반기 필리핀 480톤(L/C) 출항 일정 확정 및 생산 진행 중'
-                : 'Confirmed 480-ton shipment to the Philippines in 2026 with active production'}
+                ? '2026년 상반기 필리핀 640톤(L/C) 수출 일정 확정 및 생산 진행 중'
+                : 'Confirmed 640-ton (L/C) export shipment to the Philippines in 2026 with active production'}
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
               {lang === 'ko'

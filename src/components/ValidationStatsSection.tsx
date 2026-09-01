@@ -233,8 +233,8 @@ export const ValidationStatsSection: React.FC<ValidationStatsProps> = ({
                   {lang === 'ko' ? '김은중 교수 연구팀' : 'Prof. Eun-Joong Kim Team'}
                 </strong>{' '}
                 {lang === 'ko'
-                  ? '— 반추위 메탄 61.5% 저감 1·2차 in-vitro 시험 및 사양성적 검증'
-                  : '— 61.5% rumen methane reduction in-vitro & feeding performance validation'}
+                  ? '— 반추위 메탄 61.5% 저감 2014.10 1차, 2025.7 2차 in-vitro 시험 및 사양성적 검증'
+                  : '— 61.5% rumen methane reduction (1st Oct 2014, 2nd Jul 2025 in-vitro) & feeding performance validation'}
               </p>
             </div>
           </div>

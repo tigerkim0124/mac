@@ -237,19 +237,19 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
               </div>
             </div>
 
-            {/* Card 4: Aqua & Pet */}
+            {/* Card 4: Aqua & Fish */}
             <div className="rounded-xl bg-slate-50 border border-slate-200 overflow-hidden shadow-xs">
               <div className="relative h-28 sm:h-32 w-full overflow-hidden bg-slate-200">
                 <img
-                  src="https://lh3.googleusercontent.com/d/1f49HmxDVyZa-vNW9HlUhKxhZs428AYgL"
-                  alt={lang === 'ko' ? '반려동물 & 양어 · 새우' : 'Companion & Aquaculture'}
+                  src="https://lh3.googleusercontent.com/d/1jKgwQhKVR20zQiOKX_uEcwPMngouP_rV"
+                  alt={lang === 'ko' ? '양어 · 새우 (수산양식)' : 'Aquaculture (Fish & Shrimp)'}
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-900/85 via-slate-900/30 to-transparent"></div>
                 <div className="absolute bottom-2.5 left-3 right-3">
                   <span className="font-bold text-white text-xs sm:text-sm drop-shadow-sm line-clamp-1">
-                    {lang === 'ko' ? '반려동물 & 양어·새우' : 'Companion & Aqua'}
+                    {lang === 'ko' ? '양어 · 새우' : 'Aquaculture'}
                   </span>
                 </div>
               </div>

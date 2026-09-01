@@ -66,6 +66,13 @@ export const VisualGallerySection: React.FC<VisualGallerySectionProps> = ({
                     src={photo.imageUrl}
                     alt={lang === 'ko' ? photo.titleKo : photo.titleEn}
                     referrerPolicy="no-referrer"
+                    onError={(e) => {
+                      const target = e.currentTarget;
+                      if (photo.imageUrl.includes('googleusercontent.com/d/')) {
+                        const id = photo.imageUrl.split('/d/')[1];
+                        if (id) target.src = `https://drive.google.com/uc?export=view&id=${id}`;
+                      }
+                    }}
                     className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/20 to-transparent pointer-events-none"></div>

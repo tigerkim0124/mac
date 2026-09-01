@@ -107,7 +107,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     target.src = `https://drive.google.com/uc?export=view&id=${slide.driveId}`;
                   }
                 }}
-                className={`w-full h-full object-cover brightness-105 contrast-105 transform transition-transform duration-[6000ms] ease-out ${slide.filterClass || ''} ${
+                className={`w-full h-full object-cover transform transition-transform duration-[6000ms] ease-out ${slide.filterClass || ''} ${
                   isActive ? 'scale-105' : 'scale-100'
                 }`}
               />
@@ -115,9 +115,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
           );
         })}
 
-        {/* Lightweight Semi-Transparent Scrim (15% clearer and brighter image visibility) */}
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/65 via-slate-950/30 to-slate-950/15"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/75 via-transparent to-slate-950/35"></div>
+        {/* Lightweight Semi-Transparent Scrim (Optimized for perfect text legibility & vivid backdrop) */}
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/70 via-slate-950/35 to-slate-950/20"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/40"></div>
         
         {/* Subtle Decorative Bio Glow */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-emerald-600/10 rounded-full blur-3xl pointer-events-none"></div>

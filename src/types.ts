@@ -51,6 +51,8 @@ export interface ProductItem {
   dosageEn: string;
   patentNo?: string;
   patentNoEn?: string;
+  extraBadgeKo?: string;
+  extraBadgeEn?: string;
   imageUrl?: string;
   isComingSoon?: boolean;
   colorScheme: {
@@ -82,8 +84,8 @@ export interface FacilityPhoto {
   descEn: string;
   noticeKo?: string;
   noticeEn?: string;
-  specKo: string;
-  specEn: string;
+  specKo?: string;
+  specEn?: string;
   category: string;
   imageUrl: string;
 }

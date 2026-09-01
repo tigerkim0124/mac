@@ -23,7 +23,7 @@ const GLOBAL_DOTS: CountryDot[] = [
   
   // Asia / Middle East
   { id: 'ph', x: 79.5, y: 53.0 },
-  { id: 'vn', nameKo: '베트남', nameEn: 'Vietnam', x: 74.5, y: 49.5, showName: true },
+  { id: 'vn', x: 74.5, y: 49.5 },
   { id: 'th', nameKo: '태국', nameEn: 'Thailand', x: 72.5, y: 51.5, showName: true },
   { id: 'my', x: 74.0, y: 59.0 },
   { id: 'id', x: 78.5, y: 64.0 },
@@ -37,7 +37,7 @@ const GLOBAL_DOTS: CountryDot[] = [
   { id: 'qa', x: 57.5, y: 44.5 },
   { id: 'kz', x: 62.0, y: 31.0 },
   { id: 'uz', x: 60.0, y: 34.0 },
-  { id: 'bd', x: 69.5, y: 46.5 },
+  { id: 'bd', nameKo: '방글라데시', nameEn: 'Bangladesh', x: 69.5, y: 46.5, showName: true },
   { id: 'pk', x: 63.0, y: 43.0 },
 
   // Europe
@@ -153,17 +153,17 @@ export const GlobalExportMap: React.FC<GlobalExportMapProps> = ({ lang }) => {
             </div>
           </div>
 
-          {/* Metric 2: 480톤 2026 확정 출항 */}
+          {/* Metric 2: 640톤 2026년 8월까지 실적 */}
           <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:border-emerald-500/40 transition-colors">
             <span className="text-xs font-medium text-slate-700 block mb-0.5">
-              {lang === 'ko' ? '2026 확정 출항 (필리핀 L/C)' : '2026 Confirmed Shipment'}
+              {lang === 'ko' ? '2026년 8월까지 실적' : 'Performance through Aug 2026'}
             </span>
             <div className="flex items-baseline space-x-1.5">
               <span className="text-3xl sm:text-4xl font-black text-emerald-800 tracking-tight">
-                <AnimatedCounter end={480} />
+                <AnimatedCounter end={640} />
               </span>
               <span className="text-sm font-bold text-slate-800">
-                {lang === 'ko' ? '톤 (L/C 양산)' : 'Tons (L/C)'}
+                {lang === 'ko' ? '톤 (수출 실적)' : 'Tons (Exports)'}
               </span>
             </div>
           </div>
