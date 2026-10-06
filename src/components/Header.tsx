@@ -8,8 +8,6 @@ import {
   Menu, 
   X, 
   ArrowRight,
-  ShieldCheck,
-  Award,
   Sparkles,
   ExternalLink
 } from 'lucide-react';
@@ -103,7 +101,7 @@ export const Header: React.FC<HeaderProps> = ({
                   {lang === 'ko' ? '맥섬석' : 'Macsumsuk'}<span className="text-emerald-700">GM</span><span className="text-xs font-semibold text-slate-500 ml-0.5">{lang === 'ko' ? '㈜' : ' Co., Ltd.'}</span>
                 </span>
                 <span className="text-xs font-bold px-1.5 py-0.5 rounded bg-emerald-100 text-emerald-800 border border-emerald-200">
-                  Growfeed®
+                  {lang === 'ko' ? '그로피드®' : 'Growfeed®'}
                 </span>
               </div>
               <span className="text-[10px] sm:text-[11px] text-slate-500 font-medium tracking-tight">

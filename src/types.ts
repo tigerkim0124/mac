@@ -43,12 +43,12 @@ export interface ProductItem {
   keyFeaturesEn: string[];
   testResultsKo: { metric: string; value: string; note: string }[];
   testResultsEn: { metric: string; value: string; note: string }[];
-  applicableAnimalsKo: string[];
-  applicableAnimalsEn: string[];
-  packagingKo: string;
-  packagingEn: string;
-  dosageKo: string;
-  dosageEn: string;
+  applicableAnimalsKo?: string[];
+  applicableAnimalsEn?: string[];
+  packagingKo?: string;
+  packagingEn?: string;
+  dosageKo?: string;
+  dosageEn?: string;
   patentNo?: string;
   patentNoEn?: string;
   extraBadgeKo?: string;

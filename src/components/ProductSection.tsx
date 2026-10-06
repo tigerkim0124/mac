@@ -80,7 +80,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
 
         {/* 3 Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {PRODUCTS.map((prod) => {
+          {PRODUCTS.filter((prod) => prod.id !== 'healing-egg' && prod.id !== 'core-fertilizer').map((prod) => {
             return (
               <div
                 key={prod.id}
@@ -160,7 +160,7 @@ export const ProductSection: React.FC<ProductSectionProps> = ({
                 <BookOpen className="w-4 h-4 text-emerald-700" />
               </div>
               <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                {lang === 'ko' ? 'Growfeed® 축종별 맞춤 컨설팅' : 'Growfeed® Livestock Tailored Consulting'}
+                {lang === 'ko' ? '그로피드® 축종별 맞춤 컨설팅' : 'Growfeed® Livestock Tailored Consulting'}
               </h3>
             </div>
             <p className="text-xs sm:text-sm text-slate-700 font-semibold">

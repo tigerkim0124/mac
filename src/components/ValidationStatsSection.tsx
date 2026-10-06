@@ -99,8 +99,8 @@ export const ValidationStatsSection: React.FC<ValidationStatsProps> = ({
           </button>
         </div>
 
-        {/* 1. Certified Metrics Grid with Large Animated Numbers */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 pt-2">
+        {/* 1. Certified Metrics Grid with Large Animated Numbers - 3 Columns Balanced Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-5 sm:gap-6 pt-2">
           {EVIDENCE_DATA.map((item, idx) => {
             const meta = getCategoryMeta(item.category);
             const Icon = meta.icon;
@@ -112,9 +112,9 @@ export const ValidationStatsSection: React.FC<ValidationStatsProps> = ({
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.45, delay: idx * 0.1 }}
-                whileHover={{ y: -4, scale: 1.02 }}
+                whileHover={{ y: -4, scale: 1.015 }}
                 onClick={onOpenRnd}
-                className={`group relative p-6 rounded-2xl text-left bg-gradient-to-b from-slate-50 to-white border border-slate-200/90 shadow-sm ${meta.borderHover} hover:shadow-md transition-all cursor-pointer overflow-hidden flex flex-col justify-between`}
+                className={`group relative p-6 sm:p-7 rounded-2xl text-left bg-gradient-to-b from-slate-50/90 to-white border border-slate-200/90 shadow-sm ${meta.borderHover} hover:shadow-md transition-all cursor-pointer overflow-hidden flex flex-col justify-between`}
               >
                 {/* Subtle Hover Gradient Light */}
                 <div className={`absolute inset-0 bg-gradient-to-br ${meta.gradientBg} opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none`} />
@@ -130,10 +130,10 @@ export const ValidationStatsSection: React.FC<ValidationStatsProps> = ({
                   </div>
 
                   {/* High Impact Animated Big Number */}
-                  <div className="my-2">
+                  <div className="my-2.5">
                     <motion.div 
                       className="flex items-baseline space-x-1 whitespace-nowrap overflow-hidden"
-                      whileHover={{ scale: 1.05 }}
+                      whileHover={{ scale: 1.03 }}
                       transition={{ type: "spring", stiffness: 350, damping: 25 }}
                     >
                       {(() => {
@@ -141,20 +141,20 @@ export const ValidationStatsSection: React.FC<ValidationStatsProps> = ({
                         if (numStr.includes('-Fold')) {
                           const [baseNum] = numStr.split('-Fold');
                           return (
-                            <span className={`text-4xl sm:text-5xl font-black tracking-tight ${meta.numberColor} drop-shadow-2xs inline-flex items-baseline`}>
+                            <span className={`text-4xl sm:text-5xl lg:text-[52px] font-black tracking-tight ${meta.numberColor} drop-shadow-2xs inline-flex items-baseline`}>
                               <span>{baseNum}</span>
                               <span className="text-xl sm:text-2xl font-bold ml-0.5 tracking-normal opacity-90">-fold</span>
                             </span>
                           );
                         }
                         return (
-                          <span className={`text-4xl sm:text-5xl font-black tracking-tight ${meta.numberColor} drop-shadow-2xs`}>
+                          <span className={`text-4xl sm:text-5xl lg:text-[52px] font-black tracking-tight ${meta.numberColor} drop-shadow-2xs`}>
                             {numStr}
                           </span>
                         );
                       })()}
                       {item.highlightUnit && (
-                        <span className="text-xs sm:text-sm font-extrabold text-slate-500 shrink-0 ml-1">
+                        <span className="text-sm sm:text-base font-extrabold text-slate-500 shrink-0 ml-1.5">
                           {lang === 'ko' ? item.highlightUnit : (item.highlightUnitEn || item.highlightUnit)}
                         </span>
                       )}
@@ -162,15 +162,15 @@ export const ValidationStatsSection: React.FC<ValidationStatsProps> = ({
                   </div>
 
                   {/* Main Highlight Metric Label */}
-                  <h3 className="text-sm sm:text-[15px] font-bold text-slate-900 mt-2 group-hover:text-emerald-950 transition-colors leading-snug">
+                  <h3 className="text-base sm:text-[16px] font-bold text-slate-900 mt-2.5 group-hover:text-emerald-950 transition-colors leading-snug">
                     {(() => {
                       const text = lang === 'ko' ? item.highlightLabelKo : (item.highlightLabelEn || item.highlightLabelKo);
                       const match = text.match(/^(.*?)\s*(\(.*?\))$/);
                       if (match) {
                         return (
-                          <span className="flex flex-col space-y-0.5">
-                            <span className="font-bold text-slate-900 leading-snug">{match[1]}</span>
-                            <span className="text-xs sm:text-[13px] text-slate-500 font-medium leading-snug">{match[2]}</span>
+                          <span className="flex flex-col space-y-1">
+                            <span className="font-bold text-slate-900 leading-snug text-sm sm:text-base">{match[1]}</span>
+                            <span className="text-xs sm:text-[13px] text-slate-500 font-medium leading-relaxed">{match[2]}</span>
                           </span>
                         );
                       }
@@ -180,11 +180,11 @@ export const ValidationStatsSection: React.FC<ValidationStatsProps> = ({
                 </div>
 
                 {/* Institution & Date Footer Bar */}
-                <div className="pt-3.5 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500 font-medium">
-                  <span className="truncate max-w-[80%]">
+                <div className="pt-4 mt-5 border-t border-slate-100 flex items-center justify-between text-xs sm:text-sm text-slate-500 font-medium">
+                  <span className="truncate max-w-[85%] font-medium">
                     {lang === 'ko' ? item.institutionKo.split('(')[0] : item.institutionEn.split(',')[0]}
                   </span>
-                  <ExternalLink className="w-3.5 h-3.5 text-slate-400 group-hover:text-emerald-600 transition-colors shrink-0" />
+                  <ExternalLink className="w-4 h-4 text-slate-400 group-hover:text-emerald-600 transition-colors shrink-0" />
                 </div>
               </motion.div>
             );

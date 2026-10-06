@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 800" width="700" height="800">
+  <defs>
+    <!-- Background Tile -->
+    <linearGradient id="tileGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d8dcde"/>
+      <stop offset="50%" stop-color="#ced3d6"/>
+      <stop offset="100%" stop-color="#bfc5c9"/>
+    </linearGradient>
+
+    <!-- Chicken Skin & Meat Gradients -->
+    <radialGradient id="skinGrad" cx="50%" cy="45%" r="55%">
+      <stop offset="0%" stop-color="#fbe9db"/>
+      <stop offset="60%" stop-color="#eed2be"/>
+      <stop offset="85%" stop-color="#debba4"/>
+      <stop offset="100%" stop-color="#c89f85"/>
+    </radialGradient>
+
+    <linearGradient id="breastMeatLeft" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#eed4c4"/>
+      <stop offset="60%" stop-color="#f3bfa8"/>
+      <stop offset="90%" stop-color="#e29b82"/>
+      <stop offset="100%" stop-color="#ba6854"/>
+    </linearGradient>
+
+    <linearGradient id="breastMeatRight" x1="100%" y1="0%" x2="0%" y2="0%">
+      <stop offset="0%" stop-color="#eed4c4"/>
+      <stop offset="60%" stop-color="#f3bfa8"/>
+      <stop offset="90%" stop-color="#e29b82"/>
+      <stop offset="100%" stop-color="#ba6854"/>
+    </linearGradient>
+
+    <!-- Enlarged Diseased Liver (Dark burgundy / dull reddish-brown) -->
+    <radialGradient id="enlargedLiver" cx="45%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#78181a"/>
+      <stop offset="40%" stop-color="#580f12"/>
+      <stop offset="75%" stop-color="#3e080b"/>
+      <stop offset="100%" stop-color="#220305"/>
+    </radialGradient>
+
+    <!-- Abdominal Fat Pad (Dull yellowish white thick fat accumulation) -->
+    <radialGradient id="fatPadGrad" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#fffae5"/>
+      <stop offset="40%" stop-color="#faeebe"/>
+      <stop offset="80%" stop-color="#eed68b"/>
+      <stop offset="100%" stop-color="#cbb163"/>
+    </radialGradient>
+
+    <!-- Leg & Foot Gradients -->
+    <linearGradient id="legSkin" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#edd3be"/>
+      <stop offset="50%" stop-color="#fce5d2"/>
+      <stop offset="100%" stop-color="#dbb499"/>
+    </linearGradient>
+
+    <linearGradient id="shankFoot" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f5e5a3"/>
+      <stop offset="50%" stop-color="#fff2b8"/>
+      <stop offset="100%" stop-color="#e0c86e"/>
+    </linearGradient>
+
+    <!-- Grout shadow filter -->
+    <filter id="groutShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="1" stdDeviation="1.5" flood-color="#555" flood-opacity="0.4"/>
+    </filter>
+
+    <filter id="bodyShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+      <feOffset dx="0" dy="10" result="offsetblur"/>
+      <feFlood flood-color="#111827" flood-opacity="0.45"/>
+      <feComposite in2="offsetblur" operator="in"/>
+      <feMerge>
+        <feMergeNode/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background Dissection Table Surface (Tiles) -->
+  <rect width="700" height="800" fill="url(#tileGrad)"/>
+
+  <!-- Tile Grout Lines -->
+  <line x1="0" y1="110" x2="700" y2="110" stroke="#8e979d" stroke-width="2.5"/>
+  <line x1="0" y1="109" x2="700" y2="109" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+  <line x1="580" y1="0" x2="580" y2="800" stroke="#8e979d" stroke-width="2.5"/>
+  <line x1="579" y1="0" x2="579" y2="800" stroke="#ffffff" stroke-width="0.8" opacity="0.6"/>
+
+  <!-- Subtle dissection floor reflections / wet spots -->
+  <ellipse cx="350" cy="420" rx="260" ry="280" fill="#1e293b" opacity="0.15" filter="blur(30px)"/>
+
+  <!-- Chicken Carcass Body -->
+  <g filter="url(#bodyShadow)">
+    <!-- Whole Outer Chicken Contour (Wings, Thighs, Back) -->
+    <!-- Left Wing -->
+    <path d="M 180,240 C 90,210 30,230 40,280 C 50,330 110,380 170,410 Z" fill="url(#skinGrad)" stroke="#c29f86" stroke-width="1.5"/>
+    <!-- Right Wing -->
+    <path d="M 520,240 C 610,210 670,230 660,280 C 650,330 590,380 530,410 Z" fill="url(#skinGrad)" stroke="#c29f86" stroke-width="1.5"/>
+
+    <!-- Main Torso & Thigh Backing -->
+    <path d="M 220,130 C 290,110 410,110 480,130 C 560,160 600,280 580,440 C 560,570 510,660 480,680 C 440,700 400,640 350,640 C 300,640 260,700 220,680 C 190,660 140,570 120,440 C 100,280 140,160 220,130 Z" fill="url(#skinGrad)" stroke="#bda08b" stroke-width="2"/>
+
+    <!-- Left Leg / Thigh -->
+    <path d="M 170,430 C 110,480 90,560 120,630 C 140,670 180,680 210,640 C 230,600 240,530 240,470 Z" fill="url(#legSkin)" stroke="#b59682" stroke-width="1.5"/>
+    <!-- Right Leg / Thigh -->
+    <path d="M 530,430 C 590,480 610,560 580,630 C 560,670 520,680 490,640 C 470,600 460,530 460,470 Z" fill="url(#legSkin)" stroke="#b59682" stroke-width="1.5"/>
+
+    <!-- Lower Shorter Shanks & Feet -->
+    <!-- Left Drumstick & Foot -->
+    <path d="M 140,640 L 130,730 L 110,770 L 135,765 L 145,780 L 155,750 L 160,720 Z" fill="url(#shankFoot)" stroke="#c2a953" stroke-width="1.2"/>
+    <!-- Left Foot Tape Wrap (Medical/identification tape) -->
+    <rect x="115" y="695" width="38" height="22" rx="4" fill="#eae4bd" stroke="#c2ba8a" stroke-width="1.5" transform="rotate(-12 134 706)"/>
+
+    <!-- Right Drumstick & Foot -->
+    <path d="M 560,640 L 570,730 L 590,770 L 565,765 L 555,780 L 545,750 L 540,720 Z" fill="url(#shankFoot)" stroke="#c2a953" stroke-width="1.2"/>
+    <!-- Right Foot Tape Wrap -->
+    <rect x="545" y="695" width="38" height="22" rx="4" fill="#eae4bd" stroke="#c2ba8a" stroke-width="1.5" transform="rotate(12 564 706)"/>
+
+    <!-- Open Breast Muscles (Pulled outward to reveal inside) -->
+    <!-- Left Breast Flap -->
+    <path d="M 220,140 C 280,150 310,210 320,290 C 290,370 210,390 170,360 C 140,330 140,240 180,180 Z" fill="url(#breastMeatLeft)" stroke="#b8624f" stroke-width="2"/>
+    <path d="M 230,170 C 270,180 295,225 300,280 C 265,330 210,330 185,310 Z" fill="#f5c5b5" opacity="0.7"/>
+
+    <!-- Right Breast Flap -->
+    <path d="M 480,140 C 420,150 390,210 380,290 C 410,370 490,390 530,360 C 560,330 560,240 520,180 Z" fill="url(#breastMeatRight)" stroke="#b8624f" stroke-width="2"/>
+    <path d="M 470,170 C 430,180 405,225 400,280 C 435,330 490,330 515,310 Z" fill="#f5c5b5" opacity="0.7"/>
+
+    <!-- Cut Cavity Wall / Rib margins -->
+    <path d="M 315,190 C 330,170 370,170 385,190 C 420,250 430,360 410,480 C 390,560 310,560 290,480 C 270,360 280,250 315,190 Z" fill="#1e0b0d" opacity="0.95"/>
+
+    <!-- Upper Viscera: Trachea / Heart Area -->
+    <path d="M 330,185 C 340,165 360,165 370,185 C 375,210 365,230 350,230 C 335,230 325,210 330,185 Z" fill="#4a0d10" stroke="#2e0507" stroke-width="1"/>
+
+    <!-- Enlarged Liver (Hepatomegaly & Fatty Liver Infiltration) -->
+    <!-- Left Liver Lobe -->
+    <path d="M 345,210 C 310,205 245,240 255,290 C 265,340 330,360 350,330 C 355,290 355,240 345,210 Z" fill="url(#enlargedLiver)" stroke="#260406" stroke-width="2"/>
+    <!-- Right Liver Lobe (Enlarged, dull dark red) -->
+    <path d="M 355,210 C 390,205 455,240 445,290 C 435,340 370,360 350,330 C 345,290 345,240 355,210 Z" fill="url(#enlargedLiver)" stroke="#260406" stroke-width="2"/>
+    <!-- Liver Central Notch & Capsule Sheen -->
+    <path d="M 320,240 C 340,260 360,260 380,240" stroke="#a32e33" stroke-width="2" fill="none" opacity="0.6"/>
+    <ellipse cx="290" cy="270" rx="25" ry="15" fill="#9e2a2f" opacity="0.5" transform="rotate(-15 290 270)"/>
+    <ellipse cx="410" cy="270" rx="25" ry="15" fill="#9e2a2f" opacity="0.5" transform="rotate(15 410 270)"/>
+
+    <!-- Prominent Lower Abdominal Fat Pad (과다 복부 지방 침착) -->
+    <path d="M 270,360 C 230,400 240,490 290,520 C 330,545 370,545 410,520 C 460,490 470,400 430,360 C 400,340 300,340 270,360 Z" fill="url(#fatPadGrad)" stroke="#b59c47" stroke-width="2.5"/>
+
+    <!-- Fat Lobules Texture -->
+    <circle cx="320" cy="420" r="24" fill="#fffceb" opacity="0.7"/>
+    <circle cx="375" cy="415" r="28" fill="#fffceb" opacity="0.7"/>
+    <circle cx="350" cy="465" r="32" fill="#fffceb" opacity="0.8"/>
+    <circle cx="305" cy="470" r="22" fill="#faeebe" opacity="0.9"/>
+    <circle cx="395" cy="470" r="22" fill="#faeebe" opacity="0.9"/>
+    <circle cx="350" cy="505" r="20" fill="#eed68b" opacity="0.9"/>
+
+    <!-- Cut Edge Yellow Subcutaneous Fat Layers -->
+    <path d="M 220,330 Q 240,410 260,490" stroke="#fae58c" stroke-width="6" stroke-linecap="round" fill="none"/>
+    <path d="M 480,330 Q 460,410 440,490" stroke="#fae58c" stroke-width="6" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- Blue Ink Handwriting on Table Floor: 'COMMERCIAL' -->
+  <g transform="translate(255, 680)">
+    <text x="0" y="0" font-family="'Comic Sans MS', 'Chalkboard SE', 'Arial Rounded MT Bold', sans-serif" font-size="34" font-weight="900" fill="#025ca8" letter-spacing="4" transform="skewX(-8)">
+      COMMERCIAL
+    </text>
+  </g>
+
+  <!-- Digital Camera Monospace Date & Time Stamp at bottom right: '31.12.2013 16:11' -->
+  <g transform="translate(490, 775)">
+    <text x="0" y="0" font-family="'Courier New', Courier, monospace" font-size="18" font-weight="bold" fill="#f59e0b" letter-spacing="1.5" opacity="0.85">
+      31.12.2013 16:11
+    </text>
+  </g>
+</svg>

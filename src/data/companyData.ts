@@ -45,7 +45,7 @@ export const COMPANY_INFO = {
 export const GNB_CATEGORIES: MainCategory[] = [
   {
     key: 'about',
-    depth1Ko: 'About Us',
+    depth1Ko: '회사소개',
     depth1En: 'About Us',
     shortDescKo: '40년 업력과 52개국 특허를 보유한 대한민국 대표 축산바이오 기업',
     shortDescEn: 'Korea’s leading livestock biotech enterprise with 40 years of heritage & 52-nation patents',
@@ -82,44 +82,58 @@ export const GNB_CATEGORIES: MainCategory[] = [
   },
   {
     key: 'products',
-    depth1Ko: 'Products',
+    depth1Ko: '제품소개',
     depth1En: 'Products',
     shortDescKo: '저메탄·독소흡착·자원순환 고기능성 단미·보조사료 프리미엄 라인업',
     shortDescEn: 'Premium eco-friendly livestock feed additives for methane reduction and health',
     subCategories: [
       {
         id: 'livestock-guide',
-        titleKo: 'Growfeed® 축종별 맞춤 컨설팅',
+        titleKo: '그로피드 축종별 맞춤 컨설팅',
         titleEn: 'Growfeed® Livestock Tailored Consulting',
         descKo: '소(육우/젖소), 양돈(모돈/자돈), 양계(산란계/육계), 양어·새우(수산양식) 맞춤 급여법',
         descEn: 'Tailored feeding dosage and application manuals for cattle, swine, poultry, and aquaculture (fish & shrimp)'
       },
       {
         id: 'etox',
-        titleKo: 'Growfeed® E-TOX',
+        titleKo: '그로피드 이톡스',
         titleEn: 'Growfeed® E-TOX',
         descKo: '저메탄 사료첨가제 & 톡신바인더 (세계일류상품 선정, 곰팡이독소 87~94% 제거)',
         descEn: 'Anti-mold toxin binder & eco-friendly feed additive with 87-94% toxin removal'
       },
       {
         id: 'protein',
-        titleKo: 'Growfeed® Protein',
-        titleEn: 'Growfeed® Protein',
+        titleKo: '그로피드 프로테인 [ESG사업]',
+        titleEn: 'Growfeed® Protein [ESG Initiative]',
         descKo: '혈액가공품 기반 ESG 단백질 사료첨가제 (국내유일 법적근거, 조단백 30%+)',
         descEn: 'Recycled livestock blood protein feed additive (Crude protein 30%+)'
       },
       {
         id: 'dcm',
-        titleKo: 'Growfeed® DCM',
+        titleKo: '그로피드 디씨엠',
         titleEn: 'Growfeed® DCM',
         descKo: '메탄저감·기후위기 대응 사료 (반추위 메탄 61.5% 저감, 화학물질 無, 실온 1년)',
         descEn: 'De-Carbon & Methane reduction additive, reducing rumen methane up to 61.5%'
+      },
+      {
+        id: 'healing-egg',
+        titleKo: '프리미엄 계란 (치유계란®)',
+        titleEn: 'Premium Egg (Healing Egg®)',
+        descKo: '그로피드 전용사료 급여로 콜린 2.6배·오메가3 65%·루테인 75% 증대 및 난각 강도 48% 강화된 고영양 계란',
+        descEn: 'Premium bio egg enriched with 2.6x Choline, 65% Omega-3, 75% Lutein, and 48% stronger eggshell strength'
+      },
+      {
+        id: 'core-fertilizer',
+        titleKo: '코어 비료',
+        titleEn: 'Core Fertilizer',
+        descKo: '맥섬석 천연 미네랄 원적외선(90%+)과 도축혈액 가공 유기 아미노산 기반 친환경 토양개량·고기능성 비료',
+        descEn: 'Eco-friendly bio soil conditioner & fertilizer combining Macsumsuk far-infrared minerals with recycled organic amino acids'
       }
     ]
   },
   {
     key: 'rnd',
-    depth1Ko: 'R&D',
+    depth1Ko: '연구개발',
     depth1En: 'R&D',
     shortDescKo: '맥섬석 223ha 광산 기반 원적외선 고방사 기술과 국내외 최고 대학 공동연구',
     shortDescEn: 'Far-infrared high-radiation mineral technology & university-backed field trials',
@@ -149,7 +163,7 @@ export const GNB_CATEGORIES: MainCategory[] = [
   },
   {
     key: 'esg',
-    depth1Ko: 'ESG',
+    depth1Ko: 'ESG 경영',
     depth1En: 'ESG',
     shortDescKo: '축산 온실가스 감축과 도축 부산물 100% 자원순환을 실현하는 순환경제 모델',
     shortDescEn: 'Realizing circular economy through methane reduction and livestock blood recycling',
@@ -181,15 +195,22 @@ export const GNB_CATEGORIES: MainCategory[] = [
         titleEn: 'Farm Income & Prosperity',
         descKo: 'FCR 1.69 글로벌 1위, 출하일령 2~4일 단축 및 경상북도 50% 보조사업을 통한 농가 실익 증진',
         descEn: 'FCR 1.69, shortened market days by 2-4 days & 50% provincial farm subsidy partnership'
+      },
+      {
+        id: 'granular-fertilizer',
+        titleKo: '정부 및 지자체 협업 성과',
+        titleEn: 'Gov & Municipality Collaboration',
+        descKo: '경북도지사 본사 방문, 도축장 혈액(돈혈) 자원화 협의, 세계 13개국 특허 및 60여 농가 납품 성과',
+        descEn: 'Gyeongbuk Governor visit, slaughterhouse blood upcycling agreement, 13-country patents, and supply to 60+ farms'
       }
     ]
   },
   {
     key: 'global',
-    depth1Ko: 'Global',
+    depth1Ko: '해외진출',
     depth1En: 'Global',
-    shortDescKo: '누적 수출량 4,850톤+, 9년 연속 필리핀 수출과 동남아·유럽 시장 확장',
-    shortDescEn: 'Over 4,850 tons exported globally with 9 consecutive years in Southeast Asia',
+    shortDescKo: '누적 수출량 4,220톤+, 9년 연속 필리핀 수출과 동남아·유럽 시장 확장',
+    shortDescEn: 'Over 4,220 tons exported globally with 9 consecutive years in Southeast Asia',
     subCategories: [
       {
         id: 'export-status',
@@ -209,7 +230,7 @@ export const GNB_CATEGORIES: MainCategory[] = [
   },
   {
     key: 'pr',
-    depth1Ko: 'PR',
+    depth1Ko: '홍보센터',
     depth1En: 'PR',
     shortDescKo: '맥섬석GM의 홍보갤러리 및 최신 소식',
     shortDescEn: 'Latest photo archives and news updates of Macsumsuk GM',
@@ -232,7 +253,7 @@ export const GNB_CATEGORIES: MainCategory[] = [
   },
   {
     key: 'contact',
-    depth1Ko: 'Contact',
+    depth1Ko: '고객지원',
     depth1En: 'Contact',
     shortDescKo: '제품 구매, 기술 제휴, OEM/ODM 및 해외 총판 문의 창구',
     shortDescEn: 'Direct channel for purchasing, technical partnerships, OEM/ODM, and dealerships',
@@ -273,8 +294,8 @@ export const PRODUCTS: ProductItem[] = [
     categoryEn: 'Low-Methane Feed Additive / Mycotoxin Binder (Multi-Functional)',
     taglineKo: '주요 곰팡이독소 87~94% 흡착 제거 및 사료효율 극대화',
     taglineEn: '87-94% Mycotoxin Adsorption & Feed Conversion Optimization',
-    summaryKo: '맥섬석 천연 광물 원료를 특허 고열소성하여 제조한 고기능성 사료첨가제. 아프라톡신, 오크라톡신 등 5대 사료 곰팡이독소를 완벽에 가깝게 흡착 배출하며, 9년 연속 필리핀 수출(누적 4,850톤+)로 글로벌 품질이 입증되었습니다.',
-    summaryEn: 'High-functional feed additive utilizing patented calcined Macsumsuk mineral. Effectively binds and eliminates major mycotoxins (87-94%), proven with over 4,850 tons exported across 9 consecutive years.',
+    summaryKo: '맥섬석 천연 광물 원료를 특허 고열소성하여 제조한 고기능성 사료첨가제. 아프라톡신, 오크라톡신 등 5대 사료 곰팡이독소를 완벽에 가깝게 흡착 배출하며, 9년 연속 필리핀 수출(누적 4,220톤+)로 글로벌 품질이 입증되었습니다.',
+    summaryEn: 'High-functional feed additive utilizing patented calcined Macsumsuk mineral. Effectively binds and eliminates major mycotoxins (87-94%), proven with over 4,220 tons exported across 9 consecutive years.',
     specs: [
       { labelKo: '포장 단위', labelEn: 'Packaging', valueKo: '20kg / 포 (bag)', valueEn: '20kg / bag' },
       { labelKo: '권장 사용량', labelEn: 'Dosage', valueKo: '사료 1톤당 1~2kg 첨가 (0.1 ~ 0.2%)', valueEn: '1-2kg per ton of feed (0.1 - 0.2%)' },
@@ -287,14 +308,14 @@ export const PRODUCTS: ProductItem[] = [
       '소성가공 과립형으로 분진 날림이 없고 사료 배합 시 균일 혼합 우수',
       '축사 내 암모니아 및 유해가스 20~30% 감소로 사육 환경 쾌적화',
       '사료요구율(FCR) 개선으로 출하기일 2~4일 단축 및 증체율 향상',
-      '9년 연속 해외 수출(누적 4,850톤+)'
+      '9년 연속 해외 수출(누적 4,220톤+)'
     ],
     keyFeaturesEn: [
       'Certified 87-94% elimination of 5 major mycotoxins by Chungnam Nat’l Univ',
       'Granular formula with zero dust emissions and superior mixing homogeneity',
       '20-30% reduction in ammonia and barn odors for healthier livestock',
       'Improved Feed Conversion Ratio (FCR), shortening market days by 2-4 days',
-      'Proven track record: 4,850+ tons exported globally over 9 continuous years'
+      'Proven track record: 4,220+ tons exported globally over 9 continuous years'
     ],
     testResultsKo: [
       { metric: '오크라톡신 A 제거율', value: '93.7%', note: '충남대 공인 분석 (접수일 2016.05)' },
@@ -314,8 +335,8 @@ export const PRODUCTS: ProductItem[] = [
     packagingEn: '20kg / Bag',
     dosageKo: '사료 1톤당 1~2kg (0.1~0.2%)',
     dosageEn: '1-2kg per ton of feed (0.1-0.2%)',
-    patentNo: '특허 제10-09997**호 외 다수 (세계 52개국 등록)',
-    patentNoEn: 'Patent No. 10-09997** & global patents across 52 nations',
+    patentNo: '특허 제10-1328671호 (가축사료 첨가제 제조방법) · 제10-1354460호 / 상표 제40-0999765호',
+    patentNoEn: 'Patent No. 10-1328671 & No. 10-1354460 / Trademark No. 40-0999765',
     imageUrl: 'https://lh3.googleusercontent.com/d/1L8ZtL9QfU1KwtGzoXgRMFaxNTf1F22Hw',
     colorScheme: {
       primary: '#059669',
@@ -339,7 +360,7 @@ export const PRODUCTS: ProductItem[] = [
     summaryEn: 'An eco-friendly protein feed additive combining fresh livestock blood with Macsumsuk minerals through 180-350°C instant sterilization. Officially registered as Korea’s only authorized blood-processed feed.',
     specs: [
       { labelKo: '성분 함량', labelEn: 'Nutrients', valueKo: '조단백질 30%+ 이상, 천연 규산염(SiO2) 35~40%, 필수미네랄 10종', valueEn: 'Crude Protein 30%+, SiO2 35-40%, 10 Essential Minerals' },
-      { labelKo: '제조 공법', labelEn: 'Manufacturing', valueKo: '180~350℃ 5~7초 순간멸균 과립건조 (영양소 열변성 제로)', valueEn: '180-350°C Instant Sterilization Granulation' },
+      { labelKo: '제조 공법', labelEn: 'Manufacturing', valueKo: '180~350℃ 5~7초 순간멸균 과립건조\n(영양소 열변성 제로)', valueEn: '180-350°C 5-7 sec Instant Sterilization Granulation\n(Zero Nutrient Thermal Degradation)' },
       { labelKo: '제품 제형', labelEn: 'Form', valueKo: '과립형(초기용) / 펠렛형(중·후기용)', valueEn: 'Granule (Starter) / Pellet (Grower-Finisher)' },
       { labelKo: '법적 근거', labelEn: 'Regulatory', valueKo: '사료공정규격집 제2편 혈액가공품 공식 등록 품목', valueEn: 'Officially Authorized Blood-processed Feed Product' },
       { labelKo: '납품 현황', labelEn: 'Supply Record', valueKo: '전국 60여 산란계·육돈 농가 및 영천·포항·울산 축협 납품', valueEn: 'Supplied to 60+ commercial poultry/swine farms & Livestock Cooperatives' }
@@ -362,13 +383,13 @@ export const PRODUCTS: ProductItem[] = [
       { metric: '조단백질 함량', value: '30% 이상', note: '필수 아미노산 18종 및 복합 미네랄 풍부' },
       { metric: '순간멸균 시간', value: '5~7초', note: '180~350℃ 순간 가열로 영양소 파괴 최소화' },
       { metric: '국내 납품 농가', value: '60+ 개소', note: '대한산란계협회장 영주 거성농장(30만수) 등' },
-      { metric: '출하일령 단축', value: '3일 단축', note: '경북 축산기술연구소 사양시험 결과' }
+      { metric: '출하일령 단축', value: '2~5일', note: '경북 축산기술연구소 사양시험 결과' }
     ],
     testResultsEn: [
       { metric: 'Crude Protein Content', value: '30%+', note: 'Rich in 18 amino acids & minerals' },
       { metric: 'Flash Sterilization', value: '5-7 sec', note: '180-350°C preserving intact protein' },
       { metric: 'Domestic Supply Farms', value: '60+ Farms', note: 'Including 300,000-layer farm & Cooperatives' },
-      { metric: 'Market Days Reduction', value: '3 Days', note: 'Gyeongbuk Livestock Tech Institute' }
+      { metric: 'Market Days Reduction', value: '2-5 Days', note: 'Gyeongbuk Livestock Tech Institute' }
     ],
     applicableAnimalsKo: ['산란계·육계·오리 (산란율 및 난각 강화)', '모돈·자돈 (설사 예방 및 면역 강화)', '넙치·뱀장어·어류·새우 양식', '양식장 수질 정화 및 폐사율 저감'],
     applicableAnimalsEn: ['Layers, Broilers & Ducks', 'Sows & Piglets (Anti-diarrhea)', 'Flounder, Eel, Fish & Shrimp Aqua', 'Aquaculture Water Purification'],
@@ -376,8 +397,8 @@ export const PRODUCTS: ProductItem[] = [
     packagingEn: '20kg / Bag (Granules & Pellets)',
     dosageKo: '사료 1톤당 2-3kg(0.2-0.3%)',
     dosageEn: '2-3kg per ton of feed (0.2-0.3%)',
-    patentNo: '특허 제10-24962**호 (가축혈액 다공질 펠렛 사료 제조방법)',
-    patentNoEn: 'Patent No. 10-24962** (Porous blood pellet manufacturing)',
+    patentNo: '특허 제10-2496216호 (가축 혈액·맥섬석 진공 압출 펠렛, 13개국 등록) · 제10-1829525호',
+    patentNoEn: 'Patent No. 10-2496216 (13 Global Countries) & No. 10-1829525',
     extraBadgeKo: '국가 무상 개발사업으로 완수',
     extraBadgeEn: 'Completed via National Grant R&D Project',
     imageUrl: 'https://lh3.googleusercontent.com/d/1pdtWxYpffVq5L-x08vP2b85kJffn9vOL',
@@ -391,7 +412,7 @@ export const PRODUCTS: ProductItem[] = [
   },
   {
     id: 'dcm',
-    name: '그로피드 DCM',
+    name: '그로피드 디씨엠',
     engName: 'Growfeed® DCM',
     badge: '서울대 실증 / 저메탄 사료첨가제 승인 진행 중',
     badgeEn: 'SNU Trial Verified / Low-Methane Certification in Progress',
@@ -402,7 +423,7 @@ export const PRODUCTS: ProductItem[] = [
     summaryKo: '맥섬석 천연 미네랄 원료의 다공질 벌집 구조와 수소 흡착 특성을 응용하여 반추동물(한우, 젖소) 장내 발효 메탄을 저감시키는 차세대 친환경 보조단미사료입니다. 화학 합성물(Bovaer 등)과 달리 인체·가축에 무해하며 상온에서 1년간 장기 보관이 가능합니다.',
     summaryEn: 'Next-generation eco-friendly feed supplement cutting enteric methane through natural porous mineral honeycomb mechanics. Unlike synthetic chemicals (Bovaer), 100% non-hazardous with 1-year room temperature stability.',
     specs: [
-      { labelKo: '주요 원료', labelEn: 'Raw Material', valueKo: '100% 천연 맥섬석 미네랄 (고열소성 규산염)', valueEn: '100% Natural Mineral Macsumsuk' },
+      { labelKo: '주요 원료', labelEn: 'Raw Material', valueKo: '99.8% 천연 맥섬석 미네랄(고열소성 규산염)\n+ 0.02% (Yucca)', valueEn: '99.8% Natural Macsumsuk Mineral (Calcined Silicate)\n+ 0.02% (Yucca)' },
       { labelKo: '메탄 저감 효과', labelEn: 'Methane Cut', valueKo: '반추위 장내발효 메탄 발생량 저감 (경북대·서울대 실증)', valueEn: 'Enteric methane reduction verified by KNU & SNU trials' },
       { labelKo: '안전성 분류', labelEn: 'Safety', valueKo: '유해성 분류 비대상 (Non-hazardous) / 인체 및 축종 유해성 전혀 없음', valueEn: 'Classified Non-Hazardous / Zero toxicity to humans and cattle' },
       { labelKo: '보관 및 유통', labelEn: 'Storage & Shelf Life', valueKo: '실온 보관 가능 / 유통기한 최대 1년 (냉장 불필요)', valueEn: 'Room temperature storage / Up to 1 year shelf-life (No fridge required)' },
@@ -440,8 +461,8 @@ export const PRODUCTS: ProductItem[] = [
     packagingEn: '20kg / Bag (Granules)',
     dosageKo: '사료 1톤당 3~5kg (0.3~0.5%)',
     dosageEn: '3-5kg per ton of feed (0.3-0.5%)',
-    patentNo: '특허 제10-23698**호 (천연 미네랄 기반 점토광물 메탄가스 저감용 사료첨가제)',
-    patentNoEn: 'Patent No. 10-23698** (Natural mineral methane reduction feed additive)',
+    patentNo: '특허 제10-2369862호 (굴 패각과 점토광물을 이용한 메탄가스 저감용 칼슘사료 첨가제 제조방법)',
+    patentNoEn: 'Patent No. 10-2369862 (Methane Reduction Calcium Feed Additive Method)',
     imageUrl: 'https://lh3.googleusercontent.com/d/1DIrMSRRXwFMxgf6zfIMJFKCT2hPFnpG1',
     isComingSoon: false,
     colorScheme: {
@@ -450,6 +471,115 @@ export const PRODUCTS: ProductItem[] = [
       textBadge: 'text-teal-900',
       lightBg: 'bg-teal-50/50',
       border: 'border-teal-200'
+    }
+  },
+  {
+    id: 'healing-egg',
+    name: '프리미엄 계란(치유계란®)',
+    engName: 'Premium Egg (Healing Egg®)',
+    badge: '공인 시험기관 검증 / 콜린 2.6배 · 오메가3 65% 증대',
+    badgeEn: 'State-Certified / 2.6x Choline & 65% Omega-3',
+    category: '데이터 기반 프리미엄 기능성 계란 (신선식품 브랜드)',
+    categoryEn: 'Data-Driven Premium Functional Bio Egg',
+    taglineKo: '그로피드 전용사료 급여를 통해 입증된 객관적 품질 지표의 프리미엄 고영양 계란',
+    taglineEn: 'Premium functional bio eggs with scientifically proven nutritional superiority through Growfeed dedicated feed',
+    summaryKo: '맥섬석 그로피드 전용 산란계 사료 급여를 통해 생산된 프리미엄 기능성 계란입니다. 한국품질시험원, 한국식품연구원, 충남대 농과원 등 공인 시험기관의 객관적 분석을 통해 뇌 건강에 필수적인 콜린(2.6배↑), 오메가-3(65%↑), 눈 건강 루테인(75%↑) 성분이 대폭 강화되었으며, 난각 강도(48%↑)와 난황 탄력이 획기적으로 개선되어 비린내가 없고 고소한 최고급 계란입니다.',
+    summaryEn: 'Premium functional eggs produced by feeding Macsumsuk Growfeed dedicated layer feed. Validated by official testing institutes (Korea Quality Testing Institute, Korea Food Research Institute, Chungnam National University), featuring 2.6x Choline for brain health, 65% more Omega-3, 75% more Lutein, 48% stronger eggshell, and firm yolks free from fishy odor.',
+    specs: [
+      { labelKo: '주요 급여 사료', labelEn: 'Feed Program', valueKo: '맥섬석 그로피드 E-TOX 및 천연 미네랄 전용 배합사료', valueEn: 'Growfeed E-TOX & Natural Mineral Formulated Layer Feed' },
+      { labelKo: '핵심 영양 성분', labelEn: 'Key Nutrients', valueKo: '콜린 322.0 (2.6배↑) / 오메가-3 223.3mg (65%↑) / 루테인 2.1mg (75%↑)', valueEn: 'Choline 322.0 (2.6x) / Omega-3 223.3mg (+65%) / Lutein 2.1mg (+75%)' },
+      { labelKo: '난질 및 물성 개선', labelEn: 'Egg Quality', valueKo: '난각 강도 4.18 (48%↑, 파란율 격감) / 난황 크기 12.03 (26%↑, 고탄력)', valueEn: 'Shell Strength 4.18 (+48%) / Yolk Size 12.03 (+26%, High Elasticity)' },
+      { labelKo: '공인 시험기관', labelEn: 'Accredited Testing', valueKo: '한국품질시험원, 한국식품연구원, 충남대학교 농과원 정밀 분석 검증 완비', valueEn: 'Officially verified by Korea Quality Testing Inst., KFRI & Chungnam Nat’l Univ' },
+      { labelKo: '안전성 및 사육 환경', labelEn: 'Safety & Welfare', valueKo: '곰팡이독소·살모넬라 불검출, 항생제·산란촉진제 無, 축사 악취 저감 친환경 사육', valueEn: 'Zero mycotoxin/Salmonella, No antibiotics, Eco-friendly barn odor reduction' }
+    ],
+    keyFeaturesKo: [
+      '한국품질시험원 공인: 두뇌 신경전달물질 및 간 건강 필수 영양소 ‘콜린(Choline)’ 322.0으로 일반란(125.6) 대비 약 2.6배 증가',
+      '한국식품연구원 공인: 혈관 건강 오메가-3(Omega-3) 223.3mg/100g으로 약 65% 증가, 눈 건강 루테인(Lutein) 2.1mg/100g으로 약 75% 증가',
+      '충남대학교 농과원 공인: 난각 강도 4.18로 약 48% 강화되어 유통 중 파란율 최소화, 난황 크기 12.03으로 약 26% 확대 및 핀셋으로 집어도 터지지 않는 탄력 구현',
+      '체계적 사양 관리 및 친환경 사육: 전용 미네랄 사료 급여를 통한 비린내 제거 및 축사 악취 저감 친환경 생산 체계 구축',
+      '5단계 통합 가치사슬(Value Chain): 사료 규격 확정 ➔ 농장 생산·이력 관리 ➔ 정밀 품질 검사 ➔ 등급별 선별·포장 ➔ 프리미엄 온·오프라인 유통'
+    ],
+    keyFeaturesEn: [
+      'Korea Quality Testing Institute Certified: Choline reaches 322.0, an impressive ~2.6x increase over standard eggs (125.6)',
+      'Korea Food Research Institute Certified: Omega-3 surges by ~65% (223.3mg/100g) and eye-health Lutein increases by ~75% (2.1mg/100g)',
+      'Chungnam Nat’l Univ Agricultural Science Certified: Eggshell strength improved by ~48% (4.18), reducing cracks; yolk size up ~26% (12.03) with high firmness',
+      'Systematic Farm Management: Dedicated mineral feeding eliminating fishy odor and reducing poultry barn odors',
+      '5-Stage Integrated Value Chain: Dedicated feed formulation ➔ Farm production & tracking ➔ Rigorous quality testing ➔ Sorting & packing ➔ Premium multi-channel retail'
+    ],
+    testResultsKo: [
+      { metric: '콜린 (Choline)', value: '약 2.6배 ↑', note: '일반란 125.6 → 322.0\n한국품질시험원' },
+      { metric: '오메가-3 (Omega-3)', value: '약 65% ↑', note: '135.7 → 223.3mg/100g\n한국식품연구원' },
+      { metric: '루테인 (Lutein)', value: '약 75% ↑', note: '1.2 → 2.1mg/100g\n한국식품연구원' },
+      { metric: '난각 강도 (Strength)', value: '약 48% ↑', note: '2.83 → 4.18 강도 향상\n충남대 농과원' }
+    ],
+    testResultsEn: [
+      { metric: 'Choline Content', value: '~2.6x Increase', note: 'Standard 125.6 → 322.0\nKorea Quality Testing Inst.' },
+      { metric: 'Omega-3', value: '+65% Increase', note: '135.7 → 223.3mg/100g\nKorea Food Research Inst.' },
+      { metric: 'Lutein', value: '+75% Increase', note: '1.2 → 2.1mg/100g\nKorea Food Research Inst.' },
+      { metric: 'Shell Strength', value: '+48% Stronger', note: '2.83 → 4.18 strength\nChungnam Nat’l Univ' }
+    ],
+    applicableAnimalsKo: ['산란계 (영양 강화란, 파란율 저감, 난황 탄력 증대, 산란율 유지)', '육계 (간·내장 건강 개선, 육질 향상, 안심 축산 실증)', '소비자 및 단체급식 (성장기 어린이, 수험생, 노년층 맞춤형 고영양 안심 계란)'],
+    applicableAnimalsEn: ['Layer Hens (Nutrient enrichment, eggshell reinforcement, yolk elasticity)', 'Broilers (Liver & gut health, meat quality improvement)', 'Consumers & B2B (Child development, brain health, premium dietary supply)'],
+    packagingKo: '10구 / 15구 / 20구 / 30구 전용 난좌 포장 (냉장 콜드체인 유통)',
+    packagingEn: '10 / 15 / 20 / 30-egg dedicated carton (Cold-chain distribution)',
+    dosageKo: '산란계 전용사료 급여 프로그램 (사료 1톤당 3~5kg 첨가)',
+    dosageEn: 'Dedicated layer feeding program (3-5kg per ton of feed)',
+    patentNo: '사료 원천특허 제10-1328671호 (가축사료 첨가제 제조방법) / ‘치유계란®’ 상표·디자인 등록 자산',
+    patentNoEn: 'Feed Patent No. 10-1328671 (Layer Feed Additive) / ‘Healing Egg®’ Trademark & Design Assets',
+    imageUrl: 'https://lh3.googleusercontent.com/d/1Fg7O8AXfWqT1jwCDKYALEFPXvXbYoG5m',
+    isComingSoon: false,
+    colorScheme: {
+      primary: '#d97706',
+      bgBadge: 'bg-amber-50',
+      textBadge: 'text-amber-900',
+      lightBg: 'bg-amber-50/50',
+      border: 'border-amber-200'
+    }
+  },
+  {
+    id: 'core-fertilizer',
+    name: '코어 비료',
+    engName: 'Core Fertilizer',
+    badge: '고기능성 과립 비료 & 순환자원화 모델',
+    badgeEn: 'High-Performance Granular Bio-Fertilizer Model',
+    category: '',
+    categoryEn: '',
+    taglineKo: '축산 부산물(도축 혈액 등)의 고기능성 과립비료의 순환자원화',
+    taglineEn: 'Upcycling Livestock Byproducts (Slaughter Blood, etc.) into High-Performance Granular Bio-Fertilizer',
+    summaryKo: '맥섬석GM(주)이 고기능성 과립 비료를 개발하고 고부가 순환 비료 시장으로 확장하는 친환경 자원순환 프로젝트입니다. 축산 공정에서 발생하는 부산물(가축 혈액 등)을 전량 환경친화적으로 회수하고, 맥섬석 초고온 순간멸균 및 원적외선 바이오 융합 공법을 적용하여 균일한 고기능성 과립 비료로 제조함으로써 비산 방지·기계 살포 편의성을 극대화하고 국내외 고부가 순환 비료 시장을 선도합니다.',
+    summaryEn: 'An eco-friendly circular resource project by Macsumsuk GM to develop high-performance granular bio-fertilizers and expand into high-value circular fertilizer markets. Recovering livestock byproducts, applying flash sterilization and far-infrared bio-fusion to produce uniform granular fertilizers with zero dusting and superior mechanical spreading efficiency.',
+    specs: [
+      { labelKo: '핵심 전략 목표', labelEn: 'Strategic Goal', valueKo: '고기능성 과립 비료 개발 및 고부가 순환 비료 시장 확장', valueEn: 'Granular Fertilizer R&D & High-Value Circular Market Expansion' },
+      { labelKo: '원천 기술 및 공정', labelEn: 'Core Technology', valueKo: '맥섬석GM㈜ 친환경 바이오 자원순환 공정', valueEn: 'Macsumsuk GM Proprietary Bio-Circulation Process' },
+      { labelKo: '제형 및 형태', labelEn: 'Form & Granule', valueKo: '고기능성 과립(Granular) 제형 — 비산 방지, 살포기 적합성 및 균일 시비', valueEn: 'High-Performance Granular — Non-dusting, spreader-compatible, uniform' },
+      { labelKo: '주요 기술', labelEn: 'Core Technology', valueKo: '도축혈액 초고온 순간멸균 & 맥섬석 원적외선(8~11㎛) 바이오 과립화 융합', valueEn: 'Flash Sterilization & Far-Infrared Bio-Granulation Synthesis' }
+    ],
+    keyFeaturesKo: [
+      '고기능성 과립(Granular) 비료 개발: 분진 및 비산 걱정 없이 기계 살포가 완벽하게 가능한 고강도·균일 과립 성형 공법',
+      '고부가 순환 비료 시장 진출 & 시장 확장: 전국 농축산 유통 네트워크와 연계하여 고부가가치 순환자원 비료 시장 선점',
+      '도축·가공 부산물 100% 청정 자원화: 폐기 대상이던 축산 혈액 등을 밀폐 전용 라인으로 전량 수거하여 청정 원료로 전환',
+      '초고온 순간멸균 및 천연 아미노산 보존: 유해 병원균을 완전 불활성화하고 조단백질 30%+ 및 천연 아미노산 무손상 보존',
+      '맥섬석 원적외선 바이오 융합: 8~11㎛ 원적외선 규산염 미네랄과 결합하여 토양 개선 및 작물 생육용 고기능성 순환자재화'
+    ],
+    keyFeaturesEn: [
+      'High-Performance Granular Fertilizer R&D: High-strength uniform granulation enabling mechanical spreading with zero dust and drift',
+      'High-Value Circular Market Expansion: Pioneering premium circular bio-fertilizer markets leveraging nationwide agricultural network',
+      '100% Clean Byproduct Recovery: Fully sealed recovery of slaughterhouse blood, converting waste into clean raw materials',
+      'Instant Flash Sterilization: Pathogens eliminated completely while preserving 30%+ crude protein and amino acids',
+      'Far-Infrared Bio-Mineral Fusion: Synthesizing with 8-11μm silicate minerals for soil restoration and crop vitality'
+    ],
+    testResultsKo: [],
+    testResultsEn: [],
+    applicableAnimalsKo: [],
+    applicableAnimalsEn: [],
+    imageUrl: 'https://lh3.googleusercontent.com/d/1pfceSi84IctA9CGx3_mHDZcgx01mFjWX',
+    isComingSoon: false,
+    colorScheme: {
+      primary: '#d97706',
+      bgBadge: 'bg-amber-50',
+      textBadge: 'text-amber-950',
+      lightBg: 'bg-amber-50/50',
+      border: 'border-amber-300'
     }
   }
 ];
@@ -604,45 +734,11 @@ export const EVIDENCE_DATA: EvidenceItem[] = [
       'Necropsy verified healthy glistening livers in Growfeed cohorts with zero fatty degeneration',
       'Serves as the scientific foundation for 9 continuous years of exports to Biostar and KFC poultry suppliers'
     ]
-  },
-  {
-    id: 'bovaer-comparison',
-    category: 'comparison',
-    titleKo: '글로벌 메탄저감제 Bovaer® (DSM) 대비 기능적·보관 편의성 비교',
-    titleEn: 'Competitive Benchmark: Growfeed DCM vs DSM Bovaer®',
-    institutionKo: '맥섬석GM(주) 기업부설연구소 & 국내외 시험 데이터 종합',
-    institutionEn: 'Macsumsuk GM R&D Center Comprehensive Benchmark',
-    date: '2025~2026 최신 비교 분석',
-    dateEn: '2025-2026 Comparative Assessment',
-    summaryKo: '네덜란드 DSM의 단일기능 화학합성 메탄저감제 Bovaer 대비, Growfeed DCM은 천연 미네랄 기반으로 유해성이 없으며 실온에서 1년간 장기 보관이 가능하고 톡신바인더, 사료효율, 육질개선 등 복합 기능으로 농가 수익을 실질적으로 극대화합니다.',
-    summaryEn: 'Compared to synthetic 3-NOP Bovaer (single-function, requires 4°C refrigeration, 2-week shelf life), Growfeed DCM is 100% natural, non-hazardous, stable at room temperature for 1 year, with multi-benefit farm profit optimization.',
-    highlightNumber: '26배',
-    highlightNumberEn: '26-Fold',
-    highlightUnit: '보관성',
-    highlightUnitEn: 'Shelf Life',
-    highlightLabelKo: '실온 보관 유통기한 (Bovaer 2주 vs DCM 1년)',
-    highlightLabelEn: 'Room Temperature Shelf Stability (2 wks vs 1 yr)',
-    metrics: [
-      { label: '원료 물질 성격', labelEn: 'Raw Material Base', value: '100% 천연 미네랄 (맥섬석)', valueEn: '100% Natural Mineral', baseline: 'Bovaer: 화학물질 (3-NOP 합성)', baselineEn: 'Bovaer: Synthetic Chemical (3-NOP)' },
-      { label: '안전성 분류', labelEn: 'Safety Classification', value: '유해성 비대상 (안전)', valueEn: 'Non-Hazardous (Safe)', baseline: 'Bovaer: 인화성/부식성/자극성 건강유해', baselineEn: 'Bovaer: Flammable & Eye/Skin Irritant' },
-      { label: '보관 조건 및 기간', labelEn: 'Storage & Expiration', value: '실온 보관 가능 / 최대 1년', valueEn: 'Room Temp / 1 Year', baseline: 'Bovaer: 4℃ 냉장 필수 / 최대 2주', baselineEn: 'Bovaer: Strict 4°C Cold Chain / 2 Wks' },
-      { label: '부가 기능성 (농가 실익)', labelEn: 'Multi-Benefit Economics', value: '톡신바인딩 + 사료효율 + 육질/유량', valueEn: 'Toxin Binding + FCR + Milk Yield', baseline: 'Bovaer: 메탄저감 단일기능 (비용만 발생)', baselineEn: 'Bovaer: Methane-Only (Pure Cost Overhead)' }
-    ],
-    keyTakeawaysKo: [
-      '농가 현장에서 냉장 설비 없이 일반 사료 창고에서 1년 동안 안정적으로 보관 및 사용 가능',
-      '단순히 탄소 감축 규제 대응용 비용 지출이 아닌, 증체율 및 사료효율 개선으로 농가 자체 이익 창출',
-      '인체 취급자 및 가축에 피부·호흡기 자극이 전혀 없는 안전한 친환경 솔루션'
-    ],
-    keyTakeawaysEn: [
-      'Store safely in standard farm feed sheds for up to 1 year without expensive cold-chain equipment',
-      'Generates direct farmer profitability through weight gain and toxin binding rather than pure regulatory cost',
-      '100% non-irritating natural minerals, eliminating worker handling hazards and livestock respiratory stress'
-    ]
   }
 ];
 
 export const STATS_COUNTERS = [
-  { value: 4850, suffix: '톤+', suffixEn: 'tons+', labelKo: '누적 해외 수출량', labelEn: 'Cumulative Export Volume', descKo: '9년 연속 필리핀 및 동남아 수출', descEn: '9 Consecutive Years in SE Asia' },
+  { value: 4220, suffix: '톤+', suffixEn: 'tons+', labelKo: '누적 해외 수출량', labelEn: 'Cumulative Export Volume', descKo: '9년 연속 필리핀 및 동남아 수출', descEn: '9 Consecutive Years in SE Asia' },
   { value: 52, suffix: '개국', suffixEn: 'Nations', labelKo: '글로벌 특허·상표 등록', labelEn: 'Global Patents & IP', descKo: '미국, 유럽, 일본, 중국 등', descEn: 'US, EU, Japan, China, etc.' },
   { value: 60, suffix: '개소+', suffixEn: 'Farms+', labelKo: '국내 사양 농가 및 축협', labelEn: 'Commercial Farm Clients', descKo: '산란계 30만수 거성농장, 영천축협 등', descEn: '300,000-Layer Farms & Cooperatives' },
   { value: 40, suffix: '년', suffixEn: 'Years', labelKo: '바이오광물 기술 업력', labelEn: 'Decades of Bio-Heritage', descKo: '1986년 화성실업 창업 이래 축적', descEn: 'Pioneering mineral biotech since 1986' },
@@ -701,13 +797,13 @@ export const NEWS_LIST: NewsItem[] = [
   {
     id: 'news-2',
     type: 'media',
-    titleKo: '그로피드 E-TOX, 필리핀 640톤 L/C 수출',
-    titleEn: 'Growfeed E-TOX lands 640-ton L/C export contract with Philippines partner',
+    titleKo: '그로피드 E-TOX, 필리핀 400톤 L/C 수출, 200톤 준비 중',
+    titleEn: 'Growfeed E-TOX: 400-ton L/C export completed, 200 tons in preparation with Philippines partner',
     source: '',
     sourceEn: '',
     date: '2025.11.20',
-    summaryKo: '맥섬석GM의 대표 수출 제품인 Growfeed E-TOX가 필리핀 Biostar사와 9년 연속 신뢰를 바탕으로 640톤 L/C 수출 계약을 완료했다.',
-    summaryEn: 'Growfeed E-TOX secured a 640-ton L/C export order with long-term partner Biostar Philippines based on 9 years of continuous trust.',
+    summaryKo: '맥섬석GM의 대표 수출 제품인 Growfeed E-TOX가 필리핀 Biostar사와 9년 연속 신뢰를 바탕으로 400톤 L/C 수출을 완료하고, 추가 200톤 공급 준비를 순조롭게 진행하고 있다.',
+    summaryEn: 'Growfeed E-TOX completed a 400-ton L/C export order with long-term partner Biostar Philippines and is actively preparing an additional 200 tons.',
     badge: '수출 성과',
     badgeEn: 'Export Milestone',
     imageUrl: 'https://lh3.googleusercontent.com/d/1UBw4MRQ8NDpTnmXgctsqTtfDQkkwvFu0'
@@ -749,8 +845,8 @@ export const GALLERY_PHOTOS: GalleryItem[] = [
     categoryEn: 'Mineral Reserve Mine',
     titleKo: '223ha 맥섬석 원료 광산 & 소성공정',
     titleEn: '223ha Macsumsuk Mineral Mine & Calcination Process',
-    descKo: '1,200℃ 특허 초고온 소성 터널 킬른과 3,000메시 초미분쇄 가공 라인',
-    descEn: 'Patented 1,200°C ultra-high-temperature calcination tunnel kilns and 3,000-mesh ultra-fine pulverization processing line',
+    descKo: '1,200℃ 특허 초고온 소성 터널 킬른과 360메시 초미분쇄 가공 라인',
+    descEn: 'Patented 1,200°C ultra-high-temperature calcination tunnel kilns and 360-mesh ultra-fine pulverization processing line',
     imageUrl: 'https://lh3.googleusercontent.com/d/1KQavIN9Kl2Mziu722kZ3ZB1L7eT4BfbQ'
   },
   {
@@ -791,8 +887,8 @@ export const GALLERY_PHOTOS: GalleryItem[] = [
     category: 'global',
     categoryKo: '글로벌 수출',
     categoryEn: 'Global Export & Shipping',
-    titleKo: '누적 4,850톤+ 9년 연속 동남아 수출 선적',
-    titleEn: '4,850+ Tons Cumulative Export Container Shipping across 9 Years',
+    titleKo: '누적 4,220톤+ 9년 연속 동남아 수출 선적',
+    titleEn: '4,220+ Tons Cumulative Export Container Shipping across 9 Years',
     descKo: '필리핀, 방글라데시, 태국, 말레이시아 등 세계 52개국 특허 기반의 지속적 글로벌 시장 공급.',
     descEn: 'Consistent maritime container export to Southeast Asian markets backed by patents in 52 countries.',
     imageUrl: 'https://lh3.googleusercontent.com/d/1XgVriiisqtSigvpcmJIVxiIHkaaz6B1b'
@@ -827,8 +923,8 @@ export const FACILITY_PHOTOS: FacilityPhoto[] = [
     category: 'plant-2',
     titleKo: '경주 제2공장 (맥섬석 분체 및 고열소성 설비)',
     titleEn: 'Gyeongju Plant 2 (Micro-powder & Calcination Kiln)',
-    descKo: '1,200℃ 특허 초고온 소성 터널 킬른과 3,000메시 초미분쇄 가공 라인을 통해 다공성 활성 세라믹을 제조합니다.',
-    descEn: '1,200°C patented high-temperature tunnel kilns and 3,000-mesh micronizing mills producing high-porosity bio-ceramics.',
+    descKo: '1,200℃ 특허 초고온 소성 터널 킬른과 360메시 초미분쇄 가공 라인을 통해 다공성 활성 세라믹을 제조합니다.',
+    descEn: '1,200°C patented high-temperature tunnel kilns and 360-mesh micronizing mills producing high-porosity bio-ceramics.',
     specKo: '소성 및 초미립 분쇄',
     specEn: 'Calcination & Micro-milling',
     imageUrl: 'https://lh3.googleusercontent.com/d/1KQavIN9Kl2Mziu722kZ3ZB1L7eT4BfbQ'
@@ -894,7 +990,7 @@ export const PATENT_CERTIFICATES: PatentCertificate[] = [
     typeEn: 'Certificate of Patent',
     titleKo: '메탄가스 저감용 칼슘사료 첨가제 제조방법',
     titleEn: 'Methane Reduction Calcium Feed Additive Method',
-    regNo: '제 10-23698** 호',
+    regNo: '제 10-2369862 호',
     issueDate: '2022.02.25',
     inventionKo: '굴 패각과 점토광물을 이용한 메탄가스 저감용 칼슘사료 첨가제 제조방법',
     inventionEn: 'Manufacturing method of calcium feed additive for methane gas reduction using oyster shells and clay minerals',
@@ -902,8 +998,8 @@ export const PATENT_CERTIFICATES: PatentCertificate[] = [
     authorityEn: 'Korean Intellectual Property Office (KIPO)',
     descKo: '반추위 메탄 61.5% 저감 및 사료효율 향상 핵심 원천 특허 등록',
     descEn: 'Core proprietary patent achieving 61.5% in-vitro methane gas reduction in ruminants.',
-    badgeKo: '특허 제10-23698**호',
-    badgeEn: 'Patent 10-23698**',
+    badgeKo: '특허 제10-2369862호',
+    badgeEn: 'Patent 10-2369862',
     colorScheme: 'emerald',
     imageUrl: 'https://lh3.googleusercontent.com/d/1f2ZFNpwZeguobP7bo3l6Ky-u7-ZcARa9'
   },

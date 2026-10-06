@@ -205,7 +205,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
                     <div className="text-xs text-slate-200 font-semibold">{lang === 'ko' ? '누적 수출량' : 'Export Volume'}</div>
                     <div className="text-2xl sm:text-3xl font-black text-emerald-400 mt-1 drop-shadow-sm">
                       <AnimatedCounter
-                        end={4850}
+                        end={4220}
                         suffix={lang === 'ko' ? ' 톤+' : ' tons+'}
                       />
                     </div>

@@ -15,20 +15,21 @@ import {
 } from 'lucide-react';
 import { COMPANY_INFO } from '../data/companyData';
 import { Language, InquiryFormData } from '../types';
+import { downloadBrochurePdf } from '../utils';
 
 interface OnlineInquiryProps {
   lang: Language;
-  onOpenBrochure: () => void;
+  onOpenBrochure?: () => void;
   initialCategory?: string;
 }
 
 export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
   lang,
-  onOpenBrochure,
   initialCategory,
 }) => {
   const defaultCategory = lang === 'ko' ? '축종별 맞춤 컨설팅' : 'Livestock Tailored Consulting';
 
+  const [downloadState, setDownloadState] = useState<'idle' | 'downloading' | 'done'>('idle');
   const [formData, setFormData] = useState<InquiryFormData>({
     companyName: '',
     contactName: '',
@@ -50,7 +51,7 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!formData.companyName || !formData.contactName || !formData.phone) {
       setErrorMsg(lang === 'ko' ? '회사명, 담당자 성명, 연락처는 필수 입력 항목입니다.' : 'Please fill in Company, Name, and Phone.');
@@ -64,11 +65,60 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
     setErrorMsg(null);
     setIsSubmitting(true);
 
-    // Simulate reliable form submission to company email endpoints
-    setTimeout(() => {
+    try {
+      const payload: Record<string, string> = {
+        '회사명/농장명': formData.companyName,
+        '담당자 성명': formData.contactName,
+        '연락처': formData.phone,
+        '이메일': formData.email || '미입력 (Not provided)',
+        '문의 항목': formData.category,
+        '적용 축종': formData.livestockType,
+        '문의 및 요청 내용': formData.message || '내용 없음 (No message)',
+        '개인정보 수집 동의': formData.agreePrivacy ? '동의함 (Agreed)' : '동의안함',
+        '_subject': `[맥섬석GM 홈페이지 문의] ${formData.companyName} / ${formData.contactName}`,
+        '접수 일시': new Date().toLocaleString(lang === 'ko' ? 'ko-KR' : 'en-US', { hour12: false }),
+        '접수 언어': lang.toUpperCase(),
+      };
+
+      // Add _replyto if email is provided so notifications can be replied to directly
+      if (formData.email && formData.email.trim()) {
+        payload['_replyto'] = formData.email.trim();
+      }
+
+      const response = await fetch('https://formspree.io/f/mppqwzll', {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        setIsSubmitted(true);
+      } else {
+        const result = await response.json().catch(() => null);
+        if (result && result.errors && Array.isArray(result.errors) && result.errors.length > 0) {
+          const detail = result.errors.map((item: { message: string }) => item.message).join(', ');
+          setErrorMsg(lang === 'ko' ? `접수 전송 오류: ${detail}` : `Submission error: ${detail}`);
+        } else {
+          setErrorMsg(
+            lang === 'ko'
+              ? '문의 전송 중 일시적인 오류가 발생했습니다. 잠시 후 다시 시도해주시거나 대표전화(054-531-1500)로 문의해주세요.'
+              : 'A temporary error occurred while sending your inquiry. Please try again or call us (+82-54-531-1500).'
+          );
+        }
+      }
+    } catch (err) {
+      console.error('Formspree submission error:', err);
+      setErrorMsg(
+        lang === 'ko'
+          ? '네트워크 연결 상태를 확인 후 다시 시도해주시거나 대표전화(054-531-1500)로 문의해주세요.'
+          : 'Network error. Please check your connection and try again, or reach us by phone.'
+      );
+    } finally {
       setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 900);
+    }
   };
 
   const handleReset = () => {
@@ -83,6 +133,20 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
       agreePrivacy: true,
     });
     setIsSubmitted(false);
+  };
+
+  const handleBrochureDownload = () => {
+    setDownloadState('downloading');
+    
+    // Direct file download without popup or explanation window
+    downloadBrochurePdf(lang);
+
+    setTimeout(() => {
+      setDownloadState('done');
+      setTimeout(() => {
+        setDownloadState('idle');
+      }, 3000);
+    }, 400);
   };
 
   return (
@@ -157,15 +221,30 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
                 </div>
               </div>
 
-              {/* Brochure Download Trigger */}
+              {/* Direct Brochure Download Trigger (No explanation modal window) */}
               <div className="pt-2">
                 <button
                   id="inquiry-download-brochure-btn"
-                  onClick={onOpenBrochure}
-                  className="w-full py-3.5 bg-linear-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-bold text-sm rounded-xl flex items-center justify-center space-x-2 shadow-md transition-all cursor-pointer"
+                  onClick={handleBrochureDownload}
+                  disabled={downloadState === 'downloading'}
+                  className="w-full py-3.5 bg-linear-to-r from-emerald-600 to-teal-700 hover:from-emerald-500 hover:to-teal-600 text-white font-bold text-sm rounded-xl flex items-center justify-center space-x-2 shadow-md transition-all cursor-pointer disabled:opacity-80"
                 >
-                  <Download className="w-4.5 h-4.5" />
-                  <span>{lang === 'ko' ? '종합 회사소개서 PDF 카탈로그 다운로드' : 'Download Complete Brochure PDF'}</span>
+                  {downloadState === 'downloading' ? (
+                    <>
+                      <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin mr-1"></div>
+                      <span>{lang === 'ko' ? 'PDF 다운로드 진행 중...' : 'Downloading PDF...'}</span>
+                    </>
+                  ) : downloadState === 'done' ? (
+                    <>
+                      <CheckCircle2 className="w-4.5 h-4.5 text-emerald-300" />
+                      <span>{lang === 'ko' ? '회사소개서 PDF 다운로드 완료' : 'PDF Download Complete'}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Download className="w-4.5 h-4.5" />
+                      <span>{lang === 'ko' ? '종합 회사소개서 PDF 카탈로그 다운로드' : 'Download Complete Brochure PDF'}</span>
+                    </>
+                  )}
                 </button>
               </div>
             </div>
@@ -229,6 +308,7 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
                       </label>
                       <input
                         type="text"
+                        name="companyName"
                         required
                         value={formData.companyName}
                         onChange={(e) => setFormData({ ...formData, companyName: e.target.value })}
@@ -243,6 +323,7 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
                       </label>
                       <input
                         type="text"
+                        name="contactName"
                         required
                         value={formData.contactName}
                         onChange={(e) => setFormData({ ...formData, contactName: e.target.value })}
@@ -260,6 +341,7 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
                       </label>
                       <input
                         type="tel"
+                        name="phone"
                         required
                         value={formData.phone}
                         onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
@@ -274,6 +356,7 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
                       </label>
                       <input
                         type="email"
+                        name="email"
                         value={formData.email}
                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                         placeholder={lang === 'ko' ? '예: example@company.com' : 'example@company.com'}
@@ -289,6 +372,7 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
                         {lang === 'ko' ? '문의 항목' : 'Inquiry Item'}
                       </label>
                       <select
+                        name="category"
                         value={formData.category}
                         onChange={(e) => setFormData({ ...formData, category: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
@@ -316,6 +400,7 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
                         {lang === 'ko' ? '적용 축종 (선택)' : 'Target Livestock Species'}
                       </label>
                       <select
+                        name="livestockType"
                         value={formData.livestockType}
                         onChange={(e) => setFormData({ ...formData, livestockType: e.target.value })}
                         className="w-full px-4 py-3 rounded-xl bg-slate-800 border border-slate-700 text-sm text-white focus:outline-hidden focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 transition-colors"
@@ -348,6 +433,7 @@ export const OnlineInquirySection: React.FC<OnlineInquiryProps> = ({
                       {lang === 'ko' ? '문의 및 요청 내용' : 'Message / Details'}
                     </label>
                     <textarea
+                      name="message"
                       rows={4}
                       value={formData.message}
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}

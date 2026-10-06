@@ -37,11 +37,24 @@ import {
   Sprout,
   Droplets,
   HeartHandshake,
+  Handshake,
   Clock,
   Navigation,
   Copy,
   Check,
-  ShieldCheck
+  ShieldCheck,
+  Egg,
+  TrendingUp,
+  Brain,
+  Eye,
+  Truck,
+  Store,
+  Heart,
+  Users,
+  BarChart3,
+  FileText,
+  Fish,
+  Waves
 } from 'lucide-react';
 import { 
   GNB_CATEGORIES, 
@@ -194,7 +207,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                 className="flex items-center space-x-1 hover:text-white transition-colors cursor-pointer"
               >
                 <Home className="w-3.5 h-3.5" />
-                <span>{lang === 'ko' ? '홈 (Home)' : 'Home'}</span>
+                <span>{lang === 'ko' ? '홈' : 'Home'}</span>
               </button>
               <ChevronRight className="w-3.5 h-3.5 text-slate-600" />
               <span className="text-emerald-400 font-semibold">
@@ -557,7 +570,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
               <div className="flex items-center space-x-3 pb-3 border-b-2 border-emerald-600">
                 <BookOpen className="w-7 h-7 text-emerald-600" />
                 <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-                  {lang === 'ko' ? '1. Growfeed® 축종별 맞춤 컨설팅' : '1. Growfeed® Livestock Tailored Consulting'}
+                  {lang === 'ko' ? '1. 그로피드 축종별 맞춤 컨설팅' : '1. Growfeed® Livestock Tailored Consulting'}
                 </h2>
               </div>
 
@@ -692,7 +705,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                 <div className="flex items-center space-x-3 pb-3 border-b-2 border-emerald-600">
                   <Layers className="w-7 h-7 text-emerald-600" />
                   <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
-                    {index + 2}. {lang === 'ko' ? prod.name : prod.engName}
+                    {index + 2}. {lang === 'ko' ? (prod.id === 'protein' ? `${prod.name} [ESG사업]` : prod.name) : (prod.id === 'protein' ? `${prod.engName} [ESG Initiative]` : prod.engName)}
                   </h2>
                 </div>
 
@@ -700,7 +713,20 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                   {/* Card Top Header */}
                   <div className="pb-6 border-b border-slate-200">
                     <div className="flex flex-col lg:flex-row items-start lg:items-center gap-6 sm:gap-8">
-                      {prod.isComingSoon || !prod.imageUrl ? (
+                      {prod.id === 'core-fertilizer' && prod.imageUrl ? (
+                        <div className="w-full sm:w-[280px] md:w-[320px] h-[240px] sm:h-[280px] md:h-[320px] rounded-2xl overflow-hidden bg-slate-100 border border-slate-300 shrink-0 shadow-md relative group">
+                          <img
+                            src={prod.imageUrl}
+                            alt={lang === 'ko' ? '코어 비료 및 고기능성 과립 비료' : 'Core Fertilizer & High-Performance Granular Fertilizer'}
+                            referrerPolicy="no-referrer"
+                            onError={(e) => {
+                              const target = e.currentTarget;
+                              target.src = 'https://drive.google.com/uc?export=view&id=1pfceSi84IctA9CGx3_mHDZcgx01mFjWX';
+                            }}
+                            className="w-[108%] max-w-none h-full object-cover object-[45%_50%] -translate-x-[5%] group-hover:scale-105 transition-transform duration-500"
+                          />
+                        </div>
+                      ) : prod.isComingSoon || !prod.imageUrl ? (
                         <div className="w-full sm:w-[260px] md:w-[300px] h-[220px] sm:h-[260px] md:h-[290px] rounded-2xl overflow-hidden bg-gradient-to-br from-teal-50 via-slate-50 to-emerald-50/60 border-2 border-dashed border-teal-400 shrink-0 shadow-xs flex flex-col items-center justify-center p-6 text-center space-y-3.5 relative group hover:scale-[1.02] transition-transform">
                           <div className="absolute inset-0 bg-teal-500/5 opacity-0 group-hover:opacity-100 transition-opacity rounded-2xl pointer-events-none"></div>
                           
@@ -719,6 +745,19 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                               {lang === 'ko' ? '공식 검증 및 특허 인증 진행' : 'Certification & Trials in Progress'}
                             </span>
                           </div>
+                        </div>
+                      ) : prod.id === 'healing-egg' && prod.imageUrl ? (
+                        <div className="w-full sm:w-[280px] md:w-[320px] h-[240px] sm:h-[280px] md:h-[320px] rounded-2xl overflow-hidden bg-slate-100 border border-slate-300 shrink-0 shadow-md relative group">
+                          <img
+                            src={prod.imageUrl}
+                            alt={lang === 'ko' ? prod.name : prod.engName}
+                            referrerPolicy="no-referrer"
+                            onError={(e) => {
+                              const target = e.currentTarget;
+                              target.src = 'https://drive.google.com/uc?export=view&id=1Fg7O8AXfWqT1jwCDKYALEFPXvXbYoG5m';
+                            }}
+                            className="w-full h-full object-cover object-[68%_50%] group-hover:scale-105 transition-transform duration-500"
+                          />
                         </div>
                       ) : (
                         <div className="w-full sm:w-[260px] md:w-[300px] h-[240px] sm:h-[280px] md:h-[320px] rounded-2xl overflow-hidden bg-gradient-to-b from-slate-100/90 via-white to-slate-100/80 border border-slate-300/80 shrink-0 shadow-sm flex items-center justify-center p-4 relative group hover:shadow-md transition-shadow">
@@ -746,13 +785,35 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                             <Sparkles className="w-3.5 h-3.5" />
                             <span>{lang === 'ko' ? prod.badge : prod.badgeEn}</span>
                           </span>
-                          <span className="text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200/90">
-                            {lang === 'ko' ? prod.category : prod.categoryEn}
-                          </span>
-                          {prod.patentNo && (
+                          {prod.id === 'healing-egg' && (
+                            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-amber-50 text-amber-950 border border-amber-300 shadow-2xs">
+                              <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                              <span>{lang === 'ko' ? '비교할 수 없는 난황 탄력' : 'Incomparable Yolk Elasticity'}</span>
+                            </span>
+                          )}
+                          {prod.id === 'core-fertilizer' && (
+                            <>
+                              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-white text-amber-900 border border-amber-300 shadow-2xs">
+                                <Leaf className="w-3.5 h-3.5 text-amber-600" />
+                                <span>{lang === 'ko' ? '맥섬석GM 순환자원화 모델' : 'Macsumsuk GM Circular Model'}</span>
+                              </span>
+                              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-amber-100 text-amber-950 border border-amber-300 shadow-2xs">
+                                <Sparkles className="w-3.5 h-3.5 text-amber-600" />
+                                <span>{lang === 'ko' ? '친환경 ESG 순환가치' : 'Circular Value'}</span>
+                              </span>
+                            </>
+                          )}
+                          {prod.id !== 'core-fertilizer' && (prod.category || prod.categoryEn) && (
+                            <span className="text-xs sm:text-sm font-bold text-slate-700 bg-slate-100 px-3 py-1.5 rounded-xl border border-slate-200/90">
+                              {lang === 'ko' ? prod.category : prod.categoryEn}
+                            </span>
+                          )}
+                          {prod.patentNo && prod.id !== 'healing-egg' && (
                             <span className="text-xs font-bold text-emerald-800 bg-emerald-50 px-3 py-1.5 rounded-xl border border-emerald-200/80 flex items-center space-x-1">
                               <Shield className="w-3.5 h-3.5 text-emerald-600" />
-                              <span>{lang === 'ko' ? '특허 등록 원천기술' : 'Patented Technology'}</span>
+                              <span>
+                                {lang === 'ko' ? '특허 등록 원천기술' : 'Patented Technology'}
+                              </span>
                             </span>
                           )}
                           {(prod.extraBadgeKo || prod.extraBadgeEn) && (
@@ -780,97 +841,1018 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                         {/* Tagline Bar with Animated Pulse Indicator */}
                         <div className={`flex items-center px-4 py-2.5 rounded-xl ${prod.colorScheme.bgBadge} border ${prod.colorScheme.border} text-sm sm:text-base font-bold text-slate-900 shadow-2xs`}>
                           <span className="relative flex h-2.5 w-2.5 mr-2.5 shrink-0">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-600"></span>
+                            <span className={`animate-ping absolute inline-flex h-full w-full rounded-full ${prod.id === 'core-fertilizer' || prod.id === 'healing-egg' ? 'bg-amber-400' : 'bg-emerald-400'} opacity-75`}></span>
+                            <span className={`relative inline-flex rounded-full h-2.5 w-2.5 ${prod.id === 'core-fertilizer' || prod.id === 'healing-egg' ? 'bg-amber-600' : 'bg-emerald-600'}`}></span>
                           </span>
                           <span className="leading-snug">{lang === 'ko' ? prod.taglineKo : prod.taglineEn}</span>
                         </div>
 
                         {/* Quick Spec Highlights Strip */}
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm">
-                          <div className="flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
-                            <span className="font-bold text-slate-900 shrink-0">{lang === 'ko' ? '권장 급여량:' : 'Dosage:'}</span>
-                            <span className="font-semibold text-emerald-700 truncate">{lang === 'ko' ? prod.dosageKo : prod.dosageEn}</span>
+                        {prod.id !== 'healing-egg' && prod.id !== 'core-fertilizer' && (
+                          <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-1 text-xs sm:text-sm">
+                            <div className="flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
+                              <span className="font-bold text-slate-900 shrink-0">
+                                {lang === 'ko' ? '권장 급여량:' : 'Dosage:'}
+                              </span>
+                              <span className="font-semibold text-emerald-700 truncate">{lang === 'ko' ? prod.dosageKo : prod.dosageEn}</span>
+                            </div>
+                            <div className="flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
+                              <span className="font-bold text-slate-900 shrink-0">
+                                {lang === 'ko' ? '검증 축종:' : 'Target:'}
+                              </span>
+                              <span className="font-semibold text-slate-800 truncate">
+                                {prod.id === 'dcm'
+                                  ? (lang === 'ko' ? '소(한우·젖소)' : 'Cattle (Beef & Dairy)')
+                                  : (lang === 'ko' ? '소(한우·젖소), 돼지, 산란계/육계' : 'Cattle, Swine, Poultry')}
+                              </span>
+                            </div>
                           </div>
-                          <div className="flex items-center space-x-2 px-3.5 py-2 rounded-lg bg-slate-50 border border-slate-200 text-slate-700">
-                            <span className="font-bold text-slate-900 shrink-0">{lang === 'ko' ? '검증 축종:' : 'Target:'}</span>
-                            <span className="font-semibold text-slate-800 truncate">{lang === 'ko' ? '소(한우·젖소), 돼지, 산란계/육계' : 'Cattle, Swine, Poultry'}</span>
-                          </div>
-                        </div>
+                        )}
                       </div>
                     </div>
                   </div>
 
                   {/* Summary */}
-                  <p className="text-sm sm:text-base text-slate-800 leading-relaxed bg-slate-50 p-5 rounded-xl border border-slate-200 font-normal">
-                    {lang === 'ko' ? prod.summaryKo : prod.summaryEn}
-                  </p>
+                  {prod.id === 'core-fertilizer' ? (
+                    <div className="bg-gradient-to-r from-amber-50/90 via-amber-50/60 to-yellow-50/50 p-5 rounded-xl border border-amber-300 shadow-xs space-y-2">
+                      <div className="flex items-center space-x-2 text-amber-950 font-black text-xs sm:text-sm">
+                        <TrendingUp className="w-4.5 h-4.5 text-amber-600 shrink-0" />
+                        <span>{lang === 'ko' ? '핵심 전략: 고기능성 과립 비료 개발 및 고부가 순환 비료 시장 확장' : 'Strategic Focus: Granular Fertilizer R&D & Circular Market Expansion'}</span>
+                      </div>
+                      <p className="text-sm sm:text-base text-slate-800 leading-relaxed font-normal">
+                        {lang === 'ko' ? prod.summaryKo : prod.summaryEn}
+                      </p>
+                    </div>
+                  ) : (
+                    <p className="text-sm sm:text-base text-slate-800 leading-relaxed bg-slate-50 p-5 rounded-xl border border-slate-200 font-normal">
+                      {lang === 'ko' ? prod.summaryKo : prod.summaryEn}
+                    </p>
+                  )}
 
                   {/* Specs Table & Features */}
-                  <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-                    <div className="space-y-3.5">
-                      <h4 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
-                        <FileCheck className="w-4.5 h-4.5 text-emerald-600 mr-2" />
-                        {lang === 'ko' ? '제품 상세 스펙 (Specifications)' : 'Product Specifications'}
-                      </h4>
-                      <div className="bg-white rounded-xl border border-slate-200 overflow-hidden divide-y divide-slate-100 text-xs sm:text-sm">
-                        {prod.specs.map((spec, i) => (
-                          <div key={i} className="flex px-4 py-3">
-                            <span className="w-36 font-bold text-slate-800 shrink-0">
-                              {lang === 'ko' ? spec.labelKo : spec.labelEn}
-                            </span>
-                            <span className="text-slate-700 font-medium">
-                              {lang === 'ko' ? spec.valueKo : spec.valueEn}
-                            </span>
-                          </div>
-                        ))}
-                        {prod.patentNo && (
-                          <div className="flex px-4 py-3 bg-emerald-50/70">
-                            <span className="w-36 font-bold text-emerald-950 shrink-0">
-                              {lang === 'ko' ? '특허 번호' : 'Patent No.'}
-                            </span>
-                            <span className="text-emerald-900 font-bold">
-                              {lang === 'ko' ? prod.patentNo : prod.patentNoEn}
-                            </span>
-                          </div>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="space-y-3.5">
-                      <h4 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
-                        <Shield className="w-4.5 h-4.5 text-emerald-600 mr-2" />
-                        {lang === 'ko' ? '주요 핵심 특장점' : 'Key Advantages & Features'}
-                      </h4>
-                      <div className="space-y-2.5">
-                        {(lang === 'ko' ? prod.keyFeaturesKo : prod.keyFeaturesEn).map((feat, i) => (
-                          <div key={i} className="flex items-start text-xs sm:text-sm text-slate-800 bg-slate-50 p-3 rounded-xl border border-slate-200">
-                            <CheckCircle2 className="w-4.5 h-4.5 text-emerald-600 mr-2.5 shrink-0 mt-0.5" />
-                            <span className="font-normal leading-relaxed">{feat}</span>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-                  </div>
-
-                    {/* Test Results */}
-                    <div className="space-y-3.5 pt-2">
-                      <h4 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
-                        <Microscope className="w-4.5 h-4.5 text-emerald-600 mr-2" />
-                        {lang === 'ko' ? '공인 시험 및 실증 성적 지표' : 'Empirical Laboratory & Field Results'}
-                      </h4>
-                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
-                        {(lang === 'ko' ? prod.testResultsKo : (prod.testResultsEn || prod.testResultsKo)).map((res, i) => (
-                          <div key={i} className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center flex flex-col justify-between">
-                            <span className="text-xs sm:text-sm text-slate-600 font-medium block truncate">{res.metric}</span>
-                            <div className="text-lg sm:text-xl font-black text-emerald-700 my-1.5 leading-snug">
-                              {res.value}
+                  {prod.id === 'core-fertilizer' ? (
+                    <div className="space-y-5">
+                      <div className="space-y-3.5">
+                        <h4 className="text-sm sm:text-base font-bold text-slate-900 uppercase tracking-wider flex items-center">
+                          <Recycle className="w-5 h-5 text-amber-600 mr-2" />
+                          {lang === 'ko' ? '맥섬석GM(주) 친환경 자원순환 및 과립 비료 생산 체계' : 'Macsumsuk GM Eco-Friendly Circular Fertilizer System'}
+                        </h4>
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5">
+                          <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs space-y-1.5">
+                            <div className="flex items-center space-x-2 text-amber-950 font-bold text-sm sm:text-base">
+                              <Sprout className="w-4.5 h-4.5 text-amber-600 shrink-0" />
+                              <span>{lang === 'ko' ? '원료 수거: 청정 축산 부산물 회수 인프라' : 'Raw Material: Clean Byproduct Recovery'}</span>
                             </div>
-                            <span className="text-xs text-slate-500 block font-normal leading-relaxed whitespace-pre-line">{res.note}</span>
+                            <p className="text-[13.5px] sm:text-[15px] text-slate-700 leading-relaxed pl-6.5 font-normal">
+                              {lang === 'ko'
+                                ? '축우·양돈·양계 등 축산 공정에서 발생하는 부산물(도축 혈액 등)을 전용 밀폐 라인으로 청정 회수하여 유기농 과립 비료 원료화'
+                                : 'Clean, sealed recovery of livestock byproducts, upcycling organic materials into premium eco-fertilizer.'}
+                            </p>
                           </div>
-                        ))}
+
+                          <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs space-y-1.5">
+                            <div className="flex items-center space-x-2 text-amber-950 font-bold text-sm sm:text-base">
+                              <Factory className="w-4.5 h-4.5 text-amber-600 shrink-0" />
+                              <span>{lang === 'ko' ? '맥섬석GM: 원적외선 바이오 소재 및 특허 가공 기술' : 'Macsumsuk GM: Far-Infrared Materials & Patent Tech'}</span>
+                            </div>
+                            <p className="text-[13.5px] sm:text-[15px] text-slate-700 leading-relaxed pl-6.5 font-normal">
+                              {lang === 'ko'
+                                ? '맥섬석 고유의 원적외선 고방사 세라믹 가공 노하우와 가축혈액 유기질 아미노산 자원순환 특허 기술을 현장 생산에 투입'
+                                : 'Deploying Macsumsuk GM’s proprietary far-infrared ceramic processing and livestock blood recycling patent technologies'}
+                            </p>
+                          </div>
+
+                          <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs space-y-1.5">
+                            <div className="flex items-center space-x-2 text-amber-950 font-bold text-sm sm:text-base">
+                              <RotateCw className="w-4.5 h-4.5 text-amber-600 shrink-0" />
+                              <span>{lang === 'ko' ? '완결형 자원순환 가치사슬(Closed-Loop) 구축' : 'Closed-Loop Circular Value Chain Integration'}</span>
+                            </div>
+                            <p className="text-[13.5px] sm:text-[15px] text-slate-700 leading-relaxed pl-6.5 font-normal">
+                              {lang === 'ko'
+                                ? '축산 부산물 청정 회수 ➔ 초고온 순간멸균 및 바이오 과립화 ➔ 고부가가치 순환 비료 제조 ➔ 농경지 환원 및 친환경 농업의 원스톱 사이클'
+                                : 'Byproduct Clean Recovery ➔ Instant Sterilization & Bio-Granulation ➔ High-Value Upcycling ➔ Farmland Application & Sustainable Agriculture'}
+                            </p>
+                          </div>
+
+                          <div className="bg-white p-4.5 rounded-xl border border-slate-200 shadow-xs space-y-1.5">
+                            <div className="flex items-center space-x-2 text-amber-950 font-bold text-sm sm:text-base">
+                              <Globe2 className="w-4.5 h-4.5 text-amber-600 shrink-0" />
+                              <span>{lang === 'ko' ? 'ESG 탄소중립 실천 & 자원순환 국가과제' : 'ESG Carbon Neutrality & Circular Economy'}</span>
+                            </div>
+                            <p className="text-[13.5px] sm:text-[15px] text-slate-700 leading-relaxed pl-6.5 font-normal">
+                              {lang === 'ko'
+                                ? '정부 친환경 순환자원화 정책 부응 및 농축산 탄소배출 저감을 선도하는 지속가능한 미래 친환경 비전'
+                                : 'A sustainable future vision aligning with national eco-circulation policies and driving agricultural carbon reduction'}
+                            </p>
+                          </div>
+                        </div>
                       </div>
                     </div>
+                  ) : (
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                      <div className="space-y-3.5">
+                        <h4 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
+                          <FileCheck className="w-4.5 h-4.5 text-emerald-600 mr-2" />
+                          {lang === 'ko' ? '제품 상세 스펙 (Specifications)' : 'Product Specifications'}
+                        </h4>
+                        <div className="bg-white rounded-xl border border-slate-200 overflow-hidden divide-y divide-slate-100 text-xs sm:text-sm">
+                          {prod.specs.map((spec, i) => (
+                            <div key={i} className="flex px-4 py-3">
+                              <span className="w-36 font-bold text-slate-800 shrink-0">
+                                {lang === 'ko' ? spec.labelKo : spec.labelEn}
+                              </span>
+                              <span className="text-slate-700 font-medium whitespace-pre-line">
+                                {lang === 'ko' ? spec.valueKo : spec.valueEn}
+                              </span>
+                            </div>
+                          ))}
+                          {prod.id === 'healing-egg' ? (
+                            <div className="flex flex-col sm:flex-row px-4 py-3.5 bg-gradient-to-br from-amber-50/90 via-amber-100/40 to-emerald-50/50 border-t border-amber-200">
+                              <span className="w-36 font-bold text-amber-950 shrink-0 flex items-center gap-1.5 mb-1.5 sm:mb-0">
+                                <TrendingUp className="w-4 h-4 text-amber-600 shrink-0" />
+                                <span>{lang === 'ko' ? '상품 가치 & 유통' : 'Value & Distribution'}</span>
+                              </span>
+                              <div className="space-y-1.5">
+                                <div className="text-xs sm:text-sm font-black text-amber-950 leading-snug flex items-center gap-1.5">
+                                  <Sparkles className="w-3.5 h-3.5 text-amber-600 shrink-0" />
+                                  <span>
+                                    {lang === 'ko'
+                                      ? '객관적 품질 지표를 바탕으로 상품 가치 극대화 및 프리미엄 브랜드 유통 추진'
+                                      : 'Maximizing product value and driving premium brand distribution based on objective quality indicators'}
+                                  </span>
+                                </div>
+                                <div className="flex flex-wrap gap-1.5 pt-0.5">
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-white/90 text-amber-900 border border-amber-200/90 shadow-2xs">
+                                    {lang === 'ko' ? '공인 4대 영양·물성 실증 성적서 완비' : 'Accredited 4-Core Nutrient Metrics'}
+                                  </span>
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-white/90 text-emerald-900 border border-emerald-200/90 shadow-2xs">
+                                    {lang === 'ko' ? '백화점 · 유기농 프리미엄 유통 추진' : 'Department Stores & Premium Channels'}
+                                  </span>
+                                  <span className="inline-flex items-center px-2 py-0.5 rounded-md text-[11px] font-bold bg-white/90 text-slate-800 border border-slate-200 shadow-2xs">
+                                    {lang === 'ko' ? '사료 특허 제10-1328671호 & ‘치유계란®’ 상표 자산 연계' : 'Feed Patent No. 10-1328671 & Trademark'}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          ) : prod.patentNo ? (
+                            <div className="flex px-4 py-3 bg-emerald-50/70">
+                              <span className="w-36 font-bold text-emerald-950 shrink-0">
+                                {lang === 'ko' ? '특허 번호' : 'Patent No.'}
+                              </span>
+                              <span className="text-emerald-900 font-bold">
+                                {lang === 'ko' ? prod.patentNo : prod.patentNoEn}
+                              </span>
+                            </div>
+                          ) : null}
+                        </div>
+                      </div>
+
+                      <div className="space-y-3.5">
+                        <h4 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
+                          <Shield className="w-4.5 h-4.5 text-emerald-600 mr-2" />
+                          {lang === 'ko' ? '주요 핵심 특장점' : 'Key Advantages & Features'}
+                        </h4>
+                        <div className="space-y-2.5">
+                          {(lang === 'ko' ? prod.keyFeaturesKo : prod.keyFeaturesEn).map((feat, i) => (
+                            <div key={i} className="flex items-start text-xs sm:text-sm text-slate-800 bg-slate-50 p-3 rounded-xl border border-slate-200">
+                              <CheckCircle2 className="w-4.5 h-4.5 text-emerald-600 mr-2.5 shrink-0 mt-0.5" />
+                              <span className="font-normal leading-relaxed">{feat}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
+                    {/* Test Results (사료첨가제 제품군 전용) */}
+                    {prod.id !== 'healing-egg' && prod.testResultsKo && prod.testResultsKo.length > 0 && (
+                      <div className="space-y-3.5 pt-2">
+                        <h4 className="text-xs sm:text-sm font-bold text-slate-900 uppercase tracking-wider flex items-center">
+                          <Microscope className="w-4.5 h-4.5 text-emerald-600 mr-2" />
+                          {lang === 'ko' ? '공인 시험 및 실증 성적 지표' : 'Empirical Laboratory & Field Results'}
+                        </h4>
+                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3.5">
+                          {(lang === 'ko' ? prod.testResultsKo : (prod.testResultsEn || prod.testResultsKo)).map((res, i) => (
+                            <div key={i} className="bg-slate-50 p-4 rounded-xl border border-slate-200 text-center flex flex-col justify-between">
+                              <span className="text-xs sm:text-sm text-slate-600 font-medium block truncate">{res.metric}</span>
+                              <div className="text-lg sm:text-xl font-black text-emerald-700 my-1.5 leading-snug">
+                                {res.value}
+                              </div>
+                              <span className="text-xs text-slate-500 block font-normal leading-relaxed whitespace-pre-line">{res.note}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 그로피드 이톡스 전용: 과립형 사료 현미경 사진 (단순 소개형 - 콤팩트 화이트 디자인) */}
+                    {prod.id === 'etox' && (
+                      <div className="space-y-3 pt-5 border-t border-slate-200">
+                        {/* 상단 간결한 헤더 */}
+                        <div className="flex items-center pb-1.5 border-b border-slate-200">
+                          <div className="flex items-center space-x-2">
+                            <div className="p-1.5 rounded-lg bg-indigo-50 text-indigo-700 border border-indigo-100">
+                              <Microscope className="w-4 h-4" />
+                            </div>
+                            <h4 className="text-sm sm:text-base font-bold text-slate-900">
+                              {lang === 'ko' ? '과립형 사료 현미경 사진 (Granule Type)' : 'Microscope Photo of Granule Feed'}
+                            </h4>
+                          </div>
+                        </div>
+
+                        {/* 화이트 계열 카드 (이미지 30% 축소, 캡션, 2문장 장점 요약) */}
+                        <div className="w-full bg-slate-50/70 rounded-xl p-4 sm:p-5 border border-slate-200 flex flex-col items-center text-center space-y-3">
+                          {/* 사진 본체 (30% 축소: max-w-[70%]) */}
+                          <div className="w-full max-w-[70%] rounded-lg overflow-hidden bg-white border border-slate-200 shadow-xs flex items-center justify-center p-1">
+                            <img
+                              src="/drive_img_1Qe.png"
+                              alt="A microscope photo of an Growfeed granule"
+                              className="w-full h-auto object-contain block rounded"
+                              referrerPolicy="no-referrer"
+                            />
+                          </div>
+
+                          {/* 이미지 바로 밑 영문 텍스트 */}
+                          <p className="text-xs sm:text-sm font-semibold text-slate-800 tracking-tight">
+                            A microscope photo of an Growfeed granule
+                          </p>
+
+                          {/* 맥섬석 과립형 사료 미세구조 3대 핵심 효과 (색상 디자인 카드 3종) */}
+                          <div className="w-full grid grid-cols-1 md:grid-cols-3 gap-2.5 pt-1 text-left">
+                            {/* 1. 유익 미생물 생존 공간 */}
+                            <div className="p-3 sm:p-3.5 rounded-xl bg-blue-50/80 border border-blue-200/80 shadow-2xs space-y-1">
+                              <span className="inline-block text-[13px] font-extrabold text-blue-700 bg-white px-2.5 py-1 rounded-md border border-blue-200">
+                                {lang === 'ko' ? '1. 유익 미생물 생존 공간' : '1. Microbe Survival Habitat'}
+                              </span>
+                              <p className="text-xs text-blue-950 font-medium leading-relaxed">
+                                {lang === 'ko'
+                                  ? '미세 다공성 구조가 고온 열처리 후에도 유익 미생물을 안전하게 보호하여 60%~90%의 높은 생존율을 시각적으로 입증합니다.'
+                                  : 'The microporous structure shields beneficial microbes even after heat treatment, proving a 60%–90% high survival rate.'}
+                              </p>
+                            </div>
+
+                            {/* 2. 입자의 균일성과 구조적 안정성 */}
+                            <div className="p-3 sm:p-3.5 rounded-xl bg-emerald-50/80 border border-emerald-200/80 shadow-2xs space-y-1">
+                              <span className="inline-block text-[13px] font-extrabold text-emerald-700 bg-white px-2.5 py-1 rounded-md border border-emerald-200">
+                                {lang === 'ko' ? '2. 입자 균일성 & 구조 안정성' : '2. Uniformity & Stability'}
+                              </span>
+                              <p className="text-xs text-emerald-950 font-medium leading-relaxed">
+                                {lang === 'ko'
+                                  ? '쉽게 부서지지 않는 단단한 구형 과립으로 사료와 배합 시 분리되지 않고 고르게 섞이는 뛰어난 물리적 특성을 제공합니다.'
+                                  : 'Sturdy spherical granules resist crushing and blend seamlessly with feed without segregation.'}
+                              </p>
+                            </div>
+
+                            {/* 3. 소화율 개선 및 악취 감소 */}
+                            <div className="p-3 sm:p-3.5 rounded-xl bg-purple-50/80 border border-purple-200/80 shadow-2xs space-y-1">
+                              <span className="inline-block text-[13px] font-extrabold text-purple-700 bg-white px-2.5 py-1 rounded-md border border-purple-200">
+                                {lang === 'ko' ? '3. 소화율 개선 & 악취 감소' : '3. Digestibility & Odor Reduction'}
+                              </span>
+                              <p className="text-xs text-purple-950 font-medium leading-relaxed">
+                                {lang === 'ko'
+                                  ? '장내 완충 작용과 유익균 활성화로 사료 소화흡수율을 높이고 가축 면역력 증진 및 분뇨 악취를 획기적으로 줄여줍니다.'
+                                  : 'Intestinal buffering and microbe activation boost nutrient absorption, improve animal immunity, and sharply cut manure odor.'}
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                    {prod.id === 'protein' && (
+                      <div className="space-y-8 pt-6 border-t border-slate-200">
+                        {/* 섹션 타이틀 헤더 */}
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                          <div className="flex items-center space-x-3">
+                            <div className="p-2 rounded-xl bg-emerald-100 text-emerald-800">
+                              <Globe2 className="w-5 h-5" />
+                            </div>
+                            <div>
+                              <div className="flex items-center space-x-2">
+                                <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                                  {lang === 'ko' ? '글로벌 공인 사양 실증 성과' : 'Global Empirical Field Trials'}
+                                </span>
+                              </div>
+                              <h4 className="text-base sm:text-lg font-black text-slate-950 mt-0.5">
+                                {lang === 'ko' 
+                                  ? '해외 실증 사례: 말레이시아 KFC 육계 도체 검증 & 태국 CBP그룹 양식장' 
+                                  : 'Overseas Field Trials: Malaysia KFC Poultry & Thailand CBP Aquaculture'}
+                              </h4>
+                            </div>
+                          </div>
+                          <span className="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1 rounded-full border border-slate-200 self-start sm:self-center">
+                            {lang === 'ko' ? '국제 공인 시험 및 현장 실사' : 'Certified International Trials'}
+                          </span>
+                        </div>
+
+                        {/* 1. 말레이시아 산란계·육계 농장 적용 성과 (Malaysia KFC) */}
+                        <div className="p-5 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-5">
+                          {/* 상단 헤더 바 */}
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
+                            <div>
+                              <div className="flex items-center space-x-2">
+                                <span className="text-xs font-extrabold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-md">
+                                  {lang === 'ko' ? '글로벌 적용 사례 · 말레이시아' : 'Global Application · Malaysia'}
+                                </span>
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300">
+                                  Malaysia (KFC)
+                                </span>
+                              </div>
+                              <h5 className="text-lg sm:text-xl font-black text-slate-900 mt-1.5">
+                                {lang === 'ko' 
+                                  ? '말레이시아 산란계·육계 농장 적용 성과' 
+                                  : 'Malaysia Layer & Broiler Farm Validation'}
+                              </h5>
+                              <p className="text-xs text-slate-500 font-medium mt-0.5">
+                                {lang === 'ko' 
+                                  ? 'KFC 공급망 육질 및 내장 무결성 검증을 위한 도체 부검(Necropsy) 실사' 
+                                  : 'Carcass necropsy verification for KFC supply chain meat quality and internal organ integrity'}
+                              </p>
+                            </div>
+                            <span className="text-[13.54px] sm:text-[15.23px] font-black text-emerald-900 bg-emerald-100 px-[16.9px] py-[8.46px] rounded-xl border-2 border-emerald-400 shadow-sm self-start sm:self-center tracking-wide whitespace-nowrap">
+                              {lang === 'ko' ? 'KFC 납품 규격 통과' : 'KFC Supply Certified'}
+                            </span>
+                          </div>
+
+                          {/* 실제 사진 기반 도체 부검 비교 프레임 (말레이시아 현장 실증사진 스타일 기반, 육계 도체 검증 특화 디자인) */}
+                          <div className="bg-slate-50/90 rounded-2xl p-4 sm:p-6 border border-slate-200/90 shadow-2xs space-y-4">
+                            <div className="text-xs text-slate-500 pb-2.5 border-b border-slate-200">
+                              <span className="font-bold text-slate-900 flex items-center gap-1.5 text-[13px] sm:text-[14px]">
+                                <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+                                {lang === 'ko' ? '도체 및 소화장기 부검 비교 실사 (Necropsy Comparison)' : 'Carcass & Internal Organ Necropsy'}
+                              </span>
+                            </div>
+
+                            {/* 좌우 사진 비교 그리드 */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                              {/* 좌측: 대조군 (| Commercial) */}
+                              <div className="bg-white rounded-2xl p-3 sm:p-4 border border-slate-200 shadow-2xs space-y-3 flex flex-col">
+                                <div className="relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 aspect-[10/7] flex items-center justify-center shadow-2xs">
+                                  <img 
+                                    src="/C1.png?v=drive"
+                                    alt="Commercial Control Broiler C1"
+                                    className="w-full h-full object-cover object-[center_36%] scale-120 saturate-[0.7]"
+                                    referrerPolicy="no-referrer"
+                                  />
+                                  <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-slate-900/85 backdrop-blur-xs text-[11px] font-extrabold text-slate-100 border border-slate-700 shadow-xs">
+                                    {lang === 'ko' ? '도체 부검 01 · 대조군' : 'Necropsy 01 · Control'}
+                                  </div>
+                                </div>
+
+                                <div className="p-2.5 sm:p-3 rounded-xl bg-amber-50/80 border border-amber-200 text-xs sm:text-[12.5px] text-amber-950 font-medium leading-relaxed shadow-2xs">
+                                  • 간 비대증 및 복부 지방 과다 침착 관찰<br/>
+                                  • 소화 잔류물 및 장벽 충혈 소견
+                                </div>
+
+                                <div className="text-center pt-0.5 mt-auto">
+                                  <span className="inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-xl text-xs sm:text-[12.5px] font-bold bg-slate-100 text-slate-700 border border-slate-300">
+                                    | Commercial (일반 사료군)
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* 우측: 그로피드 적용군 (| Growfeed applied) */}
+                              <div className="bg-white rounded-2xl p-3 sm:p-4 border-2 border-emerald-500 shadow-xs space-y-3 flex flex-col">
+                                <div className="relative rounded-xl overflow-hidden border-2 border-emerald-400 bg-slate-100 aspect-[10/7] flex items-center justify-center shadow-2xs">
+                                  <img 
+                                    src="/C2.png?v=drive"
+                                    alt="Growfeed Applied Broiler C2"
+                                    className="w-full h-full object-cover object-[center_36%] scale-[130%] translate-x-[10%] -translate-y-[10%]"
+                                    referrerPolicy="no-referrer"
+                                  />
+                                  <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-emerald-950/85 backdrop-blur-xs text-[11px] font-extrabold text-emerald-100 border border-emerald-400/50 shadow-xs">
+                                    {lang === 'ko' ? '도체 부검 02 · 그로피드' : 'Necropsy 02 · Growfeed'}
+                                  </div>
+                                </div>
+
+                                <div className="p-2.5 sm:p-3 rounded-xl bg-emerald-50/80 border border-emerald-200 text-xs sm:text-[12.5px] text-emerald-950 font-medium leading-relaxed shadow-2xs">
+                                  • 선홍색의 단단하고 윤기 나는 정상 간<br/>
+                                  • 위(근위)와 소화장기 내벽이 매우 깨끗하고 탄력 유지
+                                </div>
+
+                                <div className="text-center pt-0.5 mt-auto">
+                                  <span className="inline-flex items-center justify-center gap-1.5 w-full py-2 px-3 rounded-xl text-xs sm:text-[12.5px] font-black bg-emerald-600 text-white shadow-xs">
+                                    <CheckCircle2 className="w-3.5 h-3.5 shrink-0 text-emerald-200" />
+                                    | Growfeed applied (KFC 통과)
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* 실증 슬라이드 원문 강조 배너 (그로피드 첨가 후 시험 DIV와 동일한 네이비 #1a365d 배경 및 흰색 글자) */}
+                            <div className="mt-2 py-3 px-4 rounded-xl bg-[#1a365d] border border-sky-800/80 text-center shadow-sm">
+                              <span className="text-[12.72px] sm:text-[14.84px] font-black text-white tracking-wide flex items-center justify-center gap-1.5">
+                                <CheckCircle2 className="w-[16.96px] h-[16.96px] text-sky-300 shrink-0" />
+                                <span>간, 위등 내장이 깨끗하고 육질의 차이가 확연함 (KFC 납품)</span>
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* 2. 태국 새우양식장 적용 및 수질 개선 (Thailand CBP Group) */}
+                        <div className="p-5 sm:p-7 rounded-2xl bg-white border border-slate-200 shadow-sm space-y-5">
+                          {/* 상단 헤더 바 */}
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                            <div>
+                              <div className="flex items-center space-x-2">
+                                <span className="text-xs font-extrabold text-slate-700 bg-slate-100 px-2.5 py-0.5 rounded-md">
+                                  {lang === 'ko' ? '글로벌 적용 사례 · 태국' : 'Global Application · Thailand'}
+                                </span>
+                                <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-black bg-teal-100 text-teal-800 border border-teal-300">
+                                  Thailand · CBP Group
+                                </span>
+                              </div>
+                              <h5 className="text-lg sm:text-xl font-black text-slate-900 mt-1.5">
+                                {lang === 'ko' 
+                                  ? '태국 새우양식장 적용 및 수질 개선' 
+                                  : 'Thailand Shrimp Aquaculture & Water Purification'}
+                              </h5>
+                              <p className="text-xs text-slate-500 font-medium mt-0.5">
+                                {lang === 'ko' 
+                                  ? '양어 배합사료 내 맥섬석 수준별 첨가에 따른 성장 및 수질 영양성분 분석' 
+                                  : 'Growth and water nutritional analysis according to Macsumsuk addition in aquaculture feed'}
+                              </p>
+                            </div>
+
+                            {/* 연구 및 공인 기관 태그 (4% 확대 적용) */}
+                            <div className="p-2.5 sm:p-3 rounded-xl bg-slate-50 border border-slate-200 text-right self-start sm:self-center">
+                              <div className="text-[12.5px] sm:text-[13px] font-black text-slate-800 tracking-tight">
+                                국립부경대학교 · 국립군산대학교 배승철 교수
+                              </div>
+                              <div className="text-[11.5px] font-bold text-slate-500 mt-0.5 flex items-center justify-end space-x-1.5">
+                                <span>해양바이오 신소재학과</span>
+                                <span>•</span>
+                                <span className="text-amber-700 font-black bg-amber-100 px-1.5 py-0.5 rounded text-[11px]">2012.2.29</span>
+                                <span>한국생산기술연구원</span>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* 시험 대상 직접 사진 영역 */}
+                          <div className="p-4 rounded-xl bg-slate-50 border border-slate-200 space-y-3">
+                            <div className="text-xs font-bold text-slate-600 uppercase tracking-wider flex items-center space-x-1.5">
+                              <Fish className="w-4 h-4 text-teal-600" />
+                              <span>{lang === 'ko' ? '실제 시험 대상 어종 및 갑각류 사진' : 'Target Species Tested (Live Photographs)'}</span>
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                              <div className="flex items-center space-x-3.5 p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                                <img 
+                                  src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?q=80&w=800&auto=format&fit=crop" 
+                                  alt="틸라피아" 
+                                  className="w-16 h-16 rounded-lg object-cover border border-slate-200 shrink-0"
+                                  referrerPolicy="no-referrer"
+                                />
+                                <div>
+                                  <div className="text-sm font-black text-slate-900">틸라피아 (Tilapia)</div>
+                                  <p className="text-xs text-slate-500 mt-0.5">
+                                    {lang === 'ko' ? '담수·기수 고밀도 양식 어종 사양' : 'Freshwater dense aquaculture species'}
+                                  </p>
+                                  <span className="inline-block mt-1 text-[10.5px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                                    Growfeed 0.25g/L
+                                  </span>
+                                </div>
+                              </div>
+
+                              <div className="flex items-center space-x-3.5 p-3 rounded-xl bg-white border border-slate-200 shadow-2xs">
+                                <img 
+                                  src="https://images.unsplash.com/photo-1565680018434-b513d5e5fd47?q=80&w=800&auto=format&fit=crop" 
+                                  alt="흰다리새우" 
+                                  className="w-16 h-16 rounded-lg object-cover border border-slate-200 shrink-0"
+                                  referrerPolicy="no-referrer"
+                                />
+                                <div>
+                                  <div className="text-sm font-black text-slate-900">흰다리새우 (Whiteleg Shrimp)</div>
+                                  <p className="text-xs text-slate-500 mt-0.5">
+                                    {lang === 'ko' ? '태국 CBP 그룹 주력 양식 새우' : 'Thailand CBP Group commercial shrimp'}
+                                  </p>
+                                  <span className="inline-block mt-1 text-[10.5px] font-bold text-teal-700 bg-teal-50 px-2 py-0.5 rounded border border-teal-200">
+                                    Growfeed 0.5g/L
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+
+                          {/* 2대 핵심 실증 그래프 및 암모니아 저감 */}
+                          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+                            {/* 기간별 생존율 그래프 */}
+                            <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-3">
+                              <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                                <span className="text-xs sm:text-sm font-bold text-slate-900">
+                                  기간별 생존율 (Survival Rate)
+                                </span>
+                                <span className="text-[11px] font-black text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-200">
+                                  4일간 80%+ 유지
+                                </span>
+                              </div>
+
+                              <div className="space-y-3 text-xs">
+                                <div className="space-y-1">
+                                  <div className="flex justify-between font-bold text-slate-800">
+                                    <span>{lang === 'ko' ? '그로피드 (0.25~0.5g/L)' : 'Growfeed (0.25~0.5g/L)'}</span>
+                                    <span className="text-teal-700 font-black">80% ~ 85% 유지</span>
+                                  </div>
+                                  <div className="h-3.5 bg-slate-100 rounded-full overflow-hidden p-0.5">
+                                    <div className="h-full bg-gradient-to-r from-teal-500 to-emerald-500 rounded-full w-[84%]"></div>
+                                  </div>
+                                </div>
+
+                                <div className="space-y-1 pt-1.5 border-t border-slate-100">
+                                  <div className="flex justify-between font-bold text-slate-600">
+                                    <span>대조군 (Control)</span>
+                                    <span className="text-rose-600 font-black">20% ~ 28%</span>
+                                  </div>
+                                  <div className="h-3.5 bg-slate-100 rounded-full overflow-hidden p-0.5">
+                                    <div className="h-full bg-slate-300 rounded-full w-[24%]"></div>
+                                  </div>
+                                </div>
+                              </div>
+                              <p className="text-[11px] text-slate-500 pt-1">
+                                * 사육 4일 경과 시 대조군은 폐사율이 70%를 초과한 반면, 그로피드 투여군은 80% 이상의 높은 생존율을 유지함
+                              </p>
+                            </div>
+
+                            {/* 수조내 암모니아 감소효과 */}
+                            <div className="p-5 rounded-2xl bg-white border border-slate-200 space-y-3">
+                              <div className="flex items-center justify-between pb-2 border-b border-slate-100">
+                                <span className="text-xs sm:text-sm font-bold text-slate-900">
+                                  수조내 암모니아 감소효과 (Ammonia Reduction)
+                                </span>
+                                <span className="text-[11px] font-black text-sky-700 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
+                                  50% 이상 감소
+                                </span>
+                              </div>
+
+                              <div className="grid grid-cols-2 gap-3 pt-1">
+                                <div className="p-3 rounded-xl bg-slate-50 border border-slate-200 text-center">
+                                  <span className="text-[11px] text-slate-500 font-bold block">대조군 수조 (Control)</span>
+                                  <div className="text-xl font-black text-rose-600 my-0.5">100 PPM</div>
+                                  <span className="text-[10px] text-slate-400">암모니아 급증</span>
+                                </div>
+                                <div className="p-3 rounded-xl bg-teal-50 border border-teal-200 text-center">
+                                  <span className="text-[11px] text-teal-800 font-bold block">{lang === 'ko' ? '그로피드 수조' : 'Growfeed Tank'}</span>
+                                  <div className="text-xl font-black text-teal-700 my-0.5">25 PPM</div>
+                                  <span className="text-[10px] text-teal-700 font-bold">50% 이상 신속 흡착</span>
+                                </div>
+                              </div>
+                              <p className="text-[11px] text-slate-500 pt-1">
+                                * 사육수 내 유독성 암모니아 및 아질산 축적을 50% 이상 억제하여 수질 악화 방지 및 환수 주기 연장
+                              </p>
+                            </div>
+                          </div>
+
+                          {/* 슬라이드 원문 네이비 결과 요약 카드 */}
+                          <div className="p-4 sm:p-5 rounded-xl bg-[#1a365d] text-white space-y-2.5">
+                            <div className="text-[15px] sm:text-[17.2px] font-black text-sky-300 pb-1.5 border-b border-sky-800/80 tracking-tight">
+                              {lang === 'ko' ? '그로피드 첨가 후 시험결과' : 'Test Results After Growfeed Addition'}
+                            </div>
+                            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-[12.84px] sm:text-[13.5px] font-bold text-slate-100">
+                              <div className="flex items-center space-x-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                                <span>출하 시까지 성장을 1.5배 향상</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                                <span>면역력 향상으로 폐사율 감소</span>
+                              </div>
+                              <div className="flex items-center space-x-2">
+                                <span className="w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0"></span>
+                                <span>개체 크기 대비 평균 중량 증가</span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 그로피드 (Growfeed) 해외 젖소 농장 현장 적용 사례 (말레이시아 & 방글라데시) */}
+                    {prod.id === 'dcm' && (
+                      <div className="space-y-8 pt-6 border-t border-slate-200">
+                        {/* 1. 상단 섹션 메인 헤더 */}
+                        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-3 border-b border-slate-200">
+                          <div className="flex items-center space-x-3">
+                            <div className="p-2 rounded-xl bg-teal-100 text-teal-800">
+                              <Globe2 className="w-5 h-5" />
+                            </div>
+                            <div>
+                              <div className="flex items-center space-x-2">
+                                <span className="text-[11px] font-extrabold uppercase tracking-wider text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+                                  {lang === 'ko' ? '해외 농장 현장 적용 성과' : 'Global Farm Field Verification'}
+                                </span>
+                              </div>
+                              <h4 className="text-base sm:text-xl font-black text-slate-950 mt-0.5">
+                                {lang === 'ko' 
+                                  ? '그로피드 해외 젖소 농장 현장 적용 사례' 
+                                  : 'Growfeed Global Dairy Farm Field Application Case Studies'}
+                              </h4>
+                            </div>
+                          </div>
+                          <span className="text-xs font-bold text-teal-800 bg-teal-50 px-3 py-1.5 rounded-full border border-teal-200 self-start sm:self-center">
+                            {lang === 'ko' ? '100두 이상 젖소 농장 현장 검증' : '100+ Head Dairy Farms Verified'}
+                          </span>
+                        </div>
+
+                        {/* 2. 말레이시아 젖소 농장 적용 사례 (23페이지) */}
+                        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs space-y-5">
+                          {/* 헤더 바 */}
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
+                            <div>
+                              <div className="flex items-center space-x-2 text-xs font-semibold text-slate-500 mb-1">
+                                <span>{lang === 'ko' ? '해외 적용 사례' : 'Overseas Application Case'}</span>
+                                <span>•</span>
+                                <span className="font-bold text-teal-700">Malaysia</span>
+                              </div>
+                              <h5 className="text-lg sm:text-xl font-black text-slate-950">
+                                <span>{lang === 'ko' ? '말레이시아 젖소 농장 적용 사례' : 'Malaysia Dairy Farm Application Case'}</span>
+                              </h5>
+                              <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1">
+                                {lang === 'ko' 
+                                  ? '100두 이상 규모 젖소 농장 — Growfeed 급여 후 현장 확인 결과' 
+                                  : '100+ Head Dairy Farm Scale — Field Observation Results After Growfeed Supplementation'}
+                              </p>
+                            </div>
+                            <span className="text-[13.54px] sm:text-[15.23px] font-black text-teal-900 bg-teal-100 px-[16.9px] py-[8.46px] rounded-xl border-2 border-teal-400 shadow-sm self-start sm:self-center tracking-wide whitespace-nowrap">
+                              {lang === 'ko' ? '현장 확인 완료' : 'Field Verified'}
+                            </span>
+                          </div>
+
+                          {/* 실제 사진 기반 말레이시아 젖소 현장 실증 프레임 (밝고 통일감 있는 실증 결과 레이아웃) */}
+                          <div className="bg-slate-50/90 rounded-2xl p-4 sm:p-6 border border-slate-200/90 shadow-2xs space-y-4">
+                            <div className="text-xs text-slate-500 pb-2.5 border-b border-slate-200/80 flex items-center justify-between">
+                              <span className="font-bold text-slate-800 flex items-center gap-1.5 text-[12.84px] sm:text-[13.91px]">
+                                <CheckCircle2 className="w-[17.12px] h-[17.12px] text-teal-600 shrink-0" />
+                                {lang === 'ko' ? '말레이시아 젖소 농장 현장 실증 결과 (Field Results)' : 'Malaysia Dairy Farm Field Inspection Results'}
+                              </span>
+                              <span className="text-[11px] font-bold text-teal-700 bg-teal-50 px-2.5 py-0.5 rounded-full border border-teal-200">
+                                {lang === 'ko' ? '사육 시험 성과' : 'Trial Outcomes'}
+                              </span>
+                            </div>
+
+                            {/* 좌우 사진 실증 결과 그리드 (풍부한 컬러와 통일된 성과 디자인 적용) */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+                              {/* 실증사진 01 - 유방염 감소 및 발정주기 (Sky/Teal 컬러 테마) */}
+                              <div className="bg-gradient-to-br from-sky-50/90 via-teal-50/50 to-white rounded-2xl p-3.5 sm:p-5 border-2 border-sky-300/80 shadow-xs hover:border-sky-400 hover:shadow-md transition-all flex flex-col space-y-3.5">
+                                <div className="relative rounded-xl overflow-hidden border-2 border-sky-200 bg-slate-100 aspect-[16/9] flex items-center justify-center shadow-2xs">
+                                  <img 
+                                    src="/malaysia_dairy_1.png?v=drive1" 
+                                    alt={lang === 'ko' ? '말레이시아 젖소 농장 현장 확인 사진' : 'Malaysia Dairy Farm Field Inspection'}
+                                    className="w-full h-full object-cover"
+                                    referrerPolicy="no-referrer"
+                                  />
+                                  <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-sky-950/85 backdrop-blur-xs text-[11px] font-extrabold text-sky-100 border border-sky-400/40 shadow-xs">
+                                    {lang === 'ko' ? '현장 실증사진 01' : 'Field Photo 01'}
+                                  </div>
+                                </div>
+
+                                <div className="p-3 sm:p-3.5 rounded-xl bg-sky-100/70 border border-sky-200 text-[13px] text-slate-900 font-semibold leading-relaxed shadow-2xs">
+                                  {lang === 'ko' 
+                                    ? '• 100두이상의 젖소농장에서의 사육시험에서 유방염이 감소하고 발정주기가 일정한 결과를 얻음' 
+                                    : '• In feeding trials on dairy farms with over 100 head, mastitis decreased and estrus cycles became regular.'}
+                                </div>
+
+                                <div className="text-center pt-1 mt-auto">
+                                  <span className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 px-3 rounded-xl text-xs sm:text-[13px] font-black bg-gradient-to-r from-sky-600 to-teal-600 text-white shadow-xs tracking-wide">
+                                    <CheckCircle2 className="w-4 h-4 shrink-0 text-sky-200" />
+                                    {lang === 'ko' ? '유방염 감소 및 발정주기 안정' : 'Mastitis Reduction & Regular Estrus'}
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* 실증사진 02 - 고온스트레스 극복 (Teal/Emerald 컬러 테마) */}
+                              <div className="bg-gradient-to-br from-teal-50/90 via-emerald-50/50 to-white rounded-2xl p-3.5 sm:p-5 border-2 border-teal-300/80 shadow-xs hover:border-teal-400 hover:shadow-md transition-all flex flex-col space-y-3.5">
+                                <div className="relative rounded-xl overflow-hidden border-2 border-teal-200 bg-slate-100 aspect-[16/9] flex items-center justify-center shadow-2xs">
+                                  <img 
+                                    src="/malaysia_dairy_2.png?v=drive2" 
+                                    alt={lang === 'ko' ? '말레이시아 젖소 고온스트레스 유량 회복 현장 사진' : 'Malaysia Dairy Heat Stress Recovery'}
+                                    className="w-full h-full object-cover"
+                                    referrerPolicy="no-referrer"
+                                  />
+                                  <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-teal-950/85 backdrop-blur-xs text-[11px] font-extrabold text-teal-100 border border-teal-400/40 shadow-xs">
+                                    {lang === 'ko' ? '현장 실증사진 02' : 'Field Photo 02'}
+                                  </div>
+                                </div>
+
+                                <div className="p-3 sm:p-3.5 rounded-xl bg-teal-100/70 border border-teal-200 text-[13px] text-slate-900 font-semibold leading-relaxed shadow-2xs">
+                                  {lang === 'ko' 
+                                    ? '• 그로피드를 급여후 고온스트레스로 유량감소 젖소가 회복되는 결과를 얻음' 
+                                    : '• Following Growfeed supplementation, dairy cows experiencing milk yield drop due to heat stress achieved full recovery.'}
+                                </div>
+
+                                <div className="text-center pt-1 mt-auto">
+                                  <span className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 px-3 rounded-xl text-xs sm:text-[13px] font-black bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-xs tracking-wide">
+                                    <CheckCircle2 className="w-4 h-4 shrink-0 text-teal-200" />
+                                    {lang === 'ko' ? '고온스트레스 유량 감소 젖소 회복' : 'Heat Stress Milk Yield Recovery'}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* 실증 원문 강조 배너 */}
+                            <div className="mt-2 py-3 px-4 rounded-xl bg-gradient-to-r from-teal-50 via-teal-100/60 to-teal-50 border border-teal-200 text-center">
+                              <span className="text-[12.72px] sm:text-[14.84px] font-bold text-teal-900 tracking-wide flex items-center justify-center gap-1.5">
+                                <CheckCircle2 className="w-[16.96px] h-[16.96px] text-teal-600 shrink-0" />
+                                {lang === 'ko' 
+                                  ? '100두 이상 젖소 농장 사육시험: 유방염 감소, 발정주기 안정 및 고온 스트레스 극복 확인' 
+                                  : '100+ Head Dairy Trial: Mastitis Reduction, Estrus Regularity & Heat Stress Recovery'}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        {/* 3. 방글라데시 농장 적용 사례 (25페이지) */}
+                        <div className="bg-white rounded-2xl p-5 sm:p-6 border border-slate-200 shadow-2xs space-y-5">
+                          {/* 헤더 바 */}
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 border-b border-slate-200">
+                            <div>
+                              <div className="flex items-center space-x-2 text-xs font-semibold text-slate-500 mb-1">
+                                <span>{lang === 'ko' ? '해외 적용 사례' : 'Overseas Application Case'}</span>
+                                <span>•</span>
+                                <span className="font-bold text-emerald-700">Bangladesh</span>
+                              </div>
+                              <h5 className="text-lg sm:text-xl font-black text-slate-950">
+                                <span>{lang === 'ko' ? '방글라데시 농장 적용 사례' : 'Bangladesh Farm Application Case'}</span>
+                              </h5>
+                              <p className="text-xs sm:text-sm text-slate-600 font-medium mt-1">
+                                {lang === 'ko' 
+                                  ? '100두 이상 규모 젖소 농장 — Growfeed 급여 후 현장 확인 결과' 
+                                  : '100+ Head Dairy Farm Scale — Field Observation Results After Growfeed Supplementation'}
+                              </p>
+                            </div>
+                            <span className="text-[13.54px] sm:text-[15.23px] font-black text-emerald-900 bg-emerald-100 px-[16.9px] py-[8.46px] rounded-xl border-2 border-emerald-400 shadow-sm self-start sm:self-center tracking-wide whitespace-nowrap">
+                              {lang === 'ko' ? '현장 확인 완료' : 'Field Verified'}
+                            </span>
+                          </div>
+
+                          {/* 실제 사진 기반 방글라데시 현장 실증 프레임 (밝고 통일감 있는 실증 결과 레이아웃) */}
+                          <div className="bg-slate-50/90 rounded-2xl p-4 sm:p-6 border border-slate-200/90 shadow-2xs space-y-4">
+                            <div className="text-xs text-slate-500 pb-2.5 border-b border-slate-200/80 flex items-center justify-between">
+                              <span className="font-bold text-slate-800 flex items-center gap-1.5 text-[12.84px] sm:text-[13.91px]">
+                                <CheckCircle2 className="w-[17.12px] h-[17.12px] text-emerald-600 shrink-0" />
+                                {lang === 'ko' ? '방글라데시 농장 현장 실증 결과 (Field Results)' : 'Bangladesh Farm Field Inspection Results'}
+                              </span>
+                              <span className="text-[11px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full border border-emerald-200">
+                                {lang === 'ko' ? '사육 시험 성과' : 'Trial Outcomes'}
+                              </span>
+                            </div>
+
+                            {/* 좌우 사진 실증 결과 그리드 (상단 말레이시아 젖소 실증 디자인과 동일한 통일 스타일 적용) */}
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5">
+                              {/* 실증사진 01 - 탈수 회복 (Sky/Teal 컬러 테마) */}
+                              <div className="bg-gradient-to-br from-sky-50/90 via-teal-50/50 to-white rounded-2xl p-3.5 sm:p-5 border-2 border-sky-300/80 shadow-xs hover:border-sky-400 hover:shadow-md transition-all flex flex-col space-y-3.5">
+                                <div className="relative rounded-xl overflow-hidden border-2 border-sky-200 bg-slate-100 aspect-[16/9] flex items-center justify-center shadow-2xs">
+                                  <img 
+                                    src="/bangladesh_farm_1.png?v=drive1uB" 
+                                    alt={lang === 'ko' ? '방글라데시 설사 탈수증상 회복 현장 사진' : 'Bangladesh Dehydration Recovery'}
+                                    className="w-full h-full object-cover"
+                                    referrerPolicy="no-referrer"
+                                  />
+                                  <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-sky-950/85 backdrop-blur-xs text-[11px] font-extrabold text-sky-100 border border-sky-400/40 shadow-xs">
+                                    {lang === 'ko' ? '현장 실증사진 01' : 'Field Photo 01'}
+                                  </div>
+                                </div>
+
+                                <div className="p-3 sm:p-3.5 rounded-xl bg-sky-100/70 border border-sky-200 text-[13px] text-slate-900 font-semibold leading-relaxed shadow-2xs">
+                                  {lang === 'ko' 
+                                    ? '• 설사로 인한 탈수증상 있는 소에게 그로피드를 급여한 후 탈수증상이 회복됨' 
+                                    : '• Cattle showing dehydration symptoms due to diarrhea recovered completely after Growfeed supplementation.'}
+                                </div>
+
+                                <div className="text-center pt-1 mt-auto">
+                                  <span className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 px-3 rounded-xl text-xs sm:text-[13px] font-black bg-gradient-to-r from-sky-600 to-teal-600 text-white shadow-xs tracking-wide">
+                                    <CheckCircle2 className="w-4 h-4 shrink-0 text-sky-200" />
+                                    {lang === 'ko' ? '설사 탈수증상 소 완치 및 회복' : 'Diarrhea & Dehydration Recovery'}
+                                  </span>
+                                </div>
+                              </div>
+
+                              {/* 실증사진 02 - 유량 증가 (Teal/Emerald 컬러 테마) */}
+                              <div className="bg-gradient-to-br from-teal-50/90 via-emerald-50/50 to-white rounded-2xl p-3.5 sm:p-5 border-2 border-teal-300/80 shadow-xs hover:border-teal-400 hover:shadow-md transition-all flex flex-col space-y-3.5">
+                                <div className="relative rounded-xl overflow-hidden border-2 border-teal-200 bg-slate-100 aspect-[16/9] flex items-center justify-center shadow-2xs">
+                                  <img 
+                                    src="/bangladesh_farm_2.png?v=drive1ZL" 
+                                    alt={lang === 'ko' ? '방글라데시 유량 증가 현장 사진' : 'Bangladesh Milk Yield Increase'}
+                                    className="w-full h-full object-cover"
+                                    referrerPolicy="no-referrer"
+                                  />
+                                  <div className="absolute top-2.5 left-2.5 px-2.5 py-1 rounded-lg bg-teal-950/85 backdrop-blur-xs text-[11px] font-extrabold text-teal-100 border border-teal-400/40 shadow-xs">
+                                    {lang === 'ko' ? '현장 실증사진 02' : 'Field Photo 02'}
+                                  </div>
+                                </div>
+
+                                <div className="p-3 sm:p-3.5 rounded-xl bg-teal-100/70 border border-teal-200 text-[13px] text-slate-900 font-semibold leading-relaxed shadow-2xs">
+                                  {lang === 'ko' 
+                                    ? '• 그로피드를 급여 후 유량 증가' 
+                                    : '• Milk yield increased significantly following Growfeed supplementation.'}
+                                </div>
+
+                                <div className="text-center pt-1 mt-auto">
+                                  <span className="inline-flex items-center justify-center gap-1.5 w-full py-2.5 px-3 rounded-xl text-xs sm:text-[13px] font-black bg-gradient-to-r from-teal-600 to-emerald-600 text-white shadow-xs tracking-wide">
+                                    <CheckCircle2 className="w-4 h-4 shrink-0 text-teal-200" />
+                                    {lang === 'ko' ? '착유우 유량 증가 확인' : 'Dairy Cow Milk Yield Increase'}
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {/* 실증 원문 강조 배너 */}
+                            <div className="mt-2 py-3 px-4 rounded-xl bg-gradient-to-r from-emerald-50 via-emerald-100/60 to-emerald-50 border border-emerald-200 text-center">
+                              <span className="text-[12.72px] sm:text-[14.84px] font-bold text-emerald-900 tracking-wide flex items-center justify-center gap-1.5">
+                                <CheckCircle2 className="w-[16.96px] h-[16.96px] text-emerald-600 shrink-0" />
+                                {lang === 'ko' 
+                                  ? '현장 사육 검증: 설사로 인한 탈수 소 완치 회복 및 착유우 산유량(유량) 증가' 
+                                  : 'Field Trial Verified: Full Dehydration Recovery & Significant Dairy Milk Yield Increase'}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+
+                    {/* 치유계란® 전용 상세 분석 섹션 (데이터 기반 품질 영양 & 가치사슬 운영 모델) */}
+                    {prod.id === 'healing-egg' && (
+                      <div className="space-y-8 pt-6 border-t border-amber-200/80">
+                        {/* 1. 공인 시험기관 데이터 기반 품질 및 영양 차별화 분석 */}
+                        <div className="space-y-4">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-amber-200">
+                            <div className="flex items-center space-x-2.5">
+                              <div className="p-1.5 rounded-lg bg-amber-100 text-amber-800">
+                                <Egg className="w-5 h-5" />
+                              </div>
+                              <div>
+                                <h4 className="text-base sm:text-lg font-black text-slate-950 flex items-center gap-2">
+                                  <span>{lang === 'ko' ? '데이터 기반 품질 및 영양 차별화 분석' : 'Data-Driven Nutritional & Quality Differentiation'}</span>
+                                </h4>
+                                <p className="text-xs text-slate-500 font-medium">
+                                  {lang === 'ko' ? '한국품질시험원 · 한국식품연구원 · 충남대학교 농과원 공인 시험성적서 기반' : 'Based on official test reports from state-accredited institutes'}
+                                </p>
+                              </div>
+                            </div>
+                            <span className="text-xs font-bold text-amber-900 bg-amber-100/80 px-3 py-1 rounded-full border border-amber-300 self-start sm:self-center">
+                              {lang === 'ko' ? '분석 근거 사본 완비' : 'Official Reports On File'}
+                            </span>
+                          </div>
+
+                          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                            {lang === 'ko'
+                              ? '맥섬석 그로피드 전용 사료 급여를 통해 입증된 객관적 품질 지표를 바탕으로 상품 가치를 극대화하고 프리미엄 브랜드 유통을 추진합니다.'
+                              : 'Maximizing product market value and driving premium retail distribution through verified objective quality metrics.'}
+                          </p>
+
+                          {/* 5대 지표 비교표 */}
+                          <div className="overflow-x-auto rounded-xl border border-slate-300 shadow-xs bg-white">
+                            <table className="w-full text-left text-xs sm:text-sm">
+                              <thead className="bg-slate-100 text-slate-800 font-bold border-b border-slate-300">
+                                <tr>
+                                  <th className="py-3 px-3 sm:px-4">{lang === 'ko' ? '차별화 지표' : 'Indicator'}</th>
+                                  <th className="py-3 px-3 sm:px-4 text-center">{lang === 'ko' ? '일반 계란' : 'Standard Egg'}</th>
+                                  <th className="py-3 px-3 sm:px-4 text-center bg-amber-50 text-amber-950 font-black">{lang === 'ko' ? '프리미엄 계란(치유계란®)' : 'Healing Egg®'}</th>
+                                  <th className="py-3 px-3 sm:px-4 text-center text-emerald-800 font-black">{lang === 'ko' ? '개선 효과 (Diff)' : 'Improvement'}</th>
+                                  <th className="py-3 px-3 sm:px-4">{lang === 'ko' ? '공인 분석 근거' : 'Official Authority'}</th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-slate-200 font-normal">
+                                <tr className="hover:bg-amber-50/40 transition-colors">
+                                  <td className="py-3.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center space-x-2.5">
+                                    <Brain className="w-4 h-4 text-purple-600 shrink-0" />
+                                    <div>
+                                      <div className="text-xs sm:text-sm font-black">{lang === 'ko' ? '콜린 (Choline)' : 'Choline'}</div>
+                                      <span className="text-[11px] text-slate-500 font-normal">{lang === 'ko' ? '두뇌 신경전달물질 및 간 해독 핵심 영양소' : 'Brain neurotransmitter & liver metabolism'}</span>
+                                    </div>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center text-slate-600 font-medium">125.6</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center font-black text-amber-900 bg-amber-50/60 text-sm sm:text-base">322.0</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center">
+                                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-2xs">
+                                      {lang === 'ko' ? '약 2.6배 증가' : '~2.6x Increase'}
+                                    </span>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-slate-800 font-bold">{lang === 'ko' ? '한국품질시험원' : 'Korea Quality Testing Inst.'}</td>
+                                </tr>
+
+                                <tr className="hover:bg-amber-50/40 transition-colors">
+                                  <td className="py-3.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center space-x-2.5">
+                                    <Heart className="w-4 h-4 text-rose-600 shrink-0" />
+                                    <div>
+                                      <div className="text-xs sm:text-sm font-black">{lang === 'ko' ? '오메가-3 (Omega-3)' : 'Omega-3'}</div>
+                                      <span className="text-[11px] text-slate-500 font-normal">{lang === 'ko' ? '혈중 중성지질 및 심혈관 혈행 건강' : 'Cardiovascular & lipid circulation'}</span>
+                                    </div>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center text-slate-600 font-medium">135.7 mg/100g</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center font-black text-amber-900 bg-amber-50/60 text-sm sm:text-base">223.3 mg/100g</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center">
+                                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-2xs">
+                                      {lang === 'ko' ? '약 65% 증가' : '+65% Increase'}
+                                    </span>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-slate-800 font-bold">{lang === 'ko' ? '한국식품연구원' : 'Korea Food Research Inst.'}</td>
+                                </tr>
+
+                                <tr className="hover:bg-amber-50/40 transition-colors">
+                                  <td className="py-3.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center space-x-2.5">
+                                    <Eye className="w-4 h-4 text-sky-600 shrink-0" />
+                                    <div>
+                                      <div className="text-xs sm:text-sm font-black">{lang === 'ko' ? '루테인 (Lutein)' : 'Lutein'}</div>
+                                      <span className="text-[11px] text-slate-500 font-normal">{lang === 'ko' ? '황반 색소 밀도 유지 및 시력 보호 영양소' : 'Macular pigment & eye protection'}</span>
+                                    </div>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center text-slate-600 font-medium">1.2 mg/100g</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center font-black text-amber-900 bg-amber-50/60 text-sm sm:text-base">2.1 mg/100g</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center">
+                                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-2xs">
+                                      {lang === 'ko' ? '약 75% 증가' : '+75% Increase'}
+                                    </span>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-slate-800 font-bold">{lang === 'ko' ? '한국식품연구원' : 'Korea Food Research Inst.'}</td>
+                                </tr>
+
+                                <tr className="hover:bg-amber-50/40 transition-colors">
+                                  <td className="py-3.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center space-x-2.5">
+                                    <ShieldCheck className="w-4 h-4 text-amber-600 shrink-0" />
+                                    <div>
+                                      <div className="text-xs sm:text-sm font-black">{lang === 'ko' ? '난각 강도 (Eggshell Strength)' : 'Shell Strength'}</div>
+                                      <span className="text-[11px] text-slate-500 font-normal">{lang === 'ko' ? '유통 중 깨짐(파란율) 방지 및 장기 신선도' : 'Breakage reduction & freshness preservation'}</span>
+                                    </div>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center text-slate-600 font-medium">2.83</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center font-black text-amber-900 bg-amber-50/60 text-sm sm:text-base">4.18</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center">
+                                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-2xs">
+                                      {lang === 'ko' ? '약 48% 증가' : '+48% Stronger'}
+                                    </span>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-slate-800 font-bold">{lang === 'ko' ? '충남대학교 농과원' : 'Chungnam Nat’l Univ'}</td>
+                                </tr>
+
+                                <tr className="hover:bg-amber-50/40 transition-colors">
+                                  <td className="py-3.5 px-3 sm:px-4 font-bold text-slate-900 flex items-center space-x-2.5">
+                                    <Sparkles className="w-4 h-4 text-amber-500 shrink-0" />
+                                    <div>
+                                      <div className="text-xs sm:text-sm font-black">{lang === 'ko' ? '난황 크기 (Yolk Size & Volume)' : 'Yolk Size & Elasticity'}</div>
+                                      <span className="text-[11px] text-slate-500 font-normal">{lang === 'ko' ? '고탄력 볼륨, 핀셋으로 집어도 터지지 않는 탄성' : 'Plump yolk volume & high membrane resilience'}</span>
+                                    </div>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center text-slate-600 font-medium">9.52</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center font-black text-amber-900 bg-amber-50/60 text-sm sm:text-base">12.03</td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-center">
+                                    <span className="inline-flex items-center px-2.5 py-1 rounded-full text-xs font-black bg-emerald-100 text-emerald-800 border border-emerald-300 shadow-2xs">
+                                      {lang === 'ko' ? '약 26% 증가' : '+26% Bigger'}
+                                    </span>
+                                  </td>
+                                  <td className="py-3.5 px-3 sm:px-4 text-slate-800 font-bold">{lang === 'ko' ? '충남대학교 농과원' : 'Chungnam Nat’l Univ'}</td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+
+                        {/* 현장 실증 및 (사)대한산란계협회 안두영 회장 품질 시연 */}
+                        <div className="space-y-4 pt-4 border-t border-slate-200">
+                          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-2.5 border-b border-amber-200">
+                            <div className="flex items-center space-x-2.5">
+                              <div className="p-1.5 rounded-lg bg-amber-100 text-amber-900">
+                                <Users className="w-5 h-5" />
+                              </div>
+                              <div>
+                                <h4 className="text-base sm:text-lg font-black text-slate-950 flex items-center gap-2">
+                                  <span>{lang === 'ko' ? '현장 실증 및 (사)대한산란계협회 안두영 회장 품질 시연' : 'Field Validation & Korea Layer Association Demonstration'}</span>
+                                </h4>
+                                <p className="text-xs text-slate-500 font-medium">
+                                  {lang === 'ko' ? '거성농장 2024년부터 지속 급여 중 및 대구국제축산박람회 공개 시연' : 'Continuous feeding at Geoseong Farm since 2024 & Public KISTOCK Demo'}
+                                </p>
+                              </div>
+                            </div>
+                            <span className="text-xs font-bold text-amber-900 bg-amber-100/80 px-3 py-1 rounded-full border border-amber-300 self-start sm:self-center">
+                              {lang === 'ko' ? '2024년부터 지속 급여' : 'Fed Since 2024'}
+                            </span>
+                          </div>
+
+                          <div className="w-full">
+                            {/* 대한산란계협회 안두영 회장 시연 내용 */}
+                            <div className="p-5 sm:p-6 rounded-2xl bg-gradient-to-br from-amber-50/90 to-amber-100/40 border border-amber-300 space-y-3 flex flex-col justify-between shadow-xs">
+                              <div className="space-y-2.5">
+                                <div className="flex items-center space-x-2">
+                                  <span className="w-2.5 h-2.5 rounded-full bg-amber-600 shrink-0"></span>
+                                  <h5 className="text-sm sm:text-base font-black text-slate-950">
+                                    {lang === 'ko' ? '(사)대한산란계협회 안두영 회장 (거성농장) 현장 시연' : 'Korea Layer Association Chairman Farm Demonstration'}
+                                  </h5>
+                                </div>
+                                <blockquote className="p-4 rounded-xl bg-white border border-amber-200 text-xs sm:text-sm text-slate-800 leading-relaxed font-medium italic shadow-2xs">
+                                  {lang === 'ko'
+                                    ? '“대구국제축산박람회 부스에서 산란계 적용 효과를 직접 소개했습니다. 그로피드 적용 후 노른자(난황)가 탄탄해져 손이나 핀셋으로 집어도 쉽게 터지지 않을 만큼 탄력이 뛰어나고, 계란 특유의 비린내가 현저히 덜하며 축사 내 악취가 대폭 감소했습니다.”'
+                                    : '“At the KISTOCK EXCO booth, I personally presented the results of feeding Growfeed: yolk elasticity increased dramatically so it does not burst when pinched, the characteristic egg odor virtually disappeared, and barn odor dropped remarkably.”'}
+                                </blockquote>
+                              </div>
+
+                              <div className="pt-3 border-t border-amber-200/80 flex items-center justify-between text-xs text-amber-950 font-bold">
+                                <span>{lang === 'ko' ? '거성농장 지속 실증 사육' : 'Geoseong Farm Live Trial'}</span>
+                                <span className="px-2.5 py-1 rounded bg-amber-600 text-white text-xs font-bold">
+                                  {lang === 'ko' ? '2024년 ~ 현재 사용 중' : '2024 ~ Present'}
+                                </span>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
                 </div>
               </section>
             ))}
@@ -1041,15 +2023,6 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                           highlightBg: 'bg-teal-50 text-teal-800 border-teal-200',
                           badgeLabelKo: '육계 300수 사양시험',
                           badgeLabelEn: 'Broiler 300 Trial'
-                        },
-                        'bovaer-comparison': {
-                          cardBorder: 'border-amber-300',
-                          cardBg: 'bg-gradient-to-br from-white to-amber-50/30',
-                          titleColor: 'text-slate-900 font-black',
-                          badgeBg: 'bg-amber-100 text-amber-900 border-amber-300',
-                          highlightBg: 'bg-amber-50 text-amber-800 border-amber-200',
-                          badgeLabelKo: '글로벌 대비 우위',
-                          badgeLabelEn: 'Global Benchmark'
                         }
                       }[ev.id] || {
                         cardBorder: 'border-slate-300',
@@ -1344,7 +2317,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       {lang === 'ko' ? '천연 미네랄 기반 점토광물 메탄가스 저감용 사료첨가제' : 'Natural Mineral Methane Reduction Feed Additive'}
                     </span>
                     <span className="text-emerald-700 font-bold text-xs sm:text-sm block">
-                      {lang === 'ko' ? '특허등록 제10-23698**호' : 'Patent Reg. No. 10-23698**'}
+                      {lang === 'ko' ? '특허등록 제10-2369862호' : 'Patent Reg. No. 10-2369862'}
                     </span>
                   </div>
                   <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
@@ -1352,7 +2325,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       {lang === 'ko' ? '가축혈액·맥섬석 이용 다공질 과립 사료 제조방법' : 'Porous Granular Feed Production using Livestock Blood & Macsumsuk'}
                     </span>
                     <span className="text-emerald-700 font-bold text-xs sm:text-sm block">
-                      {lang === 'ko' ? '특허등록 제10-24962**호 (세계 13개국 등록)' : 'Patent Reg. No. 10-24962** (Registered in 13 Countries)'}
+                      {lang === 'ko' ? '특허등록 제10-2496216호 (세계 13개국 등록)' : 'Patent Reg. No. 10-2496216 (Registered in 13 Countries)'}
                     </span>
                   </div>
                   <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 space-y-1">
@@ -1368,7 +2341,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       {lang === 'ko' ? '사료 브랜드 "그로피드(Growfeed®)" 상표권' : 'Feed Brand "Growfeed®" Trademark Rights'}
                     </span>
                     <span className="text-emerald-700 font-bold text-xs sm:text-sm block">
-                      {lang === 'ko' ? '세계 52개국 상표 등록 완료' : 'Registered Trademark in 52 Countries'}
+                      {lang === 'ko' ? '상표등록 제40-0999765호 (세계 52개국 글로벌 브랜드 자산)' : 'Trademark Reg. No. 40-0999765 (Global Brand in 52 Nations)'}
                     </span>
                   </div>
                 </div>
@@ -1761,7 +2734,7 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                         {lang === 'ko' ? '메탄 최대 61.5% 저감' : 'Max -61.5% Methane'}
                       </span>
                       <span className="bg-slate-900/85 backdrop-blur-xs text-white text-xs font-bold px-2.5 py-1 rounded-full border border-slate-700">
-                        {lang === 'ko' ? '특허등록 제10-23698**호' : 'Patent No. 10-23698**'}
+                        {lang === 'ko' ? '특허등록 제10-2369862호' : 'Patent No. 10-2369862'}
                       </span>
                     </div>
 
@@ -1793,15 +2766,49 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       </p>
                     </div>
 
-                    {/* 하이라이트 지표 바 */}
-                    <div className="grid grid-cols-2 gap-3 pt-2">
-                      <div className="p-3 bg-white rounded-xl border border-emerald-200 flex flex-col justify-center">
-                        <span className="text-[11px] text-slate-500 font-bold">{lang === 'ko' ? '메탄가스 최대 감축률' : 'Max Methane Reduction'}</span>
-                        <span className="text-base sm:text-lg font-black text-emerald-800">-61.5%</span>
+                    {/* 메탄가스 억제 및 기능 & 실온 보관 지표 */}
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                      <div className="p-3 sm:p-3.5 bg-white rounded-xl border border-emerald-200 flex flex-col justify-between shadow-xs">
+                        <div className="flex items-center space-x-1.5 pb-1.5 border-b border-emerald-100">
+                          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <h4 className="text-xs sm:text-sm font-black text-slate-900 tracking-tight">
+                            {lang === 'ko' ? '메탄가스 억제 및 기능' : 'Methane Suppression & Functions'}
+                          </h4>
+                        </div>
+                        <ul className="space-y-1.5 pt-2 text-[11.5px] font-semibold text-slate-700">
+                          <li className="flex items-center space-x-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                            <span>{lang === 'ko' ? '톡신바인드 기능' : 'Toxin Binding Function'}</span>
+                          </li>
+                          <li className="flex items-center space-x-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                            <span>{lang === 'ko' ? '육질 개선' : 'Meat Quality Enhancement'}</span>
+                          </li>
+                          <li className="flex items-center space-x-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                            <span>{lang === 'ko' ? '사료효율 개선' : 'Feed Efficiency Improvement'}</span>
+                          </li>
+                          <li className="flex items-center space-x-1.5">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-600 shrink-0" />
+                            <span className="text-emerald-800 font-bold">{lang === 'ko' ? '천연미네랄에 주의사항 거의 없음' : 'Natural Mineral • Virtually No Cautions'}</span>
+                          </li>
+                        </ul>
                       </div>
-                      <div className="p-3 bg-white rounded-xl border border-emerald-200 flex flex-col justify-center">
-                        <span className="text-[11px] text-slate-500 font-bold">{lang === 'ko' ? '실온 보관 유효기간' : 'Room Temp Shelf Life'}</span>
-                        <span className="text-base sm:text-lg font-black text-slate-900">{lang === 'ko' ? '1년 (실온 보관)' : '1 Year (Room Temp)'}</span>
+                      <div className="p-3 sm:p-3.5 bg-white rounded-xl border border-emerald-200 flex flex-col justify-between shadow-xs">
+                        <div className="flex items-center space-x-1.5 pb-1.5 border-b border-emerald-100">
+                          <TrendingDown className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <h4 className="text-xs sm:text-sm font-black text-slate-900 tracking-tight">
+                            {lang === 'ko' ? '축사 환경 개선' : 'Barn Environment Improvement'}
+                          </h4>
+                        </div>
+                        <div className="py-2.5 flex flex-col justify-center flex-1">
+                          <div className="p-3 rounded-lg bg-slate-50 border border-slate-200/80 flex items-center space-x-2.5">
+                            <span className="w-2 h-2 rounded-full bg-emerald-600 shrink-0" />
+                            <span className="text-xs sm:text-[13px] font-bold text-slate-800">
+                              {lang === 'ko' ? '축사 내 암모니아, 황화수소 감축' : 'Reduction of Ammonia & Hydrogen Sulfide in Barns'}
+                            </span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -1858,8 +2865,13 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                         <div className="w-8 h-8 rounded-lg bg-sky-100 text-sky-800 flex items-center justify-center font-bold">
                           <Leaf className="w-4 h-4" />
                         </div>
-                        <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
-                          {lang === 'ko' ? '도축 부산물 100% 고부가가치 바이오 자원화' : '100% Upcycling of Livestock Byproducts into Bio Feed'}
+                        <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight flex items-baseline flex-wrap gap-1.5">
+                          <span>
+                            {lang === 'ko' ? '도축 부산물 100% 고부가가치 바이오 자원화' : '100% Upcycling of Livestock Byproducts into Bio Feed'}
+                          </span>
+                          <span className="text-xs sm:text-sm font-bold text-sky-700">
+                            {lang === 'ko' ? '(ESG사업)' : '(ESG Project)'}
+                          </span>
                         </h3>
                       </div>
                       <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
@@ -1953,8 +2965,159 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                       </div>
                       <div className="p-3 bg-white rounded-xl border border-teal-200 flex flex-col justify-center">
                         <span className="text-[11px] text-slate-500 font-bold">{lang === 'ko' ? '출하일령 단축' : 'Market Day Reduction'}</span>
-                        <span className="text-base sm:text-lg font-black text-slate-900">{lang === 'ko' ? '2~4일 단축' : '2-4 Days Faster'}</span>
+                        <div className="flex items-baseline flex-wrap gap-1">
+                          <span className="text-base sm:text-lg font-black text-slate-900">{lang === 'ko' ? '2~4일 단축' : '2-4 Days Faster'}</span>
+                          <span className="text-xs font-bold text-teal-700">{lang === 'ko' ? '(사료비 절감)' : '(Feed Cost Reduction)'}</span>
+                        </div>
                       </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </section>
+
+            {/* Section 5: 정부 및 지자체 협업 성과 (Government & Municipality Collaboration) */}
+            <section id="granular-fertilizer" className="scroll-mt-32 space-y-6">
+              {/* Independent Large Section Header Bar */}
+              <div className="flex items-center space-x-3 pb-3 border-b-2 border-emerald-600">
+                <Landmark className="w-7 h-7 text-emerald-600" />
+                <h2 className="text-2xl sm:text-3xl font-black text-slate-900">
+                  {lang === 'ko' ? '5. 정부 및 지자체 협업 성과' : '5. Government & Municipality Collaboration'}
+                </h2>
+              </div>
+
+              {/* Main Container Card */}
+              <div className="rounded-3xl bg-white border-2 border-emerald-300 shadow-sm hover:shadow-md transition-all overflow-hidden">
+                <div className="grid grid-cols-1 lg:grid-cols-12 items-stretch">
+                  {/* 이미지 영역 (가로형 좌측) */}
+                  <div className="lg:col-span-5 relative min-h-[260px] sm:min-h-[300px] bg-slate-900 overflow-hidden group">
+                    <img
+                      src="/images/gov_visit_20200706.jpg"
+                      alt={lang === 'ko' ? '경북도지사 본사 방문 및 자원화 협의' : 'Gyeongbuk Governor Headquarters Visit'}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-90"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-slate-950/20 to-slate-950/30" />
+
+                    {/* 플로팅 배지 */}
+                    <div className="absolute top-4 left-4 flex flex-wrap gap-2">
+                      <span className="bg-emerald-900/90 backdrop-blur-xs text-emerald-200 text-xs font-black px-3 py-1 rounded-full border border-emerald-400 shadow-md">
+                        {lang === 'ko' ? '경북도지사 본사 방문' : 'Governor HQ Visit'}
+                      </span>
+                      <span className="bg-slate-900/85 backdrop-blur-xs text-white text-xs font-bold px-2.5 py-1 rounded-full border border-slate-700">
+                        2020.07.06
+                      </span>
+                    </div>
+
+                    <div className="absolute bottom-4 left-4 right-4 text-white">
+                      <p className="text-xs font-medium text-emerald-300">
+                        {lang === 'ko' ? '이철우 도지사 · 최기문 영천시장 · 김재수 전 농림축산식품부 장관' : 'Gov. Lee Cheol-woo · Mayor Choi Ki-mun · Ex-Minister Kim Jae-soo'}
+                      </p>
+                      <h4 className="text-base sm:text-lg font-black leading-snug">
+                        {lang === 'ko' ? '도축장 가축 혈액(돈혈) 자원화 사업 협의' : 'Slaughterhouse Blood Upcycling Collaboration'}
+                      </h4>
+                    </div>
+                  </div>
+
+                  {/* 텍스트 & 상세 지표 영역 (가로형 우측) */}
+                  <div className="lg:col-span-7 p-6 sm:p-7 flex flex-col justify-between space-y-4 bg-gradient-to-br from-white to-emerald-50/20">
+                    <div className="space-y-2">
+                      <div className="flex items-center space-x-2">
+                        <div className="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center font-bold">
+                          <Handshake className="w-4 h-4" />
+                        </div>
+                        <h3 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight">
+                          {lang === 'ko' ? '가축 혈액 자원화 정책 협력 및 산업화 성과' : 'Livestock Blood Upcycling Policy & Industrialization'}
+                        </h3>
+                      </div>
+                      <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-normal">
+                        {lang === 'ko'
+                          ? '2020년 7월 6일 경북도지사, 영천시장, 전 농림식품부 장관의 본사 방문을 통해 도축장 폐기 혈액(돈혈)의 이동 및 재활용 행정 현안을 협의하고, 맥섬석을 활용한 단백질 과립 사료 원천기술의 정책적 연계와 산업화를 본격 추진했습니다.'
+                          : 'On July 6, 2020, Gyeongbuk Governor, Yeongcheon Mayor, and former Minister of Agriculture visited Macsumsuk GM to coordinate administrative solutions for slaughterhouse porcine blood upcycling and integrate our patented protein granular feed technology with regional policy.'}
+                      </p>
+                    </div>
+
+                    {/* 하이라이트 지표 바 */}
+                    <div className="grid grid-cols-2 gap-3 pt-2">
+                      <div className="p-3 bg-white rounded-xl border border-emerald-200 flex flex-col justify-center shadow-2xs">
+                        <span className="text-[11px] text-slate-500 font-bold">{lang === 'ko' ? '세계 국제 특허 보유' : 'Global Patents'}</span>
+                        <div className="flex items-baseline flex-wrap gap-1">
+                          <span className="text-base sm:text-lg font-black text-emerald-800">{lang === 'ko' ? '세계 13개국' : '13 Countries'}</span>
+                          <span className="text-xs font-bold text-slate-600">{lang === 'ko' ? '특허 등록' : 'Patented'}</span>
+                        </div>
+                      </div>
+                      <div className="p-3 bg-white rounded-xl border border-emerald-200 flex flex-col justify-center shadow-2xs">
+                        <span className="text-[11px] text-slate-500 font-bold">{lang === 'ko' ? '농가 납품 및 글로벌 진출' : 'Farm Supply & Global Markets'}</span>
+                        <div className="flex items-baseline flex-wrap gap-1">
+                          <span className="text-base sm:text-lg font-black text-slate-900">{lang === 'ko' ? '60여 농가' : '60+ Farms'}</span>
+                          <span className="text-xs font-bold text-emerald-700">{lang === 'ko' ? '(수출 진행 중)' : '(Exporting)'}</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 4대 핵심 가치 및 협업 성과 블록 */}
+                <div className="p-5 sm:p-6 bg-slate-50/70 border-t border-slate-200">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5">
+                    {/* Item 1 */}
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1.5 hover:border-emerald-300 transition-colors">
+                      <div className="flex items-center space-x-2 text-emerald-900 font-bold text-xs sm:text-sm">
+                        <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-black text-xs">
+                          1
+                        </div>
+                        <span>{lang === 'ko' ? '경북도지사 본사 방문' : 'Governor HQ Visit'}</span>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                        {lang === 'ko'
+                          ? '2020.07.06 이철우 도지사, 최기문 영천시장, 김재수 전 농림식품부 장관 본사 방문 및 현장 시찰'
+                          : 'July 6, 2020: Governor Lee Cheol-woo, Mayor Choi Ki-mun, and former Minister Kim Jae-soo visited HQ.'}
+                      </p>
+                    </div>
+
+                    {/* Item 2 */}
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1.5 hover:border-emerald-300 transition-colors">
+                      <div className="flex items-center space-x-2 text-emerald-900 font-bold text-xs sm:text-sm">
+                        <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-black text-xs">
+                          2
+                        </div>
+                        <span>{lang === 'ko' ? '도축장 혈액 자원화 협의' : 'Blood Upcycling Accord'}</span>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                        {lang === 'ko'
+                          ? '가축 혈액(돈혈)과 맥섬석을 활용한 단백질 과립사료 기술 및 도축장 내 처리 공정화 논의'
+                          : 'Technical review on protein granular feed using slaughterhouse porcine blood and Macsumsuk.'}
+                      </p>
+                    </div>
+
+                    {/* Item 3 */}
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1.5 hover:border-emerald-300 transition-colors">
+                      <div className="flex items-center space-x-2 text-emerald-900 font-bold text-xs sm:text-sm">
+                        <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-black text-xs">
+                          3
+                        </div>
+                        <span>{lang === 'ko' ? '세계 13개국 국제 특허' : '13-Country Patents'}</span>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                        {lang === 'ko'
+                          ? '<혈액 가공품> 국내 특허 및 세계 13개국에 등록 완료된 독보적 다공질 단백질 과립형 기술'
+                          : '<Processed Blood Products> Porous protein granule feed technology patented in 13 countries.'}
+                      </p>
+                    </div>
+
+                    {/* Item 4 */}
+                    <div className="bg-white p-4 rounded-xl border border-slate-200 shadow-2xs space-y-1.5 hover:border-emerald-300 transition-colors">
+                      <div className="flex items-center space-x-2 text-emerald-900 font-bold text-xs sm:text-sm">
+                        <div className="w-6 h-6 rounded-md bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0 font-black text-xs">
+                          4
+                        </div>
+                        <span>{lang === 'ko' ? '60여 농가 납품 & 수출' : '60+ Farms & Export'}</span>
+                      </div>
+                      <p className="text-xs text-slate-600 leading-relaxed font-normal">
+                        {lang === 'ko'
+                          ? '전국 60여 양계 및 산란계 농장 지속 납품 공급 중이며, 해외 글로벌 시장 수출 본격 진행'
+                          : 'Continuous supply to 60+ layer/broiler farms nationwide; overseas exports actively underway.'}
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -1984,20 +3147,20 @@ export const CategoryPageView: React.FC<CategoryPageViewProps> = ({
                   </h3>
                   <p className="text-sm sm:text-base text-slate-700 mt-1 font-normal leading-relaxed">
                     {lang === 'ko'
-                      ? '누적 4,850톤+ 수출, 필리핀 Biostar 9년 연속 파트너십 및 동남아·유럽 시장 공략 현황'
-                      : 'Over 4,850 tons exported, 9 consecutive years partnership with Biostar (Philippines), expanding across SE Asia and Europe.'}
+                      ? '누적 4,220톤+ 수출, 필리핀 Biostar 9년 연속 파트너십 및 동남아·유럽 시장 공략 현황'
+                      : 'Over 4,220 tons exported, 9 consecutive years partnership with Biostar (Philippines), expanding across SE Asia and Europe.'}
                   </p>
                 </div>
 
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
                   <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 text-center">
                     <span className="text-slate-600 font-semibold text-xs sm:text-sm block">{lang === 'ko' ? '누적 수출량' : 'Cumulative Exports'}</span>
-                    <span className="text-2xl sm:text-3xl font-black text-emerald-700 my-1 block">{lang === 'ko' ? '4,850 톤+' : '4,850 Tons+'}</span>
+                    <span className="text-2xl sm:text-3xl font-black text-emerald-700 my-1 block">{lang === 'ko' ? '4,220 톤+' : '4,220 Tons+'}</span>
                     <span className="text-xs text-slate-500 font-medium">{lang === 'ko' ? 'Growfeed E-TOX 단일 품목' : 'Growfeed® E-TOX single item'}</span>
                   </div>
                   <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 text-center">
-                    <span className="text-slate-600 font-semibold text-xs sm:text-sm block">{lang === 'ko' ? '2026년 8월까지 실적' : 'Performance through Aug 2026'}</span>
-                    <span className="text-2xl sm:text-3xl font-black text-emerald-700 my-1 block">{lang === 'ko' ? '640톤' : '640 Tons'}</span>
+                    <span className="text-slate-600 font-semibold text-xs sm:text-sm block">{lang === 'ko' ? '2026년 9월 까지의 실적' : 'Performance through Sep 2026'}</span>
+                    <span className="text-2xl sm:text-3xl font-black text-emerald-700 my-1 block">{lang === 'ko' ? '400톤 + 200톤' : '400 Tons + 200 Tons'}</span>
                     <span className="text-xs text-slate-500 font-medium">{lang === 'ko' ? '필리핀 L/C 발주 양산 중' : 'Philippines L/C in active production'}</span>
                   </div>
                   <div className="p-5 bg-slate-50 rounded-2xl border border-slate-200 text-center">

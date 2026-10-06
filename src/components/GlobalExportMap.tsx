@@ -153,29 +153,29 @@ export const GlobalExportMap: React.FC<GlobalExportMapProps> = ({ lang }) => {
             </div>
           </div>
 
-          {/* Metric 2: 640톤 2026년 8월까지 실적 */}
+          {/* Metric 2: 400톤 + 200톤 2026년 9월 까지의 실적 */}
           <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:border-emerald-500/40 transition-colors">
-            <span className="text-xs font-medium text-slate-700 block mb-0.5">
-              {lang === 'ko' ? '2026년 8월까지 실적' : 'Performance through Aug 2026'}
+            <span className="text-xs font-medium text-slate-700 block mb-1">
+              {lang === 'ko' ? '2026년 9월 까지의 실적' : 'Performance through Sep 2026'}
             </span>
-            <div className="flex items-baseline space-x-1.5">
-              <span className="text-3xl sm:text-4xl font-black text-emerald-800 tracking-tight">
-                <AnimatedCounter end={640} />
+            <div className="flex flex-col space-y-0.5">
+              <span className="text-2xl sm:text-3xl font-black text-emerald-800 tracking-tight leading-tight">
+                {lang === 'ko' ? '400톤 + 200톤' : '400 Tons + 200 Tons'}
               </span>
-              <span className="text-sm font-bold text-slate-800">
-                {lang === 'ko' ? '톤 (수출 실적)' : 'Tons (Exports)'}
+              <span className="text-xs sm:text-sm font-bold text-slate-700">
+                {lang === 'ko' ? '(수출 실적)' : '(Exports)'}
               </span>
             </div>
           </div>
 
-          {/* Metric 3: 4,850톤+ 누적 수출량 */}
+          {/* Metric 3: 4,220톤+ 누적 수출량 */}
           <div className="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 hover:border-emerald-500/40 transition-colors">
             <span className="text-xs font-medium text-slate-700 block mb-0.5">
               {lang === 'ko' ? '단일 품목 누적 수출량' : 'Cumulative Export Volume'}
             </span>
             <div className="flex items-baseline space-x-1.5">
               <span className="text-3xl sm:text-4xl font-black text-slate-900 tracking-tight">
-                <AnimatedCounter end={4850} />
+                <AnimatedCounter end={4220} />
               </span>
               <span className="text-sm font-bold text-emerald-800">
                 {lang === 'ko' ? '톤+ (9년 연속)' : 'Tons+'}

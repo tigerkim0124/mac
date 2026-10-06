@@ -100,8 +100,8 @@ export const GlobalCountersSection: React.FC<GlobalCountersProps> = ({
             </div>
             <h3 className="text-lg sm:text-xl font-black text-white">
               {lang === 'ko'
-                ? '2026년 상반기 필리핀 640톤(L/C) 수출 일정 확정 및 생산 진행 중'
-                : 'Confirmed 640-ton (L/C) export shipment to the Philippines in 2026 with active production'}
+                ? '필리핀 400톤(L/C) 수출 완료 및 200톤 공급 준비 중'
+                : 'Completed 400-ton (L/C) export and preparing 200 tons for Philippines partner'}
             </h3>
             <p className="text-xs sm:text-sm text-slate-300 leading-relaxed font-normal">
               {lang === 'ko'
